@@ -22,6 +22,7 @@ export default function Hero() {
   const [paused, setPaused] = useState(false);
   const [progKey, setProgKey] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef<number | null>(null);
   const total = SLIDES.length;
 
   const goTo = useCallback((idx: number) => {
@@ -49,6 +50,15 @@ export default function Hero() {
       style={{ minHeight: '60vh' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; setPaused(true); }}
+      onTouchEnd={(e) => {
+        if (touchStartX.current === null) return;
+        const delta = e.changedTouches[0].clientX - touchStartX.current;
+        if (delta < -50) goNext();
+        else if (delta > 50) goPrev();
+        touchStartX.current = null;
+        setPaused(false);
+      }}
     >
       {/* Slides */}
       {SLIDES.map((s, i) => (
