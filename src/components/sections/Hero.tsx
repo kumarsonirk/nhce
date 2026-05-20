@@ -23,6 +23,7 @@ export default function Hero() {
   const [progKey, setProgKey] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
   const total = SLIDES.length;
 
   const goTo = useCallback((idx: number) => {
@@ -46,17 +47,26 @@ export default function Hero() {
 
   return (
     <section
-      className="relative bg-gray-900 overflow-hidden sm:[min-height:60vh]"
-      style={{ minHeight: '60vh' }}
+      className="relative bg-gray-900 overflow-hidden sm:[min-height:60vh] select-none"
+      style={{ minHeight: '60vh', touchAction: 'pan-y' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; setPaused(true); }}
+      onTouchStart={(e) => {
+        touchStartX.current = e.touches[0].clientX;
+        touchStartY.current = e.touches[0].clientY;
+        setPaused(true);
+      }}
       onTouchEnd={(e) => {
-        if (touchStartX.current === null) return;
-        const delta = e.changedTouches[0].clientX - touchStartX.current;
-        if (delta < -50) goNext();
-        else if (delta > 50) goPrev();
+        if (touchStartX.current === null || touchStartY.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX.current;
+        const dy = e.changedTouches[0].clientY - touchStartY.current;
+        // Only trigger slide if horizontal swipe dominates (not a vertical scroll)
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+          if (dx < 0) goNext();
+          else goPrev();
+        }
         touchStartX.current = null;
+        touchStartY.current = null;
         setPaused(false);
       }}
     >
@@ -71,14 +81,14 @@ export default function Hero() {
           <img
             src={s.image}
             alt={s.alt}
-            className="hidden sm:block w-full h-full object-cover"
+            className="hidden sm:block w-full h-full object-cover pointer-events-none"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
           {/* Mobile image */}
           <img
             src={s.mobileImage}
             alt={s.alt}
-            className="block sm:hidden w-full h-full object-cover object-top"
+            className="block sm:hidden w-full h-full object-cover object-top pointer-events-none"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
         </div>
