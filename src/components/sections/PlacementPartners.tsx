@@ -1,13 +1,23 @@
+import { useState } from 'react';
 import { Users, TrendingUp, Building2 } from 'lucide-react';
 import { RECRUITERS } from '../../data/constants';
 
 function LogoCard({ name, logo }: { name: string; logo: string }) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <div className="flex-shrink-0 mx-3 flex items-center justify-center bg-white rounded-xl border border-slate-100 shadow-sm px-4 py-3 h-24 w-52 overflow-hidden group hover:shadow-md hover:border-slate-200 transition-all duration-200 cursor-default">
+    <div className="flex-shrink-0 mx-3 flex items-center justify-center bg-white rounded-xl border border-slate-100 shadow-sm px-4 py-3 h-24 w-52 overflow-hidden relative group hover:shadow-md hover:border-slate-200 transition-all duration-200 cursor-default">
+      {!loaded && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-5 py-4">
+          <div className="w-full h-4 rounded-md bg-slate-200 animate-pulse" />
+          <div className="w-3/4 h-3 rounded-md bg-slate-100 animate-pulse" />
+        </div>
+      )}
       <img
         src={logo}
         alt={name}
-        className="max-h-24 max-w-[160px] w-full object-contain transition-all duration-300"
+        onLoad={() => setLoaded(true)}
+        className={`max-h-24 max-w-[160px] w-full object-contain transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
       />
     </div>
   );

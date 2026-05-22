@@ -42,13 +42,13 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
   return (
     <div className="fixed inset-0 z-[100] bg-navy-950 flex items-center justify-center">
       <div className="text-center">
-        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center mx-auto mb-4 animate-pulse">
-          <span className="text-navy-950 font-display font-black text-2xl">NH</span>
-        </div>
-        <div className="font-display font-bold text-white text-xl mb-1">New Horizon</div>
-        <div className="text-white/50 text-xs mb-5">College of Engineering</div>
+        <img
+          src="https://newhorizoncollegeofengineering.in/wp-content/uploads/2025/07/nhce_25-scaled-1-2048x683.png"
+          alt="New Horizon College of Engineering"
+          className="h-16 w-auto object-contain mx-auto mb-6"
+        />
         <div className="w-40 h-0.5 bg-white/10 rounded-full mx-auto overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-gold-400 to-amber-500 rounded-full animate-[loading_1.6s_ease-in-out_forwards]" style={{ animation: 'grow 1.6s ease-out forwards' }} />
+          <div className="h-full bg-gradient-to-r from-gold-400 to-amber-500 rounded-full" style={{ animation: 'grow 1.6s ease-out forwards' }} />
         </div>
       </div>
       <style>{`@keyframes grow { from { width: 0% } to { width: 100% } }`}</style>
