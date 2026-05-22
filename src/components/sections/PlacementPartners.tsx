@@ -1,58 +1,26 @@
-import { useState } from 'react';
 import { Users, TrendingUp, Building2 } from 'lucide-react';
 import { RECRUITERS } from '../../data/constants';
 
-const DOMAIN_MAP: Record<string, string> = {
-  'Google': 'google.com',
-  'Microsoft': 'microsoft.com',
-  'Amazon': 'amazon.com',
-  'Infosys': 'infosys.com',
-  'TCS': 'tcs.com',
-  'Wipro': 'wipro.com',
-  'Accenture': 'accenture.com',
-  'Deloitte': 'deloitte.com',
-  'IBM': 'ibm.com',
-  'Cognizant': 'cognizant.com',
-  'HCL Tech': 'hcltech.com',
-  'Oracle': 'oracle.com',
-  'Capgemini': 'capgemini.com',
-  'L&T Infotech': 'ltimindtree.com',
-  'Bosch': 'bosch.com',
-  'Samsung': 'samsung.com',
-  'Siemens': 'siemens.com',
-  'Qualcomm': 'qualcomm.com',
-  'Adobe': 'adobe.com',
-  'Cisco': 'cisco.com',
-};
-
-function LogoCard({ name }: { name: string }) {
-  const [imgError, setImgError] = useState(false);
-  const domain = DOMAIN_MAP[name];
-
+function LogoCard({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="flex-shrink-0 mx-3 flex items-center justify-center bg-white rounded-xl border border-slate-100 shadow-sm px-6 h-20 w-44 group hover:shadow-md hover:border-slate-200 transition-all duration-200 cursor-default">
-      {!imgError && domain ? (
-        <img
-          src={`https://logo.clearbit.com/${domain}`}
-          alt={name}
-          className="max-h-9 max-w-[120px] object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-          onError={() => setImgError(true)}
-        />
-      ) : (
-        <span className="text-sm font-semibold text-slate-600 text-center leading-tight">{name}</span>
-      )}
+    <div className="flex-shrink-0 mx-3 flex items-center justify-center bg-white rounded-xl border border-slate-100 shadow-sm px-4 py-3 h-24 w-52 overflow-hidden group hover:shadow-md hover:border-slate-200 transition-all duration-200 cursor-default">
+      <img
+        src={logo}
+        alt={name}
+        className="max-h-24 max-w-[160px] w-full object-contain transition-all duration-300"
+      />
     </div>
   );
 }
 
 export default function PlacementPartners() {
-  const row1 = RECRUITERS.slice(0, 10);
-  const row2 = RECRUITERS.slice(10);
+  const half = Math.ceil(RECRUITERS.length / 2);
+  const row1 = RECRUITERS.slice(0, half);
+  const row2 = RECRUITERS.slice(half);
 
   return (
     <section id="placements" className="section-padding bg-white overflow-hidden">
       <div className="container-wide">
-        {/* Header */}
         <div className="text-center mb-10">
           <span className="badge bg-green-100 text-green-700 mb-3">Our Recruiters</span>
           <h2 className="heading-md text-navy-950">
@@ -66,12 +34,11 @@ export default function PlacementPartners() {
           </p>
         </div>
 
-        {/* Stats */}
         <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
           {[
             { icon: Building2, value: '120+', label: 'Recruiting Companies' },
             { icon: TrendingUp, value: '42 LPA', label: 'Highest Package' },
-            { icon: Users, value: '98%', label: 'Placement Rate' },
+            { icon: Users,      value: '98%',   label: 'Placement Rate' },
           ].map(({ icon: Icon, value, label }) => (
             <div key={label} className="text-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
               <Icon size={18} className="text-green-600 mx-auto mb-1.5" />
@@ -82,31 +49,27 @@ export default function PlacementPartners() {
         </div>
       </div>
 
-      {/* Marquee rows — full bleed with edge fade */}
-      <div className="[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        {/* Row 1 — scroll left */}
-        <div className="flex mb-4 animate-[marquee_35s_linear_infinite]">
-          {[...row1, ...row1].map((r, i) => (
-            <LogoCard key={i} name={r.name} />
-          ))}
+      <div className="[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] space-y-4">
+        <div className="flex marquee-row-1" style={{ animation: 'marquee 24s linear infinite', willChange: 'transform' }}>
+          {[...row1, ...row1].map((r, i) => <LogoCard key={i} name={r.name} logo={r.logo} />)}
         </div>
-
-        {/* Row 2 — scroll right */}
-        <div className="flex animate-[marquee-reverse_35s_linear_infinite]">
-          {[...row2, ...row2].map((r, i) => (
-            <LogoCard key={i} name={r.name} />
-          ))}
+        <div className="flex marquee-row-2" style={{ animation: 'marquee-reverse 24s linear infinite', willChange: 'transform' }}>
+          {[...row2, ...row2].map((r, i) => <LogoCard key={i} name={r.name} logo={r.logo} />)}
         </div>
       </div>
 
       <style>{`
         @keyframes marquee {
           from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+          to   { transform: translateX(-50%); }
         }
         @keyframes marquee-reverse {
           from { transform: translateX(-50%); }
-          to { transform: translateX(0); }
+          to   { transform: translateX(0); }
+        }
+        @media (max-width: 640px) {
+          .marquee-row-1 { animation-duration: 12s !important; }
+          .marquee-row-2 { animation-duration: 12s !important; }
         }
       `}</style>
     </section>

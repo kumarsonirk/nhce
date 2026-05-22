@@ -49,7 +49,7 @@ export default function Rankings() {
         </div>
 
         {/* Awards strip */}
-        <div className="hidden md:block bg-white rounded-3xl p-6 shadow-card">
+        <div className="hidden md:block bg-white rounded-3xl p-6 shadow-card mt-4">
           <h3 className="font-display font-bold text-navy-900 text-lg mb-5 text-center">Awards & Recognition</h3>
           <MobileSlider desktopClass="grid-cols-2 lg:grid-cols-3 gap-3">
             {[

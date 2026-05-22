@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, ExternalLink, Youtube, Instagram, Twitter, Linkedin, Facebook, ArrowUp, ChevronDown } from 'lucide-react';
+import { MapPin, Phone, Mail, ExternalLink, Youtube, Instagram, Twitter, Linkedin, Facebook, ChevronDown } from 'lucide-react';
 
 const LINK_COLS = [
   {
@@ -47,8 +47,6 @@ function AccordionCol({ title, links }: { title: string; links: string[] }) {
 }
 
 export default function Footer() {
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
   return (
     <footer className="bg-navy-950 text-white">
 
@@ -148,14 +146,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Scroll to top */}
-      <button
-        onClick={scrollTop}
-        className="fixed bottom-6 right-6 w-10 h-10 bg-navy-700 hover:bg-navy-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1 z-40"
-        aria-label="Scroll to top"
-      >
-        <ArrowUp size={16} />
-      </button>
     </footer>
   );
 }
