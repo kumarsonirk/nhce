@@ -146,8 +146,7 @@ export default function Placements() {
                     style={{ minWidth: 140 }}
                   >
                     <span
-                      className="font-bold text-sm transition-colors duration-300"
-                      style={{ color: rec.color }}
+                      className="font-bold text-sm text-slate-700 transition-colors duration-300"
                     >
                       {rec.name}
                     </span>
