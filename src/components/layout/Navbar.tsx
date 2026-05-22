@@ -54,7 +54,6 @@ export default function Navbar() {
     };
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      setTimeout(() => searchRef.current?.focus(), 120);
     }
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
