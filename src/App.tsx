@@ -56,8 +56,30 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
   );
 }
 
+function useSectionAnimations() {
+  useEffect(() => {
+    const sections = document.querySelectorAll('main > section, main > div > section');
+    sections.forEach(el => el.classList.add('section-hidden'));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('section-hidden');
+            entry.target.classList.add('section-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+    sections.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}
+
 export default function App() {
   const [loading, setLoading] = useState(true);
+  useSectionAnimations();
 
   return (
     <>
