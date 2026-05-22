@@ -9,7 +9,7 @@ import PlacementPartners from './components/sections/PlacementPartners';
 import Campus from './components/sections/Campus';
 import { News } from './components/sections/EventsNews';
 import Rankings from './components/sections/Rankings';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Search, X, Plus, BookOpen, Briefcase, Zap, Mail } from 'lucide-react';
 
 function ScrollToTop() {
   const [visible, setVisible] = useState(false);
@@ -56,6 +56,73 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
   );
 }
 
+const EXPLORE_ITEMS = [
+  { label: 'Admissions', href: '#admissions', icon: Plus },
+  { label: 'Programs',   href: '#departments', icon: BookOpen },
+  { label: 'Placements', href: '#placements',  icon: Briefcase },
+  { label: 'News & Events',  href: '#events',      icon: Zap },
+  { label: 'Contact Us', href: '#contact',     icon: Mail },
+];
+
+function ExploreButton() {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = (href: string) => {
+    setOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 md:hidden">
+      {open && (
+        <>
+          <div
+            className="fixed inset-0 z-[-1]"
+            onClick={() => setOpen(false)}
+          />
+          <div className="flex flex-col items-end gap-2 mb-1">
+            {EXPLORE_ITEMS.map(({ label, href, icon: Icon }) => (
+              <button
+                key={label}
+                onClick={() => handleClick(href)}
+                className="flex items-center gap-3 bg-white text-navy-800 font-semibold text-sm px-5 py-3 rounded-full shadow-lg border border-slate-100 animate-[fadeSlideUp_0.2s_ease_both]"
+              >
+                {label}
+                <Icon size={15} className="text-blue-600" />
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+
+      {open ? (
+        <button
+          onClick={() => setOpen(false)}
+          className="w-12 h-12 rounded-full bg-white border border-slate-200 shadow-lg flex items-center justify-center"
+        >
+          <X size={20} className="text-slate-700" />
+        </button>
+      ) : (
+        <button
+          onClick={() => setOpen(true)}
+          className="flex items-center gap-2 bg-navy-700 text-white font-bold text-sm px-5 py-3 rounded-full shadow-xl"
+        >
+          <Search size={16} />
+          Explore
+        </button>
+      )}
+
+      <style>{`
+        @keyframes fadeSlideUp {
+          from { opacity: 0; transform: translateY(10px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 function useSectionAnimations() {
   useEffect(() => {
     const sections = document.querySelectorAll('main > section, main > div > section');
@@ -98,6 +165,7 @@ export default function App() {
         </main>
         <Footer />
         <ScrollToTop />
+        <ExploreButton />
       </div>
     </>
   );
