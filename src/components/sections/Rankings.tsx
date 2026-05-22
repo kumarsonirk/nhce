@@ -21,13 +21,13 @@ export default function Rankings() {
         {/* Accreditation logos */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {/* VTU */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl p-3 flex flex-col items-center justify-center text-center gap-4 shadow-sm">
             <img src="/acc/vtu.webp" alt="VTU" className="h-16 w-auto object-contain" />
             <p className="text-slate-700 text-sm font-medium leading-snug">Autonomous College<br />Permanently Affiliated to VTU</p>
           </div>
 
           {/* AICTE + UGC together */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl p-3 flex flex-col items-center justify-center text-center gap-4 shadow-sm">
             <div className="flex items-center justify-center gap-4">
               <img src="/acc/aicte.png" alt="AICTE" className="h-16 w-auto object-contain" />
               <img src="/acc/ugc.png" alt="UGC" className="h-16 w-auto object-contain" />
@@ -36,13 +36,13 @@ export default function Rankings() {
           </div>
 
           {/* NBA */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl p-3 flex flex-col items-center justify-center text-center gap-4 shadow-sm">
             <img src="/acc/nba.png" alt="NBA" className="h-16 w-auto object-contain" />
             <p className="text-slate-700 text-sm font-medium leading-snug">Accredited by NBA</p>
           </div>
 
           {/* NAAC */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4 shadow-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl p-3 flex flex-col items-center justify-center text-center gap-4 shadow-sm">
             <img src="/acc/naac.png" alt="NAAC" className="h-16 w-auto object-contain" />
             <p className="text-slate-700 text-sm font-medium leading-snug">Accredited by NAAC with 'A' Grade</p>
           </div>
