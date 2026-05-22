@@ -40,14 +40,14 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
   }, [onDone]);
 
   return (
-    <div className="fixed inset-0 z-[100] bg-navy-950 flex items-center justify-center">
+    <div className="fixed inset-0 z-[100] bg-white flex items-center justify-center">
       <div className="text-center">
         <img
           src="https://newhorizoncollegeofengineering.in/wp-content/uploads/2025/07/nhce_25-scaled-1-2048x683.png"
           alt="New Horizon College of Engineering"
           className="h-16 w-auto object-contain mx-auto mb-6"
         />
-        <div className="w-40 h-0.5 bg-white/10 rounded-full mx-auto overflow-hidden">
+        <div className="w-40 h-0.5 bg-slate-200 rounded-full mx-auto overflow-hidden">
           <div className="h-full bg-gradient-to-r from-gold-400 to-amber-500 rounded-full" style={{ animation: 'grow 1.6s ease-out forwards' }} />
         </div>
       </div>
