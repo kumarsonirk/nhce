@@ -1,17 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const SLIDES = [
   {
     id: 0,
     image: 'https://newhorizoncollegeofengineering.in/wp-content/uploads/2026/04/admission_open_desk.jpg',
-    mobileImage: 'https://newhorizoncollegeofengineering.in/wp-content/uploads/2026/04/admission_open_mobile.jpg',
+    mobileImage: '/banner1.jpeg',
     alt: 'Admissions Open 2025–26',
   },
   {
     id: 1,
     image: 'https://newhorizoncollegeofengineering.in/wp-content/uploads/2026/01/48-hours-HACKATHON-1-scaled.jpg',
-    mobileImage: 'https://newhorizoncollegeofengineering.in/wp-content/uploads/2026/01/48-hours-HACKATHON-mobile-1.jpg',
+    mobileImage: '/2.jpg',
     alt: '48-Hour Hackathon at NHCE',
   },
 ];
@@ -47,8 +46,8 @@ export default function Hero() {
 
   return (
     <section
-      className="relative bg-gray-900 overflow-hidden sm:[min-height:60vh] select-none"
-      style={{ minHeight: '60vh', touchAction: 'pan-y' }}
+      className="relative bg-gray-900 overflow-hidden min-h-screen sm:min-h-[60vh] select-none"
+      style={{ touchAction: 'pan-y' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={(e) => {
@@ -94,25 +93,6 @@ export default function Hero() {
         </div>
       ))}
 
-      {/* Prev arrow */}
-      <button
-        onClick={goPrev}
-        aria-label="Previous"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all hover:scale-110 active:scale-95"
-        style={{ background: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.2)' }}
-      >
-        <ChevronLeft size={20} />
-      </button>
-
-      {/* Next arrow */}
-      <button
-        onClick={goNext}
-        aria-label="Next"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center text-white transition-all hover:scale-110 active:scale-95"
-        style={{ background: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.2)' }}
-      >
-        <ChevronRight size={20} />
-      </button>
 
       {/* Dot indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">

@@ -105,6 +105,12 @@
     transform: translateY(0);
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
+  /* Offset fixed mobile nav when jumping to sections */
+  @media (max-width: 639px) {
+    section[id] {
+      scroll-margin-top: 64px;
+    }
+  }
   /* Section scroll animations */
   .section-hidden {
     opacity: 0;

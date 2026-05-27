@@ -32,6 +32,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [scrolled, setScrolled] = useState(false);
+  const [inHero, setInHero] = useState(true);
   const menuRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const progress = useScrollProgress();
@@ -41,7 +42,10 @@ export default function Navbar() {
     : navItems;
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 60);
+      setInHero(window.scrollY < window.innerHeight * 0.82);
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -83,39 +87,41 @@ export default function Navbar() {
 
     <header
       ref={menuRef}
-      className={`sticky top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-slate-100'
-          : 'bg-white border-b border-slate-100'
+      className={`max-sm:fixed sm:sticky py-4 top-0 z-50 w-full transition-all duration-500 ${
+        scrolled || !inHero || isOpen
+          ? 'bg-white shadow-sm border-b border-slate-100'
+          : ''
       }`}
     >
-      {/* Scroll progress */}
-      <div
-        className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-navy-600 to-gold-500 transition-all duration-150 z-10"
-        style={{ width: `${progress}%` }}
-      />
 
-      <div className="container-wide">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-16 sm:h-24 px-4 sm:px-6">
           <a href="#" className="flex items-center">
             <img
-              src="https://newhorizoncollegeofengineering.in/wp-content/uploads/2025/07/nhce_25-scaled-1-2048x683.png"
+              src="/main_logo.webp"
               alt="New Horizon College of Engineering"
-              className="h-16 w-auto object-contain"
+              className="h-16 sm:h-16 w-auto object-contain"
             />
           </a>
 
-          <button
-            onClick={() => { setIsOpen(!isOpen); setQuery(''); }}
-            className="w-10 h-10 rounded-xl hover:bg-slate-100 flex items-center justify-center transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen
-              ? <X size={20} className="text-slate-700" />
-              : <Menu size={20} className="text-slate-700" />}
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => { setIsOpen(true); setTimeout(() => searchRef.current?.focus(), 100); }}
+              className="w-10 h-10 rounded-xl hover:bg-white/20 flex items-center justify-center transition-colors"
+              aria-label="Search"
+            >
+              <Search size={20} className="text-black drop-shadow" />
+            </button>
+            <button
+              onClick={() => { setIsOpen(!isOpen); setQuery(''); }}
+              className="w-10 h-10 rounded-xl hover:bg-white/20 flex items-center justify-center transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen
+                ? <X size={20} className="text-slate-700" />
+                : <Menu size={20} className="text-black drop-shadow" />}
+            </button>
+          </div>
         </div>
-      </div>
 
       {/* Light launcher panel */}
       {isOpen && (

@@ -2,31 +2,54 @@ import { useState } from 'react';
 import { Users, TrendingUp, Building2 } from 'lucide-react';
 import { RECRUITERS } from '../../data/constants';
 
+// Shuffle once at module load for random-looking layout
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const SHUFFLED = shuffle(RECRUITERS);
+// Row sizes that sum to SHUFFLED.length — varied counts give natural look
+const ROW_SIZES = [4, 5, 4, 3];
+
+function buildRows() {
+  const rows: (typeof RECRUITERS)[] = [];
+  let idx = 0;
+  for (const size of ROW_SIZES) {
+    const row: typeof RECRUITERS = [];
+    for (let j = 0; j < size; j++) {
+      row.push(SHUFFLED[idx % SHUFFLED.length]);
+      idx++;
+    }
+    rows.push(row);
+  }
+  return rows;
+}
+
 function LogoCard({ name, logo }: { name: string; logo: string }) {
   const [loaded, setLoaded] = useState(false);
-
   return (
-    <div className="flex-shrink-0 mx-3 flex items-center justify-center bg-white rounded-xl border border-slate-100 shadow-sm px-4 py-3 h-24 w-52 overflow-hidden relative group hover:shadow-md hover:border-slate-200 transition-all duration-200 cursor-default">
-      {!loaded && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-5 py-4">
-          <div className="w-full h-4 rounded-md bg-slate-200 animate-pulse" />
-          <div className="w-3/4 h-3 rounded-md bg-slate-100 animate-pulse" />
-        </div>
-      )}
+    <div className="flex items-center justify-center overflow-hidden"
+      style={{ width: 120, height: 45, flexShrink: 0 }}>
+      {!loaded && <div className="w-20 h-5 rounded bg-slate-200 animate-pulse" />}
       <img
         src={logo}
         alt={name}
         onLoad={() => setLoaded(true)}
-        className={`max-h-24 max-w-[160px] w-full object-contain transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        style={{ maxWidth: 140, maxHeight: 60, width: '100%', objectFit: 'contain' }}
+        className={`transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
       />
     </div>
   );
 }
 
 export default function PlacementPartners() {
-  const half = Math.ceil(RECRUITERS.length / 2);
-  const row1 = RECRUITERS.slice(0, half);
-  const row2 = RECRUITERS.slice(half);
+  const rows = buildRows();
+  const loopRows = [...rows, ...rows];
 
   return (
     <section id="placements" className="section-padding bg-white overflow-hidden">
@@ -59,27 +82,34 @@ export default function PlacementPartners() {
         </div>
       </div>
 
-      <div className="[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] space-y-4">
-        <div className="flex marquee-row-1" style={{ animation: 'marquee 24s linear infinite', willChange: 'transform' }}>
-          {[...row1, ...row1].map((r, i) => <LogoCard key={i} name={r.name} logo={r.logo} />)}
-        </div>
-        <div className="flex marquee-row-2" style={{ animation: 'marquee-reverse 24s linear infinite', willChange: 'transform' }}>
-          {[...row2, ...row2].map((r, i) => <LogoCard key={i} name={r.name} logo={r.logo} />)}
+      {/* Vertical scroll — top & bottom faded */}
+      <div
+        className="relative overflow-hidden mx-auto max-w-4xl px-4"
+        style={{
+          height: 340,
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)',
+        }}
+      >
+        <div className="scroll-up" style={{ willChange: 'transform' }}>
+          {loopRows.map((row, rowIdx) => (
+            <div key={rowIdx} className="flex justify-center gap-2 mb-2">
+              {row.map((r, i) => (
+                <LogoCard key={r.name + rowIdx + i} name={r.name} logo={r.logo} />
+              ))}
+            </div>
+          ))}
         </div>
       </div>
 
       <style>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-        @keyframes marquee-reverse {
-          from { transform: translateX(-50%); }
-          to   { transform: translateX(0); }
+        .scroll-up { animation: scrollUp 18s linear infinite; }
+        @keyframes scrollUp {
+          from { transform: translateY(0); }
+          to   { transform: translateY(-50%); }
         }
         @media (max-width: 640px) {
-          .marquee-row-1 { animation-duration: 12s !important; }
-          .marquee-row-2 { animation-duration: 12s !important; }
+          .scroll-up { animation-duration: 13s; }
         }
       `}</style>
     </section>
