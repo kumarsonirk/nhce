@@ -46,7 +46,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative bg-gray-900 overflow-hidden min-h-[100dvh] sm:min-h-[60vh] select-none"
+      className="relative bg-gray-900 overflow-hidden h-[100dvh] sm:h-auto sm:min-h-[60vh] select-none"
       style={{ touchAction: 'pan-y' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -87,7 +87,7 @@ export default function Hero() {
           <img
             src={s.mobileImage}
             alt={s.alt}
-            className="block sm:hidden w-full h-full object-cover object-top pointer-events-none"
+            className="block sm:hidden w-full h-full object-cover object-center pointer-events-none"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
         </div>

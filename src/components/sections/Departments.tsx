@@ -31,7 +31,7 @@ export default function Departments() {
               Choose from 12+ programs spanning engineering, management, and computing.
             </p>
           </div>
-          <div className="flex gap-2 bg-white border border-slate-200 p-1 rounded-full self-start md:self-auto">
+          <div className="flex w-full gap-2 bg-white border border-slate-200 p-1 rounded-full justify-between">
             {(['all', 'ug', 'pg'] as const).map(f => (
               <button
                 key={f}
@@ -40,7 +40,7 @@ export default function Departments() {
                   filter === f ? 'bg-navy-900 text-white shadow-sm' : 'text-slate-500 hover:text-navy-700'
                 }`}
               >
-                {f === 'all' ? 'All Programs' : f === 'ug' ? 'Undergraduate' : 'Postgraduate'}
+                {f === 'all' ? 'All Programs' : f === 'ug' ? 'UG' : 'PG'}
               </button>
             ))}
           </div>

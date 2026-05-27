@@ -87,23 +87,23 @@ export default function Navbar() {
 
     <header
       ref={menuRef}
-      className={`max-sm:fixed sm:sticky py-4 top-0 z-50 w-full transition-all duration-500 ${
+      className={`max-sm:fixed sm:sticky py-4 top-0 z-50 w-full max-w-[100vw] overflow-x-hidden transition-all duration-500 ${
         scrolled || !inHero || isOpen
           ? 'bg-white shadow-sm border-b border-slate-100'
           : ''
       }`}
     >
 
-        <div className="flex items-center justify-between h-16 sm:h-24 px-4 sm:px-6">
-          <a href="#" className="flex items-center">
+        <div className="flex items-center justify-between h-14 sm:h-24 px-3 sm:px-6">
+          <a href="#" className="flex items-center min-w-0 flex-shrink">
             <img
               src="/main_logo.webp"
               alt="New Horizon College of Engineering"
-              className="h-16 sm:h-16 w-auto object-contain"
+              className="h-10 sm:h-16 w-auto max-w-[180px] sm:max-w-none object-contain"
             />
           </a>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 flex-shrink-0">
             <button
               onClick={() => { setIsOpen(true); setTimeout(() => searchRef.current?.focus(), 100); }}
               className="w-10 h-10 rounded-xl hover:bg-white/20 flex items-center justify-center transition-colors"

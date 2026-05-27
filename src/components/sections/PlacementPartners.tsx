@@ -13,8 +13,9 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 const SHUFFLED = shuffle(RECRUITERS);
-// Row sizes that sum to SHUFFLED.length — varied counts give natural look
-const ROW_SIZES = [4, 5, 4, 3];
+// 10 rows with varied counts — one copy must exceed container height (340px)
+// each row ~53px tall → 10 rows ≈ 530px > 340px, so the loop is seamless
+const ROW_SIZES = [4, 5, 3, 4, 5, 3, 4, 5, 3, 4];
 
 function buildRows() {
   const rows: (typeof RECRUITERS)[] = [];
@@ -22,7 +23,7 @@ function buildRows() {
   for (const size of ROW_SIZES) {
     const row: typeof RECRUITERS = [];
     for (let j = 0; j < size; j++) {
-      row.push(SHUFFLED[idx % SHUFFLED.length]);
+      row.push(SHUFFLED[idx % SHUFFLED.length]); // wraps around the 16 logos
       idx++;
     }
     rows.push(row);
