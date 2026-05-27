@@ -46,7 +46,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative bg-gray-900 overflow-hidden min-h-screen sm:min-h-[60vh] select-none"
+      className="relative bg-gray-900 overflow-hidden min-h-[100dvh] sm:min-h-[60vh] select-none"
       style={{ touchAction: 'pan-y' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

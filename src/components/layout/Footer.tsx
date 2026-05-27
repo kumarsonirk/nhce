@@ -72,14 +72,6 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="lg:col-span-2 pb-6 md:pb-0 border-b border-white/10 md:border-none text-center md:text-left">
-            <div className="mb-4 flex justify-center md:justify-start">
-              <img
-                src="https://newhorizoncollegeofengineering.in/wp-content/uploads/2025/07/nhce_25-scaled-1-2048x683.png"
-                alt="New Horizon College of Engineering"
-                className="h-14 w-auto object-contain"
-                style={{ filter: 'brightness(0) invert(1)' }}
-              />
-            </div>
 
             <p className="text-white/60 text-sm leading-relaxed mb-4 max-w-sm hidden md:block">
               Empowering the next generation of engineers and innovators since 1996. NAAC A+ accredited,
@@ -87,17 +79,18 @@ export default function Footer() {
             </p>
 
             <div className="space-y-2 text-sm text-white/60">
-              <div className="flex items-start gap-2.5 justify-center md:justify-start">
-                <MapPin size={14} className="mt-0.5 text-gold-400 flex-shrink-0" />
-                <span className="text-xs md:text-sm">Near Koramangala, Inner Ring Road, Bengaluru - 560043</span>
-              </div>
+              
               <div className="flex items-center gap-2.5 justify-center md:justify-start">
                 <Phone size={14} className="text-gold-400 flex-shrink-0" />
-                <a href="tel:+918023216776" className="hover:text-white transition-colors text-xs md:text-sm">+91 80 2321 6776</a>
+                <a href="tel:+919880534935" className="hover:text-white transition-colors text-xs md:text-sm">+91-98805 34935</a>
               </div>
               <div className="flex items-center gap-2.5 justify-center md:justify-start">
                 <Mail size={14} className="text-gold-400 flex-shrink-0" />
-                <a href="mailto:info@nhce.edu.in" className="hover:text-white transition-colors text-xs md:text-sm">info@nhce.edu.in</a>
+                <a href="admissionsnhce@newhorizonindia.edu" className="hover:text-white transition-colors text-xs md:text-sm">admissionsnhce@newhorizonindia.edu</a>
+              </div>
+              <div className="flex items-start gap-2.5 justify-center md:justify-start">
+                <MapPin size={14} className="mt-0.5 text-gold-400 flex-shrink-0" />
+                <span className="text-xs md:text-sm">New Horizon Knowledge Park, Bellandur Main Road,<br/> Near Marathahalli, Bengaluru 560103</span>
               </div>
             </div>
 
