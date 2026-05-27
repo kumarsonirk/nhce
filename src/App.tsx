@@ -6,6 +6,8 @@ import About from './components/sections/About';
 import VideoSection from './components/sections/VideoSection';
 import Departments from './components/sections/Departments';
 import PlacementPartners from './components/sections/PlacementPartners';
+import Accreditations from './components/sections/Accreditations';
+import NotificationBar from './components/sections/NotificationBar';
 import Campus from './components/sections/Campus';
 import { News } from './components/sections/EventsNews';
 import Rankings from './components/sections/Rankings';
@@ -155,6 +157,7 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
+          <NotificationBar />
           <Rankings />
           <About />
           <VideoSection />
@@ -163,6 +166,7 @@ export default function App() {
           <Campus />
           <News />
         </main>
+        <Accreditations />
         <Footer />
         <ScrollToTop />
         <ExploreButton />

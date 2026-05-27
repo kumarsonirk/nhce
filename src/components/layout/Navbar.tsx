@@ -99,7 +99,7 @@ export default function Navbar() {
             <img
               src="/main_logo.webp"
               alt="New Horizon College of Engineering"
-              className="h-10 sm:h-16 w-auto max-w-[180px] sm:max-w-none object-contain"
+              className="h-14 sm:h-16 w-auto max-w-[180px] sm:max-w-none object-contain"
             />
           </a>
 
