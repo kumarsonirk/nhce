@@ -158,7 +158,7 @@ export default function App() {
         <main>
           <Hero />
           <NotificationBar />
-          <Rankings />
+          {/* <Rankings /> */}
           <About />
           <VideoSection />
           <Departments />

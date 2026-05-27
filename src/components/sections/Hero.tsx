@@ -10,7 +10,7 @@ const SLIDES = [
   {
     id: 1,
     image: 'https://newhorizoncollegeofengineering.in/wp-content/uploads/2026/01/48-hours-HACKATHON-1-scaled.jpg',
-    mobileImage: '/2.jpg',
+    mobileImage: '/banner1.jpeg',
     alt: '48-Hour Hackathon at NHCE',
   },
 ];
