@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import React from 'react';
 
 export default function MobileSlider({
@@ -9,115 +9,150 @@ export default function MobileSlider({
   desktopClass: string;
 }) {
   const items = React.Children.toArray(children);
-  const n = items.length;
-  const ref = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-  const jumping = useRef(false);
+  const n     = items.length;
 
-  // Layout: [clone-of-last, ...real-items, clone-of-first]
-  const cloned = n > 1 ? [items[n - 1], ...items, items[0]] : items;
+  // Layout: [clone-last, ...real items, clone-first]
+  // Indices: 0 = clone-last | 1…n = real | n+1 = clone-first
+  const extended = n > 1 ? [items[n - 1], ...items, items[0]] : items;
 
-  // Jump without animation by directly setting scrollLeft
-  const jumpTo = useCallback((realIdx: number) => {
-    const el = ref.current;
-    if (!el) return;
-    // realIdx is 0-based within real items; stored at position realIdx+1 in cloned array
-    el.scrollLeft = (realIdx + 1) * el.offsetWidth;
-  }, []);
+  const [extIdx, setExtIdx]           = useState(n > 1 ? 1 : 0); // start at real-0
+  const [transitioning, setTransitioning] = useState(true);
+  const [dragging, setDragging]       = useState(false);
+  const [dragOffset, setDragOffset]   = useState(0);
 
-  // Smooth scroll to a real index (used by dot clicks)
-  const goTo = useCallback((realIdx: number) => {
-    const el = ref.current;
-    if (!el) return;
-    el.scrollTo({ left: (realIdx + 1) * el.offsetWidth, behavior: 'smooth' });
-    setActive(realIdx);
-  }, []);
+  const pausedRef      = useRef(false);
+  const userStoppedRef = useRef(false);
+  const touchStartX    = useRef(0);
+  const touchStartY    = useRef(0);
+  const touchCurrX     = useRef(0);
+  const axisLocked     = useRef<boolean | null>(null);
+  const containerRef   = useRef<HTMLDivElement>(null);
 
-  // Start on real item 0 (position 1 in cloned array)
+  // Real index (0-based) for dots
+  const realIdx =
+    n > 1
+      ? extIdx === 0 ? n - 1 : extIdx === n + 1 ? 0 : extIdx - 1
+      : 0;
+
+  // After reaching a clone, silently jump to the real counterpart
   useEffect(() => {
-    const el = ref.current;
-    if (!el || n <= 1) return;
-    el.scrollLeft = el.offsetWidth;
+    if (n <= 1) return;
+    if (extIdx !== 0 && extIdx !== n + 1) return;
+
+    const target = extIdx === 0 ? n : 1;
+    const t = setTimeout(() => {
+      setTransitioning(false);
+      setExtIdx(target);
+      // Re-enable transition after the DOM has painted the silent jump
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => setTransitioning(true))
+      );
+    }, 460); // matches transition duration
+
+    return () => clearTimeout(t);
+  }, [extIdx, n]);
+
+  // Autoplay
+  const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (n <= 1) return;
+    autoRef.current = setInterval(() => {
+      if (pausedRef.current || userStoppedRef.current) return;
+      setTransitioning(true);
+      setExtIdx(prev => prev + 1);
+    }, 3500);
+    return () => { if (autoRef.current) clearInterval(autoRef.current); };
   }, [n]);
 
-  // Detect scroll settle → update dot + handle loop jump
+  // Hover → pause autoplay
   useEffect(() => {
-    const el = ref.current;
-    if (!el || n <= 1) return;
-
-    let timer: ReturnType<typeof setTimeout>;
-
-    const onScroll = () => {
-      if (jumping.current) return;
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        const idx = Math.round(el.scrollLeft / el.offsetWidth);
-
-        if (idx === 0) {
-          jumping.current = true;
-          el.scrollLeft = n * el.offsetWidth;
-          setActive(n - 1);
-          setTimeout(() => { jumping.current = false; }, 50);
-        } else if (idx === n + 1) {
-          jumping.current = true;
-          el.scrollLeft = el.offsetWidth;
-          setActive(0);
-          setTimeout(() => { jumping.current = false; }, 50);
-        } else {
-          setActive(idx - 1);
-        }
-      }, 120);
-    };
-
-    el.addEventListener('scroll', onScroll, { passive: true });
-    return () => { el.removeEventListener('scroll', onScroll); clearTimeout(timer); };
-  }, [n, jumpTo]);
-
-  // Autoplay: advance to next slide every 3s, pause on touch
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || n <= 1) return;
-
-    let paused = false;
-    const play = () => {
-      if (paused || jumping.current) return;
-      setActive(prev => {
-        const next = (prev + 1) % n;
-        el.scrollTo({ left: (next + 1) * el.offsetWidth, behavior: 'smooth' });
-        return next;
-      });
-    };
-
-    const interval = setInterval(play, 3000);
-    const pause = () => { paused = true; };
-    const resume = () => { paused = false; };
-
-    el.addEventListener('touchstart', pause, { passive: true });
-    el.addEventListener('touchend', resume, { passive: true });
-
+    const el = containerRef.current;
+    if (!el) return;
+    const pause  = () => { pausedRef.current = true; };
+    const resume = () => { pausedRef.current = false; };
+    el.addEventListener('mouseenter', pause);
+    el.addEventListener('mouseleave', resume);
     return () => {
-      clearInterval(interval);
-      el.removeEventListener('touchstart', pause);
-      el.removeEventListener('touchend', resume);
+      el.removeEventListener('mouseenter', pause);
+      el.removeEventListener('mouseleave', resume);
     };
-  }, [n]);
+  }, []);
 
+  // ── Touch ───────────────────────────────────────────────────
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    touchCurrX.current  = e.touches[0].clientX;
+    axisLocked.current  = null;
+    setDragging(true);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    const dx = e.touches[0].clientX - touchStartX.current;
+    const dy = e.touches[0].clientY - touchStartY.current;
+
+    // Lock axis on first significant movement
+    if (axisLocked.current === null && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+      axisLocked.current = Math.abs(dx) >= Math.abs(dy);
+    }
+
+    if (axisLocked.current) {
+      touchCurrX.current = e.touches[0].clientX;
+      setDragOffset(dx);
+    }
+  };
+
+  const onTouchEnd = () => {
+    const dx = touchCurrX.current - touchStartX.current;
+    setDragging(false);
+    setDragOffset(0);
+
+    if (axisLocked.current && Math.abs(dx) > 50) {
+      userStoppedRef.current = true; // manual swipe stops autoplay
+      setTransitioning(true);
+      setExtIdx(prev => (dx < 0 ? prev + 1 : prev - 1));
+    }
+
+    axisLocked.current = null;
+  };
+
+  const goTo = (idx: number) => {
+    setTransitioning(true);
+    setExtIdx(idx + 1);
+  };
+
+  // ── Render ──────────────────────────────────────────────────
   return (
     <>
-      {/* Mobile: looping snap slider */}
-      <div className="md:hidden">
+      {/* Mobile looping slider */}
+      <div className="md:hidden" ref={containerRef}>
         <div
-          ref={ref}
-          className="flex overflow-x-auto snap-x snap-mandatory"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="overflow-hidden"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
-          {cloned.map((child, i) => (
-            <div key={i} className="flex-none w-full snap-start">
-              {child}
-            </div>
-          ))}
+          <div
+            className="flex"
+            style={{
+              transform: `translateX(calc(-${extIdx * 100}% + ${dragOffset}px))`,
+              transition:
+                dragging || !transitioning
+                  ? 'none'
+                  : 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+              willChange: 'transform',
+            }}
+          >
+            {extended.map((child, i) => (
+              <div key={i} className="flex-none w-full">
+                {child}
+              </div>
+            ))}
+          </div>
         </div>
 
+        {/* Dot indicators */}
         {n > 1 && (
           <div className="flex justify-center gap-1.5 mt-4">
             {items.map((_, i) => (
@@ -126,7 +161,9 @@ export default function MobileSlider({
                 onClick={() => goTo(i)}
                 aria-label={`Slide ${i + 1}`}
                 className={`rounded-full transition-all duration-300 ${
-                  active === i ? 'w-5 h-2 bg-navy-700' : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
+                  realIdx === i
+                    ? 'w-5 h-2 bg-navy-700'
+                    : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
                 }`}
               />
             ))}
@@ -134,7 +171,7 @@ export default function MobileSlider({
         )}
       </div>
 
-      {/* Desktop: normal grid */}
+      {/* Desktop grid — unchanged */}
       <div className={`hidden md:grid ${desktopClass}`}>
         {children}
       </div>

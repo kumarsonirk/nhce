@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { TESTIMONIALS } from '../../data/constants';
+import AnimateIn from '../ui/AnimateIn';
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
@@ -24,6 +25,7 @@ export default function Testimonials() {
       </div>
 
       <div className="container-wide relative z-10">
+        <AnimateIn variant="fade-up">
         <div className="text-center mb-12">
           <span className="badge bg-white/10 text-white mb-3">Alumni Voices</span>
           <h2 className="heading-md text-white mb-3">
@@ -34,7 +36,9 @@ export default function Testimonials() {
             Hear from NHCE alumni who are shaping industries and leading teams at the world's top companies.
           </p>
         </div>
+        </AnimateIn>
 
+        <AnimateIn variant="fade-up" delay={120}>
         <div className="max-w-4xl mx-auto">
           {/* Main testimonial */}
           <div className="glass rounded-3xl p-8 md:p-12 mb-8">
@@ -108,12 +112,15 @@ export default function Testimonials() {
             </button>
           </div>
         </div>
+        </AnimateIn>
 
         {/* Bottom CTA */}
+        <AnimateIn variant="fade-up" delay={80}>
         <div className="text-center mt-12">
           <p className="text-white/50 text-sm mb-4">Join 50,000+ NHCE alumni making a difference worldwide</p>
           <button className="btn-gold">Explore Alumni Network</button>
         </div>
+        </AnimateIn>
       </div>
     </section>
   );

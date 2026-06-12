@@ -1,4 +1,5 @@
 import MobileSlider from '../ui/MobileSlider';
+import AnimateIn from '../ui/AnimateIn';
 
 export default function Rankings() {
   return (
@@ -19,6 +20,7 @@ export default function Rankings() {
         </div> */}
 
         {/* Accreditation logos */}
+        <AnimateIn variant="fade-up">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {/* VTU */}
           <div className="bg-white border border-slate-200 rounded-2xl p-3 flex flex-col items-center justify-center text-center gap-4 shadow-sm">
@@ -47,8 +49,10 @@ export default function Rankings() {
             <p className="text-slate-700 text-sm font-medium leading-snug">Accredited by NAAC with 'A' Grade</p>
           </div>
         </div>
+        </AnimateIn>
 
         {/* Awards strip */}
+        <AnimateIn variant="fade-up" delay={120}>
         <div className="hidden md:block bg-white rounded-3xl p-6 shadow-card mt-4">
           <h3 className="font-display font-bold text-navy-900 text-lg mb-5 text-center">Awards & Recognition</h3>
           <MobileSlider desktopClass="grid-cols-2 lg:grid-cols-3 gap-3">
@@ -70,6 +74,7 @@ export default function Rankings() {
             ))}
           </MobileSlider>
         </div>
+        </AnimateIn>
       </div>
     </section>
   );

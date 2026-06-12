@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { TrendingUp, Award, Users, Building2 } from 'lucide-react';
 import { RECRUITERS } from '../../data/constants';
+import AnimateIn from '../ui/AnimateIn';
 
 const PLACEMENT_STATS = [
   { val: '98%', label: 'Placement Rate', sub: 'Batch 2024', icon: <TrendingUp size={18} />, color: 'from-green-400 to-emerald-600' },
@@ -33,6 +34,7 @@ export default function Placements() {
     <section id="placements" className="section-padding bg-white">
       <div className="container-wide">
         {/* Header */}
+        <AnimateIn variant="fade-up">
         <div className="text-center mb-14">
           <span className="badge bg-green-100 text-green-700 mb-3">🎯 Placement Cell</span>
           <h2 className="heading-md text-navy-950 mb-4">
@@ -46,8 +48,10 @@ export default function Placements() {
             year-round campus drives, internships, and industry mentorship programs.
           </p>
         </div>
+        </AnimateIn>
 
         {/* Stats */}
+        <AnimateIn variant="fade-up" delay={100}>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
           {PLACEMENT_STATS.map((s) => (
             <div key={s.label} className="card p-5 text-center group hover:-translate-y-1">
@@ -60,8 +64,10 @@ export default function Placements() {
             </div>
           ))}
         </div>
+        </AnimateIn>
 
         {/* Two column: chart + top companies */}
+        <AnimateIn variant="fade-up" delay={140}>
         <div className="grid lg:grid-cols-2 gap-8 mb-14">
           {/* Sector breakdown */}
           <div className="card p-6">
@@ -119,8 +125,10 @@ export default function Placements() {
             </div>
           </div>
         </div>
+        </AnimateIn>
 
         {/* Recruiters marquee */}
+        <AnimateIn variant="fade-up" delay={80}>
         <div>
           <div className="text-center mb-6">
             <h3 className="font-display font-bold text-navy-900 text-xl">Our Recruiters</h3>
@@ -162,6 +170,7 @@ export default function Placements() {
             </button>
           </div>
         </div>
+        </AnimateIn>
       </div>
     </section>
   );

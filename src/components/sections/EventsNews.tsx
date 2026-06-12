@@ -1,11 +1,13 @@
 import { Calendar, Users, ArrowRight, Clock, Tag } from 'lucide-react';
 import { EVENTS, NEWS } from '../../data/constants';
 import MobileSlider from '../ui/MobileSlider';
+import AnimateIn from '../ui/AnimateIn';
 
 export function Events() {
   return (
     <section id="events" className="section-padding bg-slate-50">
       <div className="container-wide">
+        <AnimateIn variant="fade-up">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
             <span className="badge bg-blue-100 text-blue-700 mb-3">📅 Events & Fests</span>
@@ -18,7 +20,9 @@ export function Events() {
             View Academic Calendar <ArrowRight size={14} />
           </button>
         </div>
+        </AnimateIn>
 
+        <AnimateIn variant="fade-up" delay={100}>
         <MobileSlider desktopClass="grid-cols-2 lg:grid-cols-4 gap-4">
           {EVENTS.map((event) => (
             <div key={event.title} className={`card overflow-hidden group cursor-pointer border ${event.color}`}>
@@ -42,6 +46,7 @@ export function Events() {
             </div>
           ))}
         </MobileSlider>
+        </AnimateIn>
       </div>
     </section>
   );
@@ -55,10 +60,10 @@ const categoryColors: Record<string, string> = {
 };
 
 const newsImages: Record<string, string> = {
-  Rankings: 'https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=600&h=280&q=80',
-  Research: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=600&h=280&q=80',
-  Placements: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&h=280&q=80',
-  Accreditation: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&h=280&q=80',
+  Rankings:      '/DSC01342.JPG',
+  Research:      '/campus/idea_labs1.jpg',
+  Placements:    '/img-4018.jpg',
+  Accreditation: '/campus-hero.jpg',
 };
 
 export function News() {
@@ -67,6 +72,7 @@ export function News() {
       <div className="container-wide">
 
         {/* Header */}
+        <AnimateIn variant="fade-up">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
             <span className="badge bg-navy-100 text-navy-700 mb-3">📰 Latest News</span>
@@ -79,8 +85,10 @@ export function News() {
             View All <ArrowRight size={14} />
           </button>
         </div>
+        </AnimateIn>
 
         {/* 3 cards with images */}
+        <AnimateIn variant="fade-up" delay={100}>
         <MobileSlider desktopClass="grid-cols-3 gap-5">
           {NEWS.slice(0, 3).map((item) => (
             <div
@@ -117,6 +125,7 @@ export function News() {
             </div>
           ))}
         </MobileSlider>
+        </AnimateIn>
 
       </div>
     </section>

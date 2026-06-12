@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Users, TrendingUp, Building2 } from 'lucide-react';
 import { RECRUITERS } from '../../data/constants';
+import AnimateIn from '../ui/AnimateIn';
 
 // Shuffle once at module load for random-looking layout
 function shuffle<T>(arr: T[]): T[] {
@@ -15,7 +16,7 @@ function shuffle<T>(arr: T[]): T[] {
 const SHUFFLED = shuffle(RECRUITERS);
 // 10 rows with varied counts — one copy must exceed container height (340px)
 // each row ~53px tall → 10 rows ≈ 530px > 340px, so the loop is seamless
-const ROW_SIZES = [4, 5, 3, 4, 5, 3, 4, 5, 3, 4];
+const ROW_SIZES = [7, 8, 6, 7, 8, 6, 7, 8, 6, 7];
 
 function buildRows() {
   const rows: (typeof RECRUITERS)[] = [];
@@ -55,6 +56,7 @@ export default function PlacementPartners() {
   return (
     <section id="placements" className="section-padding bg-white overflow-hidden">
       <div className="container-wide">
+        <AnimateIn variant="fade-up">
         <div className="text-center mb-10">
           <span className="badge bg-green-100 text-green-700 mb-3">Our Recruiters</span>
           <h2 className="heading-md text-navy-950">
@@ -67,7 +69,9 @@ export default function PlacementPartners() {
             120+ leading companies recruit from NHCE every year across technology, management, and engineering domains.
           </p>
         </div>
+        </AnimateIn>
 
+        <AnimateIn variant="scale" delay={100}>
         <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
           {[
             { icon: Building2, value: '120+', label: 'Recruiting Companies' },
@@ -81,11 +85,12 @@ export default function PlacementPartners() {
             </div>
           ))}
         </div>
+        </AnimateIn>
       </div>
 
       {/* Vertical scroll — top & bottom faded */}
       <div
-        className="relative overflow-hidden mx-auto max-w-4xl px-4"
+        className="relative overflow-hidden w-full"
         style={{
           height: 340,
           maskImage: 'linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%)',

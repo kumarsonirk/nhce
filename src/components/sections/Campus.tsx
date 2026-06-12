@@ -1,42 +1,43 @@
 import { CAMPUS_HIGHLIGHTS } from '../../data/constants';
 import MobileSlider from '../ui/MobileSlider';
+import AnimateIn from '../ui/AnimateIn';
 
 const FACILITIES = [
   {
     label: 'Main Block',
     desc: 'Smart classrooms, seminar halls, and faculty offices across 6 floors',
     icon: '🏛️',
-    image: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&h=280&q=80',
+    image: '/campus/classroom4.jpg',
   },
   {
     label: 'Library',
     desc: '60,000 sq.ft with 1 lakh+ volumes, journals, and digital resources',
     icon: '📚',
-    image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=600&h=280&q=80',
+    image: '/campus/library.webp',
   },
   {
     label: 'Sports Complex',
     desc: 'Indoor & outdoor facilities covering cricket, basketball, and more',
     icon: '🏃',
-    image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=600&h=280&q=80',
+    image: '/campus/sport.jpg',
   },
   {
     label: 'Innovation Lab',
     desc: 'Maker space, 3D printers, IoT kits, and a startup incubator',
     icon: '💡',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&h=280&q=80',
+    image: '/campus/idea_labs.jpg',
   },
   {
     label: 'Cafeteria',
     desc: 'Multi-cuisine food court serving 2,000+ students every day',
     icon: '🍽️',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&h=280&q=80',
+    image: '/campus/canteen1.jpg',
   },
   {
     label: 'Auditorium',
     desc: '2,000-seat air-conditioned hall for events and convocations',
     icon: '🎭',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&h=280&q=80',
+    image: '/campus/auditorium.jpg',
   },
 ];
 
@@ -52,6 +53,7 @@ export default function Campus() {
       <div className="container-wide">
 
         {/* Header */}
+        <AnimateIn variant="fade-up">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <span className="badge bg-amber-100 text-amber-700 mb-3">🏫 Campus Life</span>
@@ -77,8 +79,10 @@ export default function Campus() {
             ))}
           </div>
         </div>
+        </AnimateIn>
 
         {/* Facility cards — full width 3×2 */}
+        <AnimateIn variant="fade-up" delay={100}>
         <div className="mb-6"><MobileSlider desktopClass="grid-cols-2 lg:grid-cols-3 gap-4">
             {FACILITIES.map((f) => (
               <div
@@ -109,8 +113,10 @@ export default function Campus() {
               </div>
             ))}
         </MobileSlider></div>
+        </AnimateIn>
 
         {/* Highlights strip */}
+        <AnimateIn variant="fade-up" delay={160}>
         <div className="rounded-2xl border border-slate-200 overflow-hidden">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x divide-y lg:divide-y-0 divide-slate-200">
             {CAMPUS_HIGHLIGHTS.map((h) => (
@@ -125,6 +131,7 @@ export default function Campus() {
             ))}
           </div>
         </div>
+        </AnimateIn>
 
       </div>
     </section>

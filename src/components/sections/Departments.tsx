@@ -1,10 +1,27 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { Users, BookOpen, Award, ChevronRight } from 'lucide-react';
 import { DEPARTMENTS } from '../../data/constants';
 import MobileSlider from '../ui/MobileSlider';
+import AnimateIn from '../ui/AnimateIn';
+
+const FILTERS = ['all', 'ug', 'pg'] as const;
+type Filter = typeof FILTERS[number];
 
 export default function Departments() {
-  const [filter, setFilter] = useState<'all' | 'ug' | 'pg'>('all');
+  const [filter, setFilter] = useState<Filter>('all');
+  const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [pill, setPill] = useState({ left: 0, width: 0 });
+
+  const updatePill = (idx: number) => {
+    const btn = btnRefs.current[idx];
+    if (btn) setPill({ left: btn.offsetLeft, width: btn.offsetWidth });
+  };
+
+  // Set pill position on mount (no animation flash)
+  useLayoutEffect(() => { updatePill(0); }, []);
+
+  // Slide pill when filter changes
+  useEffect(() => { updatePill(FILTERS.indexOf(filter)); }, [filter]);
 
   const ugDepts = ['CSE', 'ECE', 'CE', 'EEE', 'AIML'];
   const filtered = filter === 'ug'
@@ -18,6 +35,7 @@ export default function Departments() {
       <div className="container-wide">
 
         {/* Header */}
+        <AnimateIn variant="fade-up">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
             <span className="badge bg-navy-100 text-navy-700 mb-3">Programs & Departments</span>
@@ -31,13 +49,23 @@ export default function Departments() {
               Choose from 12+ programs spanning engineering, management, and computing.
             </p>
           </div>
-          <div className="flex w-full gap-2 bg-white border border-slate-200 p-1 rounded-full justify-between">
-            {(['all', 'ug', 'pg'] as const).map(f => (
+          <div className="relative flex w-full justify-between md:w-fit md:justify-start bg-white border border-slate-200 gap-4 md:gap-20 p-1 rounded-full">
+            {/* Sliding bubble indicator */}
+            <div
+              className="absolute top-1 bottom-1 rounded-full bg-navy-900 pointer-events-none"
+              style={{
+                left: pill.left,
+                width: pill.width,
+                transition: 'left 0.55s cubic-bezier(0.34,1.4,0.64,1), width 0.55s cubic-bezier(0.34,1.4,0.64,1)',
+              }}
+            />
+            {FILTERS.map((f, i) => (
               <button
                 key={f}
+                ref={el => { btnRefs.current[i] = el; }}
                 onClick={() => setFilter(f)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filter === f ? 'bg-navy-900 text-white shadow-sm' : 'text-slate-500 hover:text-navy-700'
+                className={`relative z-10 px-5 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                  filter === f ? 'text-white' : 'text-slate-500 hover:text-navy-700'
                 }`}
               >
                 {f === 'all' ? 'All Programs' : f === 'ug' ? 'UG' : 'PG'}
@@ -45,9 +73,11 @@ export default function Departments() {
             ))}
           </div>
         </div>
+        </AnimateIn>
 
         {/* Grid */}
-        <MobileSlider desktopClass="grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <AnimateIn variant="fade-up" delay={140}>
+        <MobileSlider key={filter} desktopClass="grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {filtered.map((dept) => (
             <div
               key={dept.code}
@@ -114,13 +144,16 @@ className="bg-white rounded-2xl overflow-hidden cursor-pointer group shadow-sm h
             </div>
           ))}
         </MobileSlider>
+        </AnimateIn>
 
         {/* CTA */}
+        <AnimateIn variant="fade-up" delay={80}>
         <div className="text-center mt-10">
           <button className="btn-primary">
             View All Programs & Courses <ChevronRight size={15} />
           </button>
         </div>
+        </AnimateIn>
       </div>
     </section>
   );

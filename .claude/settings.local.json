@@ -5,7 +5,16 @@
       "Bash(git config *)",
       "Bash(findstr -i \"user\\\\|credential\\\\|remote\")",
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\RahulKumarSoni\\\\Desktop\\\\Website\\\\src\" -Recurse -Directory)",
-      "Bash(Select-Object -First 20)"
+      "Bash(Select-Object -First 20)",
+      "WebFetch(domain:newhorizoncollegeofengineering.in)",
+      "Bash(dir \"c:/Users/RahulKumarSoni/Desktop/Website/public/\")",
+      "Bash(npx tsc *)",
+      "Bash(grep -v \"^acc$\")",
+      "Bash(grep -v \"^industry$\")",
+      "Bash(Select-String -Pattern \"jpg|jpeg|png|webp|avif\")",
+      "Bash(Sort-Object)",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\RahulKumarSoni\\\\Desktop\\\\Website\\\\src\\\\hooks\")",
+      "Bash(Out-Null)"
     ]
   }
 }

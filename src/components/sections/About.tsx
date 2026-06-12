@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { STATS } from '../../data/constants';
+import AnimateIn from '../ui/AnimateIn';
 
 function CountUp({ value, suffix, delay }: { value: number; suffix: string; delay: number }) {
   const [count, setCount] = useState(0);
@@ -47,6 +48,7 @@ export default function About() {
         <div className="grid lg:grid-cols-[1fr_420px] gap-10 xl:gap-16 items-center mb-10">
 
           {/* Left: text content */}
+          <AnimateIn variant="fade-right">
           <div>
             <h2 className="heading-lg text-navy-950 mb-5">
               25 Years of{' '}
@@ -73,8 +75,10 @@ export default function About() {
               </button>
             </div>
           </div>
+          </AnimateIn>
 
           {/* Right: campus image with mission/vision overlay */}
+          <AnimateIn variant="fade-left" delay={120}>
           <div className="relative h-[460px] rounded-3xl overflow-hidden shadow-xl">
             <img
               src="/campus.jpg"
@@ -102,9 +106,11 @@ export default function About() {
               </div>
             </div>
           </div>
+          </AnimateIn>
         </div>
 
         {/* Stats strip */}
+        <AnimateIn variant="fade-up" delay={150}>
         <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-slate-200 border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm">
           {STATS.map((stat, i) => (
             <div key={stat.label} className="flex flex-col items-center text-center px-4 py-6 hover:bg-slate-50 transition-colors duration-200">
@@ -116,6 +122,7 @@ export default function About() {
             </div>
           ))}
         </div>
+        </AnimateIn>
 
       </div>
     </section>

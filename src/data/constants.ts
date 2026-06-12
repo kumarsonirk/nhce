@@ -60,7 +60,7 @@ export const DEPARTMENTS = [
     accredited: true,
     specializations: ['AI & ML', 'Data Science', 'Cybersecurity', 'Cloud Computing'],
     icon: '💻',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&h=300&q=80',
+    image: '/campus/computer_lab.jpg',
   },
   {
     name: 'Electronics & Communication',
@@ -71,7 +71,7 @@ export const DEPARTMENTS = [
     accredited: true,
     specializations: ['VLSI Design', 'Embedded Systems', '5G/IoT', 'Signal Processing'],
     icon: '📡',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&h=300&q=80',
+    image: '/campus/idea_labs1.jpg',
   },
   {
     name: 'Master of Computer Applications',
@@ -82,7 +82,7 @@ export const DEPARTMENTS = [
     accredited: false,
     specializations: ['Full Stack Dev', 'Cloud Computing', 'Data Analytics', 'Cybersecurity'],
     icon: '🖥️',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&h=300&q=80',
+    image: '/campus/nvidia.webp',
   },
   {
     name: 'Civil Engineering',
@@ -93,7 +93,7 @@ export const DEPARTMENTS = [
     accredited: true,
     specializations: ['Structural', 'Geotechnical', 'Environmental', 'Construction Mgmt'],
     icon: '🏗️',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&h=300&q=80',
+    image: '/campus/DSC_9769.jpg',
   },
   {
     name: 'Master of Technology',
@@ -104,7 +104,7 @@ export const DEPARTMENTS = [
     accredited: false,
     specializations: ['Machine Learning', 'VLSI Design', 'Structural Engg', 'Power Systems'],
     icon: '🎓',
-    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&h=300&q=80',
+    image: '/campus/classroom2.jpg',
   },
   {
     name: 'Electrical Engineering',
@@ -115,7 +115,7 @@ export const DEPARTMENTS = [
     accredited: false,
     specializations: ['Power Systems', 'Control Systems', 'Renewable Energy', 'Smart Grids'],
     icon: '⚡',
-    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=600&h=300&q=80',
+    image: '/campus/DSC_9143.jpg',
   },
   {
     name: 'Artificial Intelligence & ML',
@@ -126,7 +126,7 @@ export const DEPARTMENTS = [
     accredited: false,
     specializations: ['Deep Learning', 'NLP', 'Computer Vision', 'Generative AI'],
     icon: '🤖',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&h=300&q=80',
+    image: '/campus/idea_labs.jpg',
   },
   {
     name: 'Master of Business Administration',
@@ -137,7 +137,7 @@ export const DEPARTMENTS = [
     accredited: false,
     specializations: ['Finance', 'Marketing', 'HR', 'Operations & Analytics'],
     icon: '📊',
-    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&h=300&q=80',
+    image: '/campus/DSC_9921.jpg',
   },
 ];
 

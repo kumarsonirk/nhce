@@ -3,13 +3,13 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 const SLIDES = [
   {
     id: 0,
-    image: 'https://newhorizoncollegeofengineering.in/wp-content/uploads/2026/04/admission_open_desk.jpg',
+    image: '/main_banner1.jpg',
     mobileImage: '/banner1.jpeg',
     alt: 'Admissions Open 2025–26',
   },
   {
     id: 1,
-    image: 'https://newhorizoncollegeofengineering.in/wp-content/uploads/2026/01/48-hours-HACKATHON-1-scaled.jpg',
+    image: '/main_banner1.jpg',
     mobileImage: '/banner1.jpeg',
     alt: '48-Hour Hackathon at NHCE',
   },
@@ -46,7 +46,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative bg-gray-900 overflow-hidden h-[100dvh] sm:h-auto sm:min-h-[60vh] select-none"
+      className="relative bg-gray-900 overflow-hidden h-[100dvh] select-none"
       style={{ touchAction: 'pan-y' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
