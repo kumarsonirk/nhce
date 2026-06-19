@@ -45,7 +45,7 @@ export default function Departments() {
                 Expertise
               </span>
             </h2>
-            <p className="text-slate-500 text-sm mt-2 max-w-md">
+            <p className="text-slate-500 text-base mt-2 max-w-md">
               Choose from 12+ programs spanning engineering, management, and computing.
             </p>
           </div>
@@ -84,31 +84,33 @@ export default function Departments() {
 className="bg-white rounded-2xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:-translate-y-1"
             >
               {/* Image section */}
-              <div className="relative h-44 overflow-hidden">
-                <img
-                  src={dept.image}
-                  alt={dept.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                />
-                {/* Dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
-                {/* Color tint overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${dept.color} opacity-30`} />
+              <div className="relative h-44">
+                <div className="w-full h-full overflow-hidden relative">
+                  <img
+                    src={dept.image}
+                    alt={dept.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
+                  {/* Dark gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent" />
+                  {/* Color tint overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${dept.color} opacity-30`} />
 
-                {/* Top accent line */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${dept.color}`} />
+                  {/* Top accent line */}
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${dept.color}`} />
 
-                {/* Badges — top right */}
-                <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5">
-                  <span className={`px-2.5 py-0.5 rounded-md text-white text-xs font-bold tracking-wide bg-gradient-to-r ${dept.color} shadow-md`}>
-                    {dept.code}
-                  </span>
-                  {dept.accredited && (
-                    <span className="px-2 py-0.5 rounded-md text-xs font-semibold bg-white/95 text-green-700 flex items-center gap-1 shadow-sm">
-                      <Award size={9} /> NBA
+                  {/* Badges — top right */}
+                  <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5">
+                    <span className={`px-2.5 py-0.5 rounded-md text-white text-xs font-bold tracking-wide bg-gradient-to-r ${dept.color} shadow-md`}>
+                      {dept.code}
                     </span>
-                  )}
+                    {dept.accredited && (
+                      <span className="px-2 py-0.5 rounded-md text-xs font-semibold bg-white/95 text-green-700 flex items-center gap-1 shadow-sm">
+                        <Award size={9} /> NBA
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Floating icon — bottom left */}
@@ -119,7 +121,7 @@ className="bg-white rounded-2xl overflow-hidden cursor-pointer group shadow-sm h
 
               {/* Content */}
               <div className="p-4 pt-8">
-                <h3 className="font-bold text-navy-900 text-sm leading-snug mb-2.5 group-hover:text-navy-600 transition-colors">
+                <h3 className="font-bold text-navy-900 text-base leading-snug mb-2.5 group-hover:text-navy-600 transition-colors">
                   {dept.name}
                 </h3>
 

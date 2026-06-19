@@ -129,7 +129,7 @@ export default function SportsPage() {
             ].map(s => (
               <div key={s.label} className="px-6 py-7 text-center">
                 <div className="text-3xl sm:text-4xl font-black text-orange-400 mb-1">{s.n}</div>
-                <div className="text-[11px] uppercase tracking-widest text-white/40">{s.label}</div>
+                <div className="text-xs uppercase tracking-widest text-white/40">{s.label}</div>
               </div>
             ))}
           </div>
@@ -140,7 +140,7 @@ export default function SportsPage() {
       <section id="disciplines" className="container-wide py-16 lg:py-24">
         <AnimateIn variant="fade-up">
         <div className="mb-10">
-          <p className="text-[11px] font-bold text-orange-500 tracking-[4px] uppercase mb-2">Disciplines</p>
+          <p className="text-xs font-bold text-orange-500 tracking-[4px] uppercase mb-2">Disciplines</p>
           <h2 className="text-4xl sm:text-5xl font-black text-slate-900 leading-none">Sports We Play</h2>
         </div>
         </AnimateIn>
@@ -168,17 +168,17 @@ export default function SportsPage() {
               <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ backgroundColor: sport.color }} />
               {/* Label + description */}
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-                <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full border border-white/20 text-white/60 mb-2">
+                <span className="inline-block text-xs font-semibold px-2 py-0.5 rounded-full border border-white/20 text-white/60 mb-2">
                   {sport.tag}
                 </span>
-                <h3 className={`text-white font-black leading-tight ${sport.featured ? 'text-2xl sm:text-3xl' : 'text-base sm:text-xl'}`}>
+                <h3 className={`text-white font-black leading-tight ${sport.featured ? 'text-3xl sm:text-4xl' : 'text-lg sm:text-2xl'}`}>
                   {sport.name}
                 </h3>
                 <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                   <p className={[
-                    'min-h-0 overflow-hidden text-white/75 leading-relaxed',
+                    'min-h-0 overflow-hidden text-white/75 leading-relaxed text-sm',
                     'opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100',
-                    sport.featured ? 'text-sm pt-2' : 'text-xs pt-1.5',
+                    sport.featured ? 'pt-2' : 'pt-1.5',
                   ].join(' ')}>
                     {sport.desc}
                   </p>
@@ -196,10 +196,10 @@ export default function SportsPage() {
           <AnimateIn variant="fade-up">
           <div className="flex items-end gap-4 mb-1">
             <Trophy size={28} className="text-orange-400 flex-shrink-0 mb-0.5" />
-            <p className="text-[11px] font-bold text-orange-500 tracking-[4px] uppercase">Record of Excellence</p>
+            <p className="text-xs font-bold text-orange-500 tracking-[4px] uppercase">Record of Excellence</p>
           </div>
           <h2 className="text-4xl sm:text-5xl font-black text-white leading-none mb-3">Achievements</h2>
-          <p className="text-white/45 text-sm max-w-lg leading-relaxed">
+          <p className="text-white/45 text-base max-w-lg leading-relaxed">
             State championships, university medals, and intercollegiate glory —
             a relentless pursuit of winning year after year.
           </p>
@@ -239,9 +239,9 @@ export default function SportsPage() {
       {/* ── FACILITIES ────────────────────────────────────── */}
       <section className="py-16 lg:py-24">
         <div className="container-wide mb-10">
-          <p className="text-[11px] font-bold text-orange-500 tracking-[4px] uppercase mb-2">Infrastructure</p>
+          <p className="text-xs font-bold text-orange-500 tracking-[4px] uppercase mb-2">Infrastructure</p>
           <h2 className="text-4xl sm:text-5xl font-black text-slate-900 leading-none mb-3">Facilities</h2>
-          <p className="text-slate-400 text-sm max-w-xl leading-relaxed">
+          <p className="text-slate-400 text-base max-w-xl leading-relaxed">
             An indoor stadium with state-of-the-art facilities and a spacious, well-maintained
             ground let students play and hone their skills every day.
           </p>
@@ -261,11 +261,11 @@ export default function SportsPage() {
               {/* Top label */}
               <div className="flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-orange-500/20 border border-orange-400/30">
                 <Sun size={12} className="text-orange-400" />
-                <span className="text-[11px] font-bold text-orange-300 tracking-[2px] uppercase">Outdoor</span>
+                <span className="text-xs font-bold text-orange-300 tracking-[2px] uppercase">Outdoor</span>
               </div>
               {/* Bottom list */}
               <div>
-                <p className="text-white/30 text-xs font-semibold uppercase tracking-widest mb-4">
+                <p className="text-white/30 text-sm font-semibold uppercase tracking-widest mb-4">
                   {OUTDOOR.length} facilities
                 </p>
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
@@ -292,11 +292,11 @@ export default function SportsPage() {
               {/* Top label */}
               <div className="flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30">
                 <Dumbbell size={12} className="text-blue-400" />
-                <span className="text-[11px] font-bold text-blue-300 tracking-[2px] uppercase">Indoor</span>
+                <span className="text-xs font-bold text-blue-300 tracking-[2px] uppercase">Indoor</span>
               </div>
               {/* Bottom list */}
               <div>
-                <p className="text-white/30 text-xs font-semibold uppercase tracking-widest mb-4">
+                <p className="text-white/30 text-sm font-semibold uppercase tracking-widest mb-4">
                   {INDOOR.length} facilities
                 </p>
                 <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
@@ -323,14 +323,14 @@ export default function SportsPage() {
             className="w-24 h-24 sm:w-64 sm:h-64 rounded-2xl object-cover border border-slate-100 flex-shrink-0"
           />
           <div>
-            <p className="text-[11px] font-bold text-orange-500 tracking-[4px] uppercase mb-3">
+            <p className="text-xs font-bold text-orange-500 tracking-[4px] uppercase mb-3">
               Head of Department
             </p>
-            <p className="text-sm md:text-base font-black text-slate-700 leading-snug mb-5">
+            <p className="text-base md:text-lg font-black text-slate-700 leading-snug mb-5">
              Sports at the NHCE are played with much fervour and passion. There is emphasis on regular exercise and physical fitness. All games are supervised by professional coaches. Team spirit and the desire to give the best possible performance are our watchwords. Within a short span of time NHCE has seen tremendous improvement in the technique, fitness level as well as performance of our students in the sports arena. Our students regularly participate in tournaments including those at the state level.
             </p>
-            <p className="font-black text-slate-900 text-lg">Mr. Sanjay S V</p>
-            <p className="text-slate-400 text-sm mt-0.5">
+            <p className="font-black text-slate-900 text-xl">Mr. Sanjay S V</p>
+            <p className="text-slate-400 text-base mt-0.5">
               HOD – Physical Education and Sports · NHCE
             </p>
           </div>
@@ -369,7 +369,7 @@ export default function SportsPage() {
               className="w-full max-h-[80vh] object-contain rounded-xl"
               style={{ animation: 'fadeIn 0.18s ease both' }}
             />
-            <p className="text-white/30 text-xs text-center mt-3 tabular-nums">
+            <p className="text-white/30 text-sm text-center mt-3 tabular-nums">
               {lightbox + 1} / {ACH_SLIDES.length}
             </p>
           </div>

@@ -35,6 +35,7 @@ export const NAV_ITEMS = [
       { label: 'Apply Online', desc: 'Start your application', href: '#admissions' },
     ]
   },
+  { label: 'Examinations', href: '/exam' },
   { label: 'Placements', href: '#placements' },
   { label: 'Research', href: '#research' },
   { label: 'Campus Life', href: '#campus' },

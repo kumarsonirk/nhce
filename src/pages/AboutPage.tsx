@@ -177,7 +177,7 @@ function WhyAccordion() {
               onClick={() => setOpenIdx(isOpen ? null : idx)}
             >
               <Icon size={16} className="text-white flex-shrink-0" />
-              <span className="text-white font-bold text-sm flex-1 text-left">{r.title}</span>
+              <span className="text-white font-bold text-base flex-1 text-left">{r.title}</span>
               <ChevronDown
                 size={15}
                 className={`text-white/70 flex-shrink-0 transition-transform duration-200 sm:hidden ${isOpen ? 'rotate-180' : ''}`}
@@ -188,7 +188,7 @@ function WhyAccordion() {
               <ul className="min-h-0 overflow-hidden">
                 <div className="p-4 space-y-2">
                   {r.points.map((p, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-slate-700 list-none">
+                    <li key={i} className="flex items-start gap-2 text-base text-slate-700 list-none">
                       <CheckCircle2 size={13} className={`mt-0.5 flex-shrink-0 ${r.text}`} />
                       {p}
                     </li>
@@ -235,7 +235,7 @@ export default function AboutPage() {
                 Shaping Future{' '}
                 <span className="text-gradient bg-gradient-to-r from-blue-700 to-navy-700">Engineers</span>
               </h2>
-              <div className="space-y-4 text-slate-600 text-base leading-relaxed">
+              <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
                 <p>
                   <strong className="text-navy-900">New Horizon College of Engineering (NHCE)</strong> is an autonomous college permanently affiliated to Visvesvaraya Technological University (VTU), approved by AICTE &amp; UGC, and accredited by NAAC with an 'A' Grade. It is one of the top engineering colleges in Bangalore, strategically positioned in the IT corridor near Marathahalli.
                 </p>
@@ -254,18 +254,18 @@ export default function AboutPage() {
             <div className="space-y-6">
               {/* Vision */}
               <div className="bg-navy-950 text-white rounded-2xl p-6">
-                <h3 className="font-bold text-gold-400 text-base uppercase tracking-wider mb-3">Our Vision</h3>
-                <p className="text-white/80 text-base leading-relaxed">
+                <h3 className="font-bold text-gold-400 text-lg uppercase tracking-wider mb-3">Our Vision</h3>
+                <p className="text-white/80 text-lg leading-relaxed">
                   To emerge as an institute of eminence in engineering, technology and management — serving the industry and nation by empowering students with high degrees of technical, managerial and practical competence.
                 </p>
               </div>
 
               {/* Mission */}
               <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
-                <h3 className="font-bold text-navy-900 text-base uppercase tracking-wider mb-3">Our Mission</h3>
+                <h3 className="font-bold text-navy-900 text-lg uppercase tracking-wider mb-3">Our Mission</h3>
                 <ul className="space-y-2">
                   {MISSION.map((m, i) => (
-                    <li key={i} className="flex items-start gap-2 text-base text-slate-700">
+                    <li key={i} className="flex items-start gap-2 text-lg text-slate-700">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
                       {m}
                     </li>
@@ -304,7 +304,7 @@ export default function AboutPage() {
               Why Choose{' '}
               <span className="text-gradient bg-gradient-to-r from-emerald-600 to-teal-500">New Horizon</span>
             </h2>
-            <p className="text-slate-500 text-sm mt-2 max-w-lg mx-auto">
+            <p className="text-slate-500 text-base mt-2 max-w-lg mx-auto">
               From academic excellence to career opportunities, here's what makes NHCE stand out.
             </p>
           </div>
@@ -335,14 +335,14 @@ export default function AboutPage() {
                   <img src={a.logo} alt={a.name} className="h-14 w-auto object-contain" />
                 ) : (
                   <div className="h-14 w-14 rounded-full bg-slate-100 flex items-center justify-center">
-                    <span className="font-black text-navy-900 text-xs">{a.name}</span>
+                    <span className="font-black text-navy-900 text-sm">{a.name}</span>
                   </div>
                 )}
                 <div>
-                  <p className="font-bold text-navy-900 text-sm">{a.name}</p>
-                  <p className="text-xs text-slate-500 leading-snug mt-0.5">{a.full}</p>
+                  <p className="font-bold text-navy-900 text-base">{a.name}</p>
+                  <p className="text-sm text-slate-500 leading-snug mt-0.5">{a.full}</p>
                 </div>
-                <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${a.badge}`}>{a.detail}</span>
+                <span className={`text-sm font-semibold px-3 py-1 rounded-full border ${a.badge}`}>{a.detail}</span>
               </div>
             ))}
           </div>
@@ -371,18 +371,18 @@ export default function AboutPage() {
                   <FileText size={18} className="text-red-600" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-navy-900 text-sm">BE NHCE Academic Guideline 2022-23</h3>
-                  <p className="text-xs text-slate-500">Official PDF document</p>
+                  <h3 className="font-bold text-navy-900 text-base">BE NHCE Academic Guideline 2022-23</h3>
+                  <p className="text-sm text-slate-500">Official PDF document</p>
                 </div>
               </div>
-              <p className="text-base text-slate-600 leading-relaxed mb-5">
+              <p className="text-lg text-slate-600 leading-relaxed mb-5">
                 This document contains the complete set of academic rules, regulations and guidelines for B.E. programmes at NHCE as approved for the 2022-23 academic year. Covers attendance, examination rules, grading system, promotion criteria and code of conduct.
               </p>
               <a
                 href={REGULATIONS_PDF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
+                className="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-base font-semibold px-5 py-2.5 rounded-full transition-colors"
               >
                 <Download size={14} /> Download PDF
               </a>
@@ -390,16 +390,16 @@ export default function AboutPage() {
 
             {/* Dress Code — hidden on mobile */}
             <div className="hidden sm:block bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
-              <h3 className="font-bold text-navy-900 text-sm mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-navy-900 text-base mb-4 flex items-center gap-2">
                 <Shield size={16} className="text-navy-600" /> Campus Dress Code
               </h3>
-              <p className="text-base text-slate-500 mb-4">Smart casuals are required at all times. The institution reserves the right to restrict entry to students not following the dress code.</p>
+              <p className="text-lg text-slate-500 mb-4">Smart casuals are required at all times. The institution reserves the right to restrict entry to students not following the dress code.</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <p className="text-base font-bold text-slate-700 mb-2 uppercase tracking-wide">For Men</p>
                   <ul className="space-y-1.5">
                     {DRESS_CODE_MALE.map((d, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                      <li key={i} className="flex items-start gap-2 text-base text-slate-600">
                         <ChevronRight size={12} className="mt-0.5 text-slate-400 flex-shrink-0" />{d}
                       </li>
                     ))}
@@ -409,7 +409,7 @@ export default function AboutPage() {
                   <p className="text-base font-bold text-slate-700 mb-2 uppercase tracking-wide">For Women</p>
                   <ul className="space-y-1.5">
                     {DRESS_CODE_FEMALE.map((d, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                      <li key={i} className="flex items-start gap-2 text-base text-slate-600">
                         <ChevronRight size={12} className="mt-0.5 text-slate-400 flex-shrink-0" />{d}
                       </li>
                     ))}
@@ -427,7 +427,7 @@ export default function AboutPage() {
         <div className="container-wide py-14">
           <AnimateIn variant="fade-up">
           <div className="text-center mb-10">
-            <span className="text-navy-700 text-xs font-semibold uppercase tracking-widest">New Horizon Group</span>
+            <span className="text-navy-700 text-sm font-semibold uppercase tracking-widest">New Horizon Group</span>
             <h2 className="font-display font-bold text-navy-950 text-2xl sm:text-3xl mt-2">
               Sister Concern Institutes
             </h2>
@@ -452,11 +452,11 @@ export default function AboutPage() {
                 </span>
                 {/* Content */}
                 <div className="relative z-10">
-                  <span className="inline-block text-xs font-bold text-blue-700 border border-blue-200 bg-blue-50 rounded-full px-2.5 py-0.5 mb-3">
+                  <span className="inline-block text-sm font-bold text-blue-700 border border-blue-200 bg-blue-50 rounded-full px-2.5 py-0.5 mb-3">
                     Estd. {inst.year}
                   </span>
-                  <p className="font-bold text-navy-900 text-sm leading-snug mb-1">{inst.name}</p>
-                  <p className="text-slate-500 text-xs">{inst.location}, Bengaluru</p>
+                  <p className="font-bold text-navy-900 text-base leading-snug mb-1">{inst.name}</p>
+                  <p className="text-slate-500 text-sm">{inst.location}, Bengaluru</p>
                 </div>
               </div>
             ))}

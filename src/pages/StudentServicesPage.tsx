@@ -129,7 +129,7 @@ function Counselling() {
       <div className="grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <span className="badge bg-rose-100 text-rose-700 mb-5">Professional Counselling</span>
-          <h2 className="font-display font-black text-4xl lg:text-5xl text-navy-950 leading-tight mb-4">
+          <h2 className="font-display font-black text-2xl lg:text-5xl text-navy-950 leading-tight mb-4">
             Your Mental<br />
             <span className="text-rose-600">Well-being Matters</span>
           </h2>
@@ -152,8 +152,8 @@ function Counselling() {
                   <f.icon size={14} className="text-rose-600" />
                 </div>
                 <div>
-                  <p className="font-bold text-navy-900 text-xs">{f.label}</p>
-                  <p className="text-slate-500 text-[11px] mt-0.5">{f.sub}</p>
+                  <p className="font-bold text-navy-900 text-sm">{f.label}</p>
+                  <p className="text-slate-500 text-sm mt-0.5">{f.sub}</p>
                 </div>
               </div>
             ))}
@@ -161,7 +161,7 @@ function Counselling() {
 
           <a
             href="/counselling"
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 border-rose-200 text-rose-600 font-semibold text-sm bg-white hover:bg-rose-600 hover:text-white hover:border-rose-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 border-rose-200 text-rose-600 font-semibold text-base bg-white hover:bg-rose-600 hover:text-white hover:border-rose-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group"
           >
             Explore More
             <span className="w-6 h-6 rounded-full bg-rose-50 group-hover:bg-white/20 flex items-center justify-center transition-colors duration-300">
@@ -171,7 +171,7 @@ function Counselling() {
         </div>
 
         <div className="relative">
-          <div className="rounded-3xl overflow-hidden h-[420px]">
+          <div className="rounded-3xl overflow-hidden h-64 sm:h-[420px]">
             <img
               src="https://newhorizoncollegeofengineering.in/wp-content/uploads/2025/04/why_counselling1.jpg"
               alt="Counselling"
@@ -181,15 +181,15 @@ function Counselling() {
           {/* Floating stat card */}
           <div className="absolute -bottom-5 -left-4 bg-white rounded-2xl shadow-xl border border-rose-100 px-5 py-4">
             <p className="font-black text-3xl text-navy-950 leading-none">1–12</p>
-            <p className="text-rose-600 font-semibold text-xs mt-1">Sessions per student</p>
-            <p className="text-slate-400 text-[11px] mt-0.5">Brief, goal-focused therapy</p>
+            <p className="text-rose-600 font-semibold text-sm mt-1">Sessions per student</p>
+            <p className="text-slate-400 text-xs mt-0.5">Brief, goal-focused therapy</p>
           </div>
         </div>
       </div>
 
       {/* ── Services grid ── */}
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">What We Offer</p>
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5">What We Offer</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {COUNSELLING_SERVICES.map(s => (
             <div key={s.label} className="bg-slate-50 border border-slate-100 hover:border-rose-100 rounded-2xl overflow-hidden group hover:shadow-sm transition-all duration-300">
@@ -197,7 +197,7 @@ function Counselling() {
                 <img src={s.img} alt={s.label} className="h-full w-auto object-contain group-hover:scale-105 transition-transform duration-300" />
               </div>
               <div className="px-3 pb-3">
-                <p className="text-[11px] font-semibold text-navy-900 leading-snug">{s.label}</p>
+                <p className="text-sm font-semibold text-navy-900 leading-snug">{s.label}</p>
               </div>
             </div>
           ))}
@@ -206,7 +206,7 @@ function Counselling() {
 
       {/* ── Approach pillars ── */}
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">Our Approach</p>
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5">Our Approach</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {APPROACH.map(a => (
             <div key={a.title} className="group bg-white border border-slate-100 hover:border-rose-100 hover:shadow-md rounded-3xl p-6 transition-all duration-300">
@@ -214,7 +214,7 @@ function Counselling() {
                 <img src={a.img} alt={a.title} className="w-10 h-10 object-contain" />
               </div>
               <p className="font-bold text-navy-950 text-base mb-2">{a.title}</p>
-              <p className="text-slate-500 text-sm leading-relaxed">{a.desc}</p>
+              <p className="text-slate-500 text-base leading-relaxed">{a.desc}</p>
             </div>
           ))}
         </div>
@@ -222,7 +222,7 @@ function Counselling() {
 
       {/* ── When to approach ── */}
       <div className="bg-rose-50 rounded-3xl p-8">
-        <p className="text-xs font-bold uppercase tracking-widest text-rose-400 mb-2">When to Reach Out</p>
+        <p className="text-sm font-bold uppercase tracking-widest text-rose-400 mb-2">When to Reach Out</p>
         <h3 className="font-display font-black text-2xl text-navy-950 mb-6">It's okay to ask for help</h3>
         <div className="flex flex-wrap gap-2">
           {CONDITIONS.map(c => (
@@ -231,7 +231,7 @@ function Counselling() {
             </span>
           ))}
         </div>
-        <p className="text-slate-500 text-sm mt-5 leading-relaxed">
+        <p className="text-slate-500 text-base mt-5 leading-relaxed">
           These are just some of the situations where reaching out makes a real difference. If something is weighing on you — whatever it is — the counsellors are there.
         </p>
       </div>
@@ -264,7 +264,7 @@ function NCC() {
       <div className="grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <span className="badge bg-green-100 text-green-700 mb-5">National Cadet Corps</span>
-          <h2 className="font-display font-black text-4xl lg:text-5xl text-navy-950 leading-tight mb-4">
+          <h2 className="font-display font-black text-2xl lg:text-5xl text-navy-950 leading-tight mb-4">
             Discipline Beyond<br />
             <span className="text-green-700">the Classroom</span>
           </h2>
@@ -281,7 +281,7 @@ function NCC() {
             ].map(s => (
               <div key={s.label} className="bg-green-50 border border-green-100 rounded-2xl px-4 py-3 text-center">
                 <p className="font-black text-xl text-navy-950">{s.num}</p>
-                <p className="text-slate-500 text-[11px] mt-0.5">{s.label}</p>
+                <p className="text-slate-500 text-xs mt-0.5">{s.label}</p>
               </div>
             ))}
           </div>
@@ -289,7 +289,7 @@ function NCC() {
           {/* Affiliation badges */}
           <div className="flex flex-wrap gap-2">
             {['VTU Affiliated', 'AICTE Approved', 'UGC Recognised', 'Autonomous College'].map(b => (
-              <span key={b} className="text-[11px] font-semibold text-green-700 bg-green-50 border border-green-100 px-3 py-1.5 rounded-full">
+              <span key={b} className="text-xs font-semibold text-green-700 bg-green-50 border border-green-100 px-3 py-1.5 rounded-full">
                 {b}
               </span>
             ))}
@@ -298,7 +298,7 @@ function NCC() {
 
         {/* Image */}
         <div className="relative">
-          <div className="rounded-3xl overflow-hidden h-[420px]">
+          <div className="rounded-3xl overflow-hidden h-64 sm:h-[420px]">
             <img
               src="https://newhorizoncollegeofengineering.in/wp-content/uploads/2023/11/ncc1.jpg"
               alt="NCC at NHCE"
@@ -307,31 +307,31 @@ function NCC() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
           <div className="absolute bottom-5 left-5 right-5">
-            <p className="text-white font-bold text-sm">National Cadet Corps — NHCE Unit</p>
-            <p className="text-white/60 text-xs mt-0.5">Bengaluru · Active since 2021</p>
+            <p className="text-white font-bold text-base">National Cadet Corps — NHCE Unit</p>
+            <p className="text-white/60 text-sm mt-0.5">Bengaluru · Active since 2021</p>
           </div>
         </div>
       </div>
 
       {/* ── What NCC offers ── */}
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">Programme Highlights</p>
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5">Programme Highlights</p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {HIGHLIGHTS.map(h => (
             <div key={h.label} className="bg-white border border-slate-100 hover:border-green-100 hover:shadow-md rounded-3xl p-5 transition-all duration-300 group">
               <div className="w-10 h-10 rounded-2xl bg-green-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 <h.icon size={18} className="text-green-700" />
               </div>
-              <p className="font-bold text-navy-950 text-sm mb-1.5">{h.label}</p>
-              <p className="text-slate-400 text-xs leading-relaxed">{h.desc}</p>
+              <p className="font-bold text-navy-950 text-base mb-1.5">{h.label}</p>
+              <p className="text-slate-400 text-sm leading-relaxed">{h.desc}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* ── Events timeline ── */}
-      <div className="bg-slate-50 rounded-3xl p-8">
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Event Archive</p>
+      <div className="bg-slate-50 rounded-3xl p-5 sm:p-8">
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-2">Event Archive</p>
         <h3 className="font-display font-black text-2xl text-navy-950 mb-6">NCC Events by Year</h3>
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
           {EVENT_YEARS.map(e => (
@@ -340,12 +340,12 @@ function NCC() {
               href={e.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center gap-2 bg-white border border-slate-100 hover:border-green-200 hover:shadow-md rounded-2xl p-4 transition-all duration-300"
+              className="group flex flex-col items-center gap-2 bg-white border border-slate-100 hover:border-green-200 hover:shadow-md rounded-2xl p-3 sm:p-4 transition-all duration-300"
             >
               <div className="w-10 h-10 rounded-xl bg-green-50 group-hover:bg-green-600 flex items-center justify-center transition-colors duration-300">
                 <Shield size={16} className="text-green-700 group-hover:text-white transition-colors duration-300" />
               </div>
-              <p className="font-black text-navy-950 text-sm group-hover:text-green-700 transition-colors duration-200">{e.year}</p>
+              <p className="font-black text-navy-950 text-base group-hover:text-green-700 transition-colors duration-200">{e.year}</p>
               <ArrowRight size={11} className="text-slate-300 group-hover:text-green-600 group-hover:translate-x-0.5 transition-all duration-200" />
             </a>
           ))}
@@ -389,33 +389,33 @@ function AntiRagging() {
       {/* ── Hero block ── */}
       <div className="rounded-3xl bg-navy-950 overflow-hidden">
         <div className="grid lg:grid-cols-2">
-          <div className="p-10 lg:p-12 flex flex-col justify-center">
-            <span className="inline-flex items-center gap-2 text-xs font-bold text-red-400/80 bg-red-400/10 border border-red-400/20 px-4 py-2 rounded-full mb-6 w-fit">
+          <div className="p-6 sm:p-10 lg:p-12 flex flex-col justify-center">
+            <span className="inline-flex items-center gap-2 text-sm font-bold text-red-400/80 bg-red-400/10 border border-red-400/20 px-4 py-2 rounded-full mb-6 w-fit">
               <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" /> Zero Tolerance Policy
             </span>
-            <h2 className="font-display font-black text-4xl lg:text-5xl text-white leading-tight mb-4">
+            <h2 className="font-display font-black text-2xl lg:text-5xl text-white leading-tight mb-4">
               Ragging Free<br /><span className="text-gold-400">Campus</span>
             </h2>
-            <p className="text-white/50 italic text-sm leading-relaxed mb-6 border-l-2 border-gold-500 pl-4">
+            <p className="text-white/50 italic text-base leading-relaxed mb-6 border-l-2 border-gold-500 pl-4">
               "If ragging is a crime, then learning to accept exploitation is a bigger crime."
             </p>
-            <p className="text-white/60 text-sm leading-relaxed mb-8">
+            <p className="text-white/60 text-base leading-relaxed mb-8">
               Ragging is a social evil with deep psychological and physical impacts. NHCE enforces a strict zero-tolerance policy — every single incident results in an FIR being filed without exception, regardless of severity.
             </p>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2">
               {[
                 { num: '11',   label: 'Committee Members' },
                 { num: '9',    label: 'Ragging Categories' },
                 { num: '24/7', label: 'Campus Monitoring'  },
               ].map(s => (
-                <div key={s.label} className="bg-white/5 border border-white/10 rounded-2xl px-3 py-3.5 text-center">
-                  <p className="font-black text-2xl text-white">{s.num}</p>
-                  <p className="text-white/40 text-[11px] mt-0.5 leading-tight">{s.label}</p>
+                <div key={s.label} className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-2.5 py-3 sm:px-3 sm:py-3.5 text-center">
+                  <p className="font-black text-lg sm:text-2xl text-white">{s.num}</p>
+                  <p className="text-white/40 text-[10px] sm:text-xs mt-0.5 leading-tight">{s.label}</p>
                 </div>
               ))}
             </div>
           </div>
-          <div className="relative h-[360px] lg:h-auto">
+          <div className="relative h-56 sm:h-72 lg:h-auto">
             <img
               src="/anti_ragging.jpg"
               alt="Ragging Free Campus"
@@ -439,8 +439,8 @@ function AntiRagging() {
               <p.icon size={15} className="text-red-600" />
             </div>
             <div>
-              <p className="font-bold text-navy-900 text-sm">{p.title}</p>
-              <p className="text-slate-500 text-xs mt-0.5 leading-snug">{p.desc}</p>
+              <p className="font-bold text-navy-900 text-base">{p.title}</p>
+              <p className="text-slate-500 text-sm mt-0.5 leading-snug">{p.desc}</p>
             </div>
           </div>
         ))}
@@ -448,13 +448,13 @@ function AntiRagging() {
 
       {/* ── 9 Categories ── */}
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Legal Definition</p>
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-2">Legal Definition</p>
         <h3 className="font-display font-black text-2xl text-navy-950 mb-6">9 Acts That Constitute Ragging</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {CATEGORIES.map((c, i) => (
             <div key={i} className="flex items-start gap-3 bg-white border border-slate-100 rounded-2xl p-4 hover:border-red-100 hover:shadow-sm transition-all duration-200">
               <span className="font-black text-2xl text-red-100 leading-none flex-shrink-0 w-8">{String(i + 1).padStart(2, '0')}</span>
-              <p className="text-slate-600 text-sm leading-relaxed mt-1">{c}</p>
+              <p className="text-slate-600 text-base leading-relaxed mt-1">{c}</p>
             </div>
           ))}
         </div>
@@ -462,21 +462,23 @@ function AntiRagging() {
 
       {/* ── Consequences ── */}
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Consequences</p>
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-2">Consequences</p>
         <h3 className="font-display font-black text-2xl text-navy-950 mb-6">What Happens to Offenders</h3>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { icon: Scale,         label: 'FIR Filed',           desc: 'Every incident — no exceptions. First Information Report filed with police immediately.',  bg: 'bg-red-50',    iconBg: 'bg-red-100',    iconCl: 'text-red-600'    },
             { icon: GraduationCap, label: 'Admission Cancelled', desc: 'Cancellation of admission and suspension from classes with immediate effect.',              bg: 'bg-orange-50', iconBg: 'bg-orange-100', iconCl: 'text-orange-600' },
             { icon: BadgeMinus,    label: 'Degree Embossed',     desc: 'University degree permanently marked "student was involved in Ragging."',                   bg: 'bg-amber-50',  iconBg: 'bg-amber-100',  iconCl: 'text-amber-600'  },
             { icon: FileX,         label: 'Legal Action',        desc: 'Imprisonment under IPC, passport blocked, scholarship withheld or withdrawn.',              bg: 'bg-rose-50',   iconBg: 'bg-rose-100',   iconCl: 'text-rose-700'   },
           ].map(c => (
-            <div key={c.label} className={`${c.bg} rounded-3xl p-5`}>
-              <div className={`w-10 h-10 rounded-2xl ${c.iconBg} flex items-center justify-center mb-4`}>
+            <div key={c.label} className={`${c.bg} rounded-3xl p-5 flex gap-4 sm:flex-col sm:gap-0 transition-all duration-300`}>
+              <div className={`w-10 h-10 rounded-2xl ${c.iconBg} flex items-center justify-center flex-shrink-0 mb-0 sm:mb-4`}>
                 <c.icon size={18} className={c.iconCl} />
               </div>
-              <p className="font-bold text-navy-950 text-sm mb-2">{c.label}</p>
-              <p className="text-slate-500 text-xs leading-relaxed">{c.desc}</p>
+              <div className="flex-1">
+                <p className="font-bold text-navy-950 text-base mb-1.5 sm:mb-2">{c.label}</p>
+                <p className="text-slate-500 text-sm leading-relaxed">{c.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -484,7 +486,7 @@ function AntiRagging() {
 
       {/* ── Committee ── */}
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Governance</p>
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-2">Governance</p>
         <h3 className="font-display font-black text-2xl text-navy-950 mb-6">Anti-Ragging Committee</h3>
         <div className="grid sm:grid-cols-2 gap-2.5">
           {COMMITTEE.map((m, i) => {
@@ -504,15 +506,12 @@ function AntiRagging() {
             ][i];
             const initials = m.name.split(' ').filter(w => w.length > 1).slice(0, 2).map(w => w[0]).join('');
             return (
-              <div key={i} className={`flex items-center gap-3.5 px-4 py-3.5 rounded-2xl ${isChairman ? 'bg-navy-950' : 'bg-slate-50 border border-slate-100 hover:border-slate-200'}`}>
-                <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-black text-xs flex-shrink-0 ${avatarCls}`}>
-                  {initials}
+              <div key={i} className={`flex items-center gap-3.5 px-4 py-3.5 rounded-2xl ${isChairman ? 'bg-navy-950 text-white' : 'bg-slate-50 border border-slate-100 hover:border-slate-200'}`}>
+                <div className="flex-1 min-w-0">
+                  <p className={`font-bold text-base sm:truncate ${isChairman ? 'text-white' : 'text-navy-900'}`}>{m.name}</p>
+                  <p className={`text-sm mt-0.5 leading-snug break-words ${isChairman ? 'text-white/50' : 'text-slate-400'}`}>{m.role}</p>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className={`font-bold text-sm truncate ${isChairman ? 'text-white' : 'text-navy-900'}`}>{m.name}</p>
-                  <p className={`text-xs mt-0.5 truncate ${isChairman ? 'text-white/50' : 'text-slate-400'}`}>{m.role}</p>
-                </div>
-                <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full flex-shrink-0 ${isChairman ? 'bg-gold-400 text-navy-950' : 'bg-white border border-slate-200 text-slate-500'}`}>
+                <span className={`text-xs font-bold px-2.5 py-1 rounded-full flex-shrink-0 ${isChairman ? 'bg-gold-400 text-navy-950' : 'bg-white border border-slate-200 text-slate-500'}`}>
                   {m.position}
                 </span>
               </div>
@@ -524,12 +523,12 @@ function AntiRagging() {
       {/* ── Helpline strip ── */}
       <div className="bg-navy-950 rounded-3xl p-8 flex flex-wrap items-center justify-between gap-6">
         <div>
-          <p className="text-white/50 text-xs font-bold uppercase tracking-widest mb-1">Report Ragging</p>
+          <p className="text-white/50 text-sm font-bold uppercase tracking-widest mb-1">Report Ragging</p>
           <p className="text-white font-black text-2xl">+91-98805 34935</p>
-          <p className="text-white/40 text-xs mt-1">helpdesk.newhorizonindia.edu</p>
+          <p className="text-white/40 text-sm mt-1">helpdesk.newhorizonindia.edu</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a href="tel:+919880534935" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition-colors">
+          <a href="tel:+919880534935" className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-500 text-white text-base font-bold px-5 py-2.5 rounded-full transition-colors">
             <Phone size={14} /> Call Helpline
           </a>
         </div>
@@ -610,22 +609,22 @@ function Clubs() {
       <div className="grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <span className="badge bg-purple-100 text-purple-700 mb-5">Student Clubs</span>
-          <h2 className="font-display font-black text-4xl lg:text-5xl text-navy-950 leading-tight mb-4">
+          <h2 className="font-display font-black text-2xl lg:text-5xl text-navy-950 leading-tight mb-4">
             Find Your<br /><span className="text-purple-600">Community</span>
           </h2>
-          <p className="text-slate-500 text-base leading-relaxed">
+          <p className="text-slate-500 text-lg leading-relaxed">
             35 clubs across engineering, arts, sports and social causes. Every club is student-run, annually elected and open to one membership per student — so every member commits fully.
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-3">
           {[
             { num: '15', label: 'Co-Curricular',    bg: 'bg-purple-50', border: 'border-purple-100', text: 'text-purple-600' },
             { num: '15', label: 'Extra-Curricular', bg: 'bg-indigo-50', border: 'border-indigo-100', text: 'text-indigo-600' },
             { num: '5',  label: 'Sports Clubs',     bg: 'bg-violet-50', border: 'border-violet-100', text: 'text-violet-600' },
           ].map(s => (
-            <div key={s.label} className={`${s.bg} border ${s.border} rounded-3xl p-5 text-center`}>
-              <p className={`font-black text-4xl ${s.text} leading-none`}>{s.num}</p>
-              <p className="text-slate-500 text-xs mt-2 leading-tight font-semibold">{s.label}</p>
+            <div key={s.label} className={`${s.bg} border ${s.border} rounded-2xl sm:rounded-3xl p-3 sm:p-5 text-center`}>
+              <p className={`font-black text-xl sm:text-2xl ${s.text} leading-none`}>{s.num}</p>
+              <p className="text-slate-500 text-xs sm:text-sm mt-2 leading-tight font-semibold">{s.label}</p>
             </div>
           ))}
         </div>
@@ -633,7 +632,7 @@ function Clubs() {
 
       {/* ── Why Join ── */}
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">Why Join a Club?</p>
+        <p className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-5">Why Join a Club?</p>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
           {WHY_JOIN.map(w => (
             <div key={w.label} className="flex items-start gap-3 bg-white border border-slate-100 hover:border-purple-100 hover:shadow-sm rounded-2xl p-4 transition-all duration-200 group">
@@ -641,8 +640,8 @@ function Clubs() {
                 <w.icon size={15} className="text-purple-600" />
               </div>
               <div>
-                <p className="font-bold text-navy-900 text-sm">{w.label}</p>
-                <p className="text-slate-400 text-xs mt-0.5 leading-snug">{w.desc}</p>
+                <p className="font-bold text-navy-900 text-base">{w.label}</p>
+                <p className="text-slate-400 text-sm mt-0.5 leading-snug">{w.desc}</p>
               </div>
             </div>
           ))}
@@ -652,7 +651,7 @@ function Clubs() {
       {/* ── Club categories + tab selector ── */}
       <div>
         {/* Tab bar */}
-        <div className="flex items-center gap-2 mb-6 border-b border-slate-100 pb-4">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 mb-6 border-b border-slate-100 pb-4">
           {TABS.map(t => (
             <button
               key={t.key}
@@ -664,7 +663,7 @@ function Clubs() {
               }`}
             >
               {t.label}
-              <span className={`text-[11px] px-1.5 py-0.5 rounded-full font-bold ${
+              <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
                 activeTab === t.key ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'
               }`}>{t.count}</span>
             </button>
@@ -686,7 +685,7 @@ function Clubs() {
                   className="w-full h-full object-contain p-2.5 group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <p className="text-[11px] text-slate-500 font-medium text-center leading-tight">{c.name}</p>
+              <p className="text-sm text-slate-500 font-medium text-center leading-tight">{c.name}</p>
             </div>
           ))}
         </div>
@@ -701,17 +700,17 @@ function NSS() {
     <div className="grid lg:grid-cols-2 gap-12 items-start">
       <div>
         <span className="badge bg-teal-100 text-teal-700 mb-5">NSS Unit Cell</span>
-        <h2 className="font-display font-black text-4xl lg:text-5xl text-navy-950 leading-tight mb-4">
+        <h2 className="font-display font-black text-2xl lg:text-5xl text-navy-950 leading-tight mb-4">
           Service Beyond<br /><span className="text-teal-600">the Campus</span>
         </h2>
-        <p className="text-slate-500 text-base leading-relaxed mb-7">
+        <p className="text-slate-500 text-lg leading-relaxed mb-7">
           New Horizon's NSS unit has adopted 93 tribal villages in Bandipur, Nagarwala and Kabini — working on ground to improve living conditions and run skills training. Year-round, sustained engagement.
         </p>
         <div className="bg-slate-50 border border-teal-100 rounded-2xl p-5 mb-7 flex items-end gap-4">
           <p className="font-black text-7xl text-navy-950 leading-none">93</p>
           <div>
-            <p className="text-teal-600 font-bold text-sm">Tribal villages adopted</p>
-            <p className="text-slate-400 text-xs mt-0.5">Bandipur · Nagarwala · Kabini</p>
+            <p className="text-teal-600 font-bold text-base">Tribal villages adopted</p>
+            <p className="text-slate-400 text-sm mt-0.5">Bandipur · Nagarwala · Kabini</p>
           </div>
         </div>
         <div className="space-y-3">
@@ -725,8 +724,8 @@ function NSS() {
                 <f.icon size={14} className="text-teal-600" />
               </div>
               <div>
-                <p className="font-semibold text-navy-900 text-sm">{f.label}</p>
-                <p className="text-slate-400 text-xs mt-0.5">{f.desc}</p>
+                <p className="font-semibold text-navy-900 text-base">{f.label}</p>
+                <p className="text-slate-400 text-sm mt-0.5">{f.desc}</p>
               </div>
             </div>
           ))}
@@ -749,15 +748,15 @@ function NSS() {
 function Medical() {
   return (
     <div className="grid lg:grid-cols-2 gap-12 items-center">
-      <div className="rounded-3xl overflow-hidden h-[360px]">
+      <div className="rounded-3xl overflow-hidden h-64 sm:h-[360px]">
         <img src="https://newhorizoncollegeofengineering.in/wp-content/uploads/2023/11/medical.jpg" alt="Medical Centre" className="w-full h-full object-cover" />
       </div>
       <div>
         <span className="badge bg-blue-100 text-blue-700 mb-5">Medical Centre</span>
-        <h2 className="font-display font-black text-4xl lg:text-5xl text-navy-950 leading-tight mb-4">
+        <h2 className="font-display font-black text-2xl lg:text-5xl text-navy-950 leading-tight mb-4">
           Health Care<br /><span className="text-blue-600">On Campus</span>
         </h2>
-        <p className="text-slate-500 text-base leading-relaxed mb-7">
+        <p className="text-slate-500 text-lg leading-relaxed mb-7">
           NHCE maintains an on-campus Medical Centre staffed by trained professionals. Students can walk in for first aid, consultations and health monitoring — without leaving campus.
         </p>
         <div className="space-y-3">
@@ -771,8 +770,8 @@ function Medical() {
                 <f.icon size={15} className="text-blue-600" />
               </div>
               <div>
-                <p className="font-semibold text-navy-900 text-sm">{f.primary}</p>
-                <p className="text-slate-400 text-xs mt-0.5">{f.sub}</p>
+                <p className="font-semibold text-navy-900 text-base">{f.primary}</p>
+                <p className="text-slate-400 text-sm mt-0.5">{f.sub}</p>
               </div>
             </div>
           ))}
@@ -814,17 +813,22 @@ export default function StudentServicesPage() {
       />
 
       {/* ── Tab bar ── */}
-      <div id="tabs" className="sticky top-20 sm:top-16 z-30 bg-white border-b border-slate-100 shadow-sm">
+      <div id="tabs" className="sticky top-20 sm:top-16 z-30 bg-white border-b border-slate-100 shadow-sm scroll-mt-20 sm:scroll-mt-16">
         <AnimateIn variant="fade-up">
-        <div className="container-wide py-4">
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+        <div className="container-wide py-4 px-0 sm:px-6 lg:px-8">
+          <div className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-3 pb-2 px-4 sm:px-0 sm:grid sm:grid-cols-6 sm:pb-0 sm:overflow-visible">
             {SERVICES.map(s => {
               const isActive = active === s.id;
               return (
                 <button
                   key={s.id}
-                  onClick={() => setActive(s.id)}
-                  className={`relative h-24 rounded-2xl overflow-hidden group text-left transition-all duration-300
+                  onClick={() => {
+                    setActive(s.id);
+                    setTimeout(() => {
+                      document.getElementById('tabs')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                  }}
+                  className={`relative h-24 rounded-2xl overflow-hidden group text-left transition-all duration-300 flex-shrink-0 w-36 sm:w-auto snap-start
                     ${isActive ? 'scale-[1.03] shadow-md' : 'opacity-55 hover:opacity-90 hover:scale-[1.01]'}
                   `}
                 >
@@ -839,7 +843,7 @@ export default function StudentServicesPage() {
                     <div className="w-5 h-5 rounded-md border border-white/30 flex items-center justify-center mb-1">
                       <s.icon size={10} className="text-white" />
                     </div>
-                    <p className="text-white font-bold text-[11px] leading-tight">{s.label}</p>
+                    <p className="text-white font-bold text-xs leading-tight">{s.label}</p>
                   </div>
                 </button>
               );

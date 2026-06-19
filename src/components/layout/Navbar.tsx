@@ -39,6 +39,7 @@ const NAV_ITEMS = [
       { label: 'Campus Facilities', href: '/campus',           desc: 'Infrastructure, labs & hostel'    },
       { label: 'Student Services',  href: '/student-services', desc: 'Library, counseling & more'       },
       { label: 'Sports',            href: '/sports',           desc: 'Courts, grounds & achievements'   },
+      { label: 'Social Outreach',   href: '/social-outreach',  desc: 'NSS, blood drives & community'    },
     ],
   },
   {
@@ -48,8 +49,10 @@ const NAV_ITEMS = [
       { label: 'Academic Enrichment Programs',  href: '/academic-enrichment',   desc: 'Minor degrees, scholarships & study abroad' },
     ],
   },
+  { label: 'Examinations',     href: '/exam'             },
   { label: 'Placements',       href: '/#placements'      },
-  { label: 'Contact',          href: '/#contact'         },
+  { label: 'Everything@NHCE',  href: '/everything@nhce'  },
+  { label: 'Contact',          href: '/contact'          },
 ];
 
 /* ─── Full-page menu ─────────────────────────────────────── */
@@ -116,10 +119,10 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
                         <div key={child.label}>
                           {child.children ? (
                             <>
-                              <div className="flex items-center justify-between py-2.5 pl-4 text-sm text-white/60 group">
+                              <div className="flex items-center justify-between py-2.5 pl-4 text-base text-white/60 group">
                                 <Link to={child.href} onClick={onClose} className="flex-1 hover:text-white transition-colors">
                                   <p className="font-semibold">{child.label}</p>
-                                  <p className="text-xs text-white/30 mt-0.5">{child.desc}</p>
+                                  <p className="text-sm text-white/30 mt-0.5">{child.desc}</p>
                                 </Link>
                                 <button onClick={() => setChildActive(childActive === child.label ? null : child.label)} className="pl-3 pr-1">
                                   <ChevronDown size={13} className={`transition-transform duration-300 ${childActive === child.label ? 'rotate-180 text-blue-400' : 'text-white/30'}`} />
@@ -128,7 +131,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
                               <div className={`overflow-hidden transition-all duration-300 ${childActive === child.label ? 'max-h-32' : 'max-h-0'}`}>
                                 {child.children.map(sub => (
                                   <Link key={sub.label} to={sub.href} onClick={onClose}
-                                    className="flex items-center gap-2 py-2 pl-8 text-xs text-white/45 hover:text-white transition-colors group">
+                                    className="flex items-center gap-2 py-2 pl-8 text-sm text-white/45 hover:text-white transition-colors group">
                                     <span className="w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
                                     {sub.label}
                                   </Link>
@@ -137,10 +140,10 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
                             </>
                           ) : (
                             <Link to={child.href} onClick={onClose}
-                              className="flex items-center justify-between py-2.5 pl-4 text-sm text-white/60 hover:text-white transition-colors group">
+                              className="flex items-center justify-between py-2.5 pl-4 text-base text-white/60 hover:text-white transition-colors group">
                               <div>
                                 <p className="font-semibold">{child.label}</p>
-                                <p className="text-xs text-white/30 mt-0.5">{child.desc}</p>
+                                <p className="text-sm text-white/30 mt-0.5">{child.desc}</p>
                               </div>
                               <ArrowRight size={13} className="text-white/20 group-hover:text-blue-400 group-hover:translate-x-1 transition-all flex-shrink-0 ml-3" />
                             </Link>
@@ -168,7 +171,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
             {NAV_ITEMS.map((item, i) => {
               const hasChildren = 'children' in item;
               const isActive    = active === item.label;
-              const baseCls     = `flex items-center justify-between gap-3 py-3 border-b border-white/[0.07] last:border-0 text-base font-bold transition-colors duration-150 cursor-pointer`;
+              const baseCls     = `flex items-center justify-between gap-3 py-2.5 border-b border-white/[0.07] last:border-0 text-base font-semibold transition-colors duration-150 cursor-pointer`;
               return hasChildren ? (
                 <div key={item.label}
                   onMouseEnter={() => { setActive(item.label); setChildActive(null); }}
@@ -194,7 +197,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
           {/* PANEL 2 — children of active main item */}
           {subItems && (
             <div key={active} className="flex flex-col w-56 flex-shrink-0 justify-start pt-1" style={{ animation: 'fadeIn 0.2s ease both' }}>
-              <p className="text-white/25 text-[10px] font-bold tracking-[4px] uppercase mb-6">{active}</p>
+              <p className="text-white/25 text-xs font-bold tracking-[4px] uppercase mb-6">{active}</p>
               <div className="flex flex-col gap-5">
                 {subItems.map((child, i) => (
                   <div key={child.label}
@@ -202,8 +205,8 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
                     style={{ animation: `slideUpFade 0.35s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms both` }}>
                     <div className={`group flex items-start justify-between gap-3 cursor-pointer`}>
                       <Link to={child.href} onClick={onClose} className="flex-1">
-                        <p className={`font-black text-xl sm:text-2xl leading-tight transition-colors duration-150 ${childActive === child.label ? 'text-blue-400' : 'text-white group-hover:text-blue-400'}`}>{child.label}</p>
-                        <p className="text-white/35 text-xs mt-1">{child.desc}</p>
+                        <p className={`font-bold text-lg sm:text-xl leading-tight transition-colors duration-150 ${childActive === child.label ? 'text-blue-400' : 'text-white group-hover:text-blue-400'}`}>{child.label}</p>
+                        <p className="text-white/35 text-sm mt-1">{child.desc}</p>
                       </Link>
                       {child.children ? (
                         <ChevronRight size={14} className={`mt-2 flex-shrink-0 transition-all duration-200 ${childActive === child.label ? 'translate-x-1 text-blue-400' : 'text-white/20'}`} />
@@ -220,15 +223,15 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
           {/* PANEL 3 — grandchildren of active child (e.g. Governance sub-pages) */}
           {grandSubItems && (
             <div key={childActive} className="flex-1 flex flex-col justify-start" style={{ paddingTop: `${panel3TopOffset}px`, animation: 'fadeIn 0.2s ease both' }}>
-              <p className="text-white/25 text-[10px] font-bold tracking-[4px] uppercase mb-6">{childActive}</p>
+              <p className="text-white/25 text-xs font-bold tracking-[4px] uppercase mb-6">{childActive}</p>
               <div className="flex flex-col gap-5">
                 {grandSubItems.map((sub, i) => (
                   <Link key={sub.label} to={sub.href} onClick={onClose}
                     className="group flex items-start gap-4"
                     style={{ animation: `slideUpFade 0.35s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms both` }}>
                     <div>
-                      <p className="text-white font-black text-xl sm:text-2xl leading-tight group-hover:text-blue-400 transition-colors duration-150">{sub.label}</p>
-                      <p className="text-white/35 text-xs mt-1">{sub.desc}</p>
+                      <p className="text-white font-bold text-lg sm:text-xl leading-tight group-hover:text-blue-400 transition-colors duration-150">{sub.label}</p>
+                      <p className="text-white/35 text-sm mt-1">{sub.desc}</p>
                     </div>
                     <ArrowRight size={15} className="text-white/20 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 flex-shrink-0 mt-1.5" />
                   </Link>
@@ -244,7 +247,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
           style={open ? { animation: `slideUpFade 0.5s cubic-bezier(0.16,1,0.3,1) ${NAV_ITEMS.length * 45 + 80}ms both` } : { opacity: 0 }}>
           <a href="https://newhorizoncollegeofengineering.in/admissions/"
             target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 text-sm font-bold px-6 py-3 rounded-full transition-colors">
+            className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 text-base font-bold px-6 py-3 rounded-full transition-colors">
             Apply Now 2025–26 <ArrowRight size={14} />
           </a>
           <a href="tel:+919880534935"
@@ -278,6 +281,40 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  const CENTER_NAV_ITEMS = [
+    { label: 'Home',       href: '/' },
+    { label: 'Programs',   href: '/programs' },
+    { label: 'Admissions', href: '/admissions' },
+    { label: 'Campus',     href: '/campus' },
+    { label: 'everything@nhce', href: '/everything@nhce' },
+    { label: 'Contact',    href: '/contact' },
+  ];
+
+  const isTabActive = (item: { label: string; href: string }) => {
+    if (item.href === '/') {
+      return location.pathname === '/' && location.hash === '';
+    }
+    if (item.href === '/campus') {
+      return ['/campus', '/student-services', '/sports', '/social-outreach'].includes(location.pathname);
+    }
+    if (item.href === '/admissions') {
+      return ['/admissions', '/academic-enrichment'].includes(location.pathname);
+    }
+    return location.pathname === item.href;
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.includes('#') && location.pathname === '/') {
+      const hash = href.substring(href.indexOf('#'));
+      e.preventDefault();
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', hash);
+      }
+    }
+  };
+
   useEffect(() => { setMenuOpen(false); }, [location.pathname]);
 
   useEffect(() => {
@@ -309,6 +346,31 @@ export default function Navbar() {
             }`} />
           </Link>
 
+          {/* Center: Floating navigation dock (Veloura style) */}
+          <div className={`hidden ${menuOpen ? 'lg:hidden' : 'lg:flex'} items-center p-1.5 rounded-full transition-all duration-300 ${
+            scrolled
+              ? 'bg-transparent border border-transparent shadow-none'
+              : 'bg-slate-50/80 backdrop-blur-md border border-slate-200/50 shadow-sm'
+          }`}>
+            {CENTER_NAV_ITEMS.map((item) => {
+              const active = isTabActive(item);
+              return (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-all duration-300 ${
+                    active
+                      ? 'bg-navy-900 text-white shadow-sm'
+                      : 'text-slate-600 hover:text-navy-950 hover:bg-slate-100/50'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
+
           {/* Right: Apply Now + Hamburger */}
           <div className="flex items-center gap-3 sm:gap-4">
             <a
@@ -316,7 +378,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-1.5 bg-navy-900 hover:bg-navy-800
-                text-white text-sm font-bold px-5 py-2 rounded-full transition-colors"
+                text-white text-base font-bold px-5 py-2 rounded-full transition-colors"
             >
               Apply Now <ArrowRight size={13} />
             </a>
@@ -324,12 +386,10 @@ export default function Navbar() {
             <button
               onClick={() => setMenuOpen(o => !o)}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 ${
+              className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all duration-200 ${
                 menuOpen
-                  ? 'bg-slate-100'
-                  : showSolid
-                  ? 'hover:bg-black/5'
-                  : 'bg-white/90 shadow-md hover:bg-white'
+                  ? 'bg-slate-100 border-slate-200/80'
+                  : 'bg-white border-slate-200 shadow-sm hover:bg-slate-50'
               }`}
             >
               <HamburgerIcon open={menuOpen} solid={showSolid} />

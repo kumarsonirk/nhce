@@ -105,10 +105,10 @@ export default function Campus() {
                 </div>
                 {/* Text */}
                 <div className="p-4">
-                  <div className="font-semibold text-navy-900 text-sm mb-1 group-hover:text-navy-700 transition-colors">
+                  <div className="font-semibold text-navy-900 text-base mb-1 group-hover:text-navy-700 transition-colors">
                     {f.label}
                   </div>
-                  <div className="text-xs text-slate-500 leading-relaxed">{f.desc}</div>
+                  <div className="text-sm text-slate-500 leading-relaxed">{f.desc}</div>
                 </div>
               </div>
             ))}
@@ -125,8 +125,8 @@ export default function Campus() {
                 className="flex flex-col items-center text-center px-4 py-6 bg-slate-50 hover:bg-navy-50 transition-colors duration-200 cursor-default"
               >
                 <span className="text-xl mb-2">{h.icon}</span>
-                <div className="text-xs font-bold text-navy-900 mb-0.5">{h.title}</div>
-                <div className="text-xs text-slate-500">{h.desc}</div>
+                <div className="text-base font-bold text-navy-900 mb-0.5">{h.title}</div>
+                <div className="text-sm text-slate-500">{h.desc}</div>
               </div>
             ))}
           </div>

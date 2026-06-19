@@ -15,6 +15,11 @@ import CampusFacilitiesPage from './pages/CampusFacilitiesPage';
 import StudentServicesPage from './pages/StudentServicesPage';
 import SportsPage from './pages/SportsPage';
 import AcademicEnrichmentPage from './pages/AcademicEnrichmentPage';
+import SocialOutreachPage from './pages/SocialOutreachPage';
+import ContactPage from './pages/ContactPage';
+import EverythingNHCEPage from './pages/NewsPage';
+import DetailPage from './pages/NewsDetailPage';
+import ExamPage from './pages/ExamPage';
 import { ArrowUp } from 'lucide-react';
 import { useState } from 'react';
 
@@ -22,7 +27,7 @@ function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    if (!hash) window.scrollTo(0, 0);
+    if (!hash) window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname, hash]);
 
   const [visible, setVisible] = useState(false);
@@ -65,7 +70,12 @@ export default function App() {
         <Route path="/campus" element={<CampusFacilitiesPage />} />
         <Route path="/student-services" element={<StudentServicesPage />} />
         <Route path="/sports" element={<SportsPage />} />
+        <Route path="/social-outreach" element={<SocialOutreachPage />} />
         <Route path="/academic-enrichment" element={<AcademicEnrichmentPage />} />
+        <Route path="/everything@nhce" element={<EverythingNHCEPage />} />
+        <Route path="/everything@nhce/:category/:slug" element={<DetailPage />} />
+        <Route path="/exam" element={<ExamPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />
       <ScrollToTop />

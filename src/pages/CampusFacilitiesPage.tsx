@@ -147,8 +147,8 @@ export default function CampusFacilitiesPage() {
                   <Icon size={18} className="text-gold-400" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-bold text-white text-sm leading-tight">{label}</p>
-                  <p className="text-white/40 text-xs mt-0.5 truncate">{sub}</p>
+                  <p className="font-bold text-white text-base leading-tight">{label}</p>
+                  <p className="text-white/40 text-sm mt-0.5 truncate">{sub}</p>
                 </div>
                 <ChevronDown size={13} className="text-white/20 flex-shrink-0 group-hover:text-gold-400 transition-colors" />
               </button>
@@ -169,7 +169,7 @@ export default function CampusFacilitiesPage() {
                 Built Around<br />
                 <span className="text-blue-600">How You Learn</span>
               </h2>
-              <p className="text-slate-500 text-lg leading-relaxed">
+              <p className="text-slate-500 text-xl leading-relaxed">
                 Right on Bengaluru's IT corridor near Marathahalli — Intel, Accenture, Wipro and Cisco are neighbours. The campus itself reflects that proximity: NVIDIA-certified research labs, IBM-equipped computing rooms, and enough sports infrastructure to keep everyone moving.
               </p>
             </div>
@@ -177,7 +177,7 @@ export default function CampusFacilitiesPage() {
               {INFRA_STATS.map(s => (
                 <div key={s.label} className="bg-blue-50 border border-blue-100 rounded-2xl px-5 py-5 text-center">
                   <p className="font-black text-3xl text-navy-950">{s.num}</p>
-                  <p className="text-slate-500 text-xs font-medium mt-1">{s.label}</p>
+                  <p className="text-slate-500 text-sm font-medium mt-1">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -196,9 +196,9 @@ export default function CampusFacilitiesPage() {
                 <div className="px-4 py-4">
                   <div className="flex items-center gap-2 mb-1.5">
                     <f.icon size={13} className="text-blue-500 flex-shrink-0" />
-                    <p className="font-bold text-sm text-navy-900">{f.label}</p>
+                    <p className="font-bold text-base text-navy-900">{f.label}</p>
                   </div>
-                  <p className="text-xs text-slate-400 leading-snug">{f.desc}</p>
+                  <p className="text-sm text-slate-400 leading-snug">{f.desc}</p>
                 </div>
               </div>
             ))}
@@ -220,7 +220,7 @@ export default function CampusFacilitiesPage() {
                 Five Places<br />
                 <span className="text-amber-600">to Eat on Campus</span>
               </h2>
-              <p className="text-slate-500 text-lg leading-relaxed">
+              <p className="text-slate-500 text-xl leading-relaxed">
                 From the main Students Mess to the Udupi Canteen's morning dosas — NHCE has enough dining options that you never eat the same meal twice in a week.
               </p>
             </div>
@@ -230,7 +230,7 @@ export default function CampusFacilitiesPage() {
               {CAFETERIA_HIGHLIGHTS.map(h => (
                 <div key={h} className="bg-white border border-amber-100 rounded-2xl px-4 py-3.5 flex items-center gap-2.5">
                   <div className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0" />
-                  <p className="text-sm font-semibold text-navy-900">{h}</p>
+                  <p className="text-base font-semibold text-navy-900">{h}</p>
                 </div>
               ))}
             </div>
@@ -251,10 +251,10 @@ export default function CampusFacilitiesPage() {
 
           <AnimateIn variant="fade-up" delay={80}>
           <blockquote className="border-l-4 border-amber-400 pl-5 py-1 mb-10">
-            <p className="text-slate-600 text-base italic leading-relaxed">
+            <p className="text-slate-600 text-lg italic leading-relaxed">
               "The whole ambiance of the cafeterias is so soothing and delightful that it tempts you to come here again and again."
             </p>
-            <cite className="text-xs text-slate-400 not-italic mt-2 block">— NHCE Campus Guide</cite>
+            <cite className="text-sm text-slate-400 not-italic mt-2 block">— NHCE Campus Guide</cite>
           </blockquote>
           </AnimateIn>
 
@@ -266,10 +266,10 @@ export default function CampusFacilitiesPage() {
                   <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center">
                     <Utensils size={16} className="text-amber-500" />
                   </div>
-                  <span className="text-xs font-bold text-amber-600 bg-amber-50 border border-amber-100 px-2.5 py-1 rounded-full">{c.type}</span>
+                  <span className="text-sm font-bold text-amber-600 bg-amber-50 border border-amber-100 px-2.5 py-1 rounded-full">{c.type}</span>
                 </div>
                 <h3 className="font-bold text-navy-900 mb-1.5">{c.name}</h3>
-                <p className="text-slate-400 text-xs leading-relaxed">{c.desc}</p>
+                <p className="text-slate-400 text-sm leading-relaxed">{c.desc}</p>
               </div>
             ))}
           </div>
@@ -289,7 +289,7 @@ export default function CampusFacilitiesPage() {
               Five Blocks,<br />
               <span className="text-indigo-600">One Community</span>
             </h2>
-            <p className="text-slate-500 text-lg leading-relaxed">
+            <p className="text-slate-500 text-xl leading-relaxed">
               Unlike many institutions, NHCE's dormitories are built as spaces to study, relax and socialise — not just sleep. Separate blocks for boys and girls, each with a senior faculty member who acts as warden, friend and guide.
             </p>
           </div>
@@ -304,7 +304,7 @@ export default function CampusFacilitiesPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/75 via-navy-950/10 to-transparent" />
               <div className="absolute bottom-0 left-0 p-6">
                 <p className="text-white font-bold text-xl leading-tight">On-Campus Living</p>
-                <p className="text-white/60 text-sm mt-1">5 blocks · boys & girls · within campus</p>
+                <p className="text-white/60 text-base mt-1">5 blocks · boys & girls · within campus</p>
               </div>
             </div>
 
@@ -315,7 +315,7 @@ export default function CampusFacilitiesPage() {
               <div className="bg-navy-950 rounded-2xl p-6 flex-1">
                 <div className="flex items-center justify-between mb-5">
                   <div>
-                    <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Boys Hostel</p>
+                    <p className="text-white/40 text-sm uppercase tracking-widest mb-1">Boys Hostel</p>
                     <p className="text-white font-bold text-lg leading-tight">3 Residential Blocks</p>
                   </div>
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
@@ -325,18 +325,18 @@ export default function CampusFacilitiesPage() {
                 <div className="space-y-2">
                   {BOYS_BLOCKS.map(b => (
                     <div key={b} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5">
-                      <p className="text-white text-sm font-medium">{b}</p>
+                      <p className="text-white text-base font-medium">{b}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-white/25 text-xs mt-4">Furnished rooms · Attached bathrooms · 24-hr power backup</p>
+                <p className="text-white/25 text-sm mt-4">Furnished rooms · Attached bathrooms · 24-hr power backup</p>
               </div>
 
               {/* Girls */}
               <div className="bg-rose-700 rounded-2xl p-6 flex-1">
                 <div className="flex items-center justify-between mb-5">
                   <div>
-                    <p className="text-white/60 text-xs uppercase tracking-widest mb-1">Girls Hostel</p>
+                    <p className="text-white/60 text-sm uppercase tracking-widest mb-1">Girls Hostel</p>
                     <p className="text-white font-bold text-lg leading-tight">2 Residential Blocks</p>
                   </div>
                   <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
@@ -346,11 +346,11 @@ export default function CampusFacilitiesPage() {
                 <div className="space-y-2">
                   {GIRLS_BLOCKS.map(b => (
                     <div key={b} className="bg-white/10 border border-white/10 rounded-xl px-4 py-2.5">
-                      <p className="text-white text-sm font-medium">{b}</p>
+                      <p className="text-white text-base font-medium">{b}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-white/50 text-xs mt-4">Furnished rooms · Attached bathrooms · 24-hr power backup</p>
+                <p className="text-white/50 text-sm mt-4">Furnished rooms · Attached bathrooms · 24-hr power backup</p>
               </div>
 
             </div>
@@ -358,12 +358,12 @@ export default function CampusFacilitiesPage() {
 
           {/* Shared amenities — inline strip */}
           <div className="bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-wide">All blocks include</p>
+            <p className="text-sm font-bold text-slate-400 uppercase tracking-wide">All blocks include</p>
             <div className="w-px h-4 bg-slate-200 hidden sm:block" />
             {HOSTEL_AMENITIES.map(a => (
               <div key={a.label} className="flex items-center gap-2">
                 <a.icon size={14} className="text-indigo-500 flex-shrink-0" />
-                <p className="text-sm font-semibold text-navy-900">{a.label}</p>
+                <p className="text-base font-semibold text-navy-900">{a.label}</p>
               </div>
             ))}
           </div>
@@ -384,7 +384,7 @@ export default function CampusFacilitiesPage() {
                 NHCE Runs<br />
                 <span className="text-blue-600">Its Own Buses</span>
               </h2>
-              <p className="text-slate-500 text-base leading-relaxed mb-8">
+              <p className="text-slate-500 text-lg leading-relaxed mb-8">
                 The college runs its own fleet across Bengaluru — fixed routes, capped seats, scheduled timings. No depending on autos or cabs to make it to an 8 a.m. lecture.
               </p>
 
@@ -395,8 +395,8 @@ export default function CampusFacilitiesPage() {
                       <t.icon size={15} className="text-blue-600" />
                     </div>
                     <div>
-                      <p className="font-bold text-navy-900 text-sm">{t.label}</p>
-                      <p className="text-slate-400 text-xs mt-0.5 leading-snug">{t.sub}</p>
+                      <p className="font-bold text-navy-900 text-base">{t.label}</p>
+                      <p className="text-slate-400 text-sm mt-0.5 leading-snug">{t.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -413,7 +413,7 @@ export default function CampusFacilitiesPage() {
                 </a>
                 <a
                   href="tel:+919880534935"
-                  className="inline-flex items-center gap-2 border border-slate-200 text-slate-600 hover:bg-slate-50 text-sm font-semibold px-5 py-2.5 rounded-full transition-all"
+                  className="inline-flex items-center gap-2 border border-slate-200 text-slate-600 hover:bg-slate-50 text-base font-semibold px-5 py-2.5 rounded-full transition-all"
                 >
                   +91-98805 34935
                 </a>

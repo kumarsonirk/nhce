@@ -54,7 +54,7 @@ export default function Rankings() {
         {/* Awards strip */}
         <AnimateIn variant="fade-up" delay={120}>
         <div className="hidden md:block bg-white rounded-3xl p-6 shadow-card mt-4">
-          <h3 className="font-display font-bold text-navy-900 text-lg mb-5 text-center">Awards & Recognition</h3>
+          <h3 className="font-display font-bold text-navy-900 text-xl mb-5 text-center">Awards & Recognition</h3>
           <MobileSlider desktopClass="grid-cols-2 lg:grid-cols-3 gap-3">
             {[
               { award: 'Best Engineering College — South India', by: 'Education World 2024', year: '2024' },
@@ -68,7 +68,7 @@ export default function Rankings() {
                 <span className="text-gold-500 mt-0.5 flex-shrink-0">🏅</span>
                 <div>
                   <div className="text-sm font-semibold text-navy-900">{a.award}</div>
-                  <div className="text-xs text-slate-500 mt-0.5">{a.by} · {a.year}</div>
+                  <div className="text-sm text-slate-500 mt-0.5">{a.by} · {a.year}</div>
                 </div>
               </div>
             ))}

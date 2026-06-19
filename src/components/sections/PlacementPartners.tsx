@@ -65,7 +65,7 @@ export default function PlacementPartners() {
               Industry Leaders
             </span>
           </h2>
-          <p className="text-slate-500 text-sm mt-2 max-w-lg mx-auto">
+          <p className="text-slate-500 text-base mt-2 max-w-lg mx-auto">
             120+ leading companies recruit from NHCE every year across technology, management, and engineering domains.
           </p>
         </div>
@@ -80,8 +80,8 @@ export default function PlacementPartners() {
           ].map(({ icon: Icon, value, label }) => (
             <div key={label} className="text-center p-4 bg-slate-50 rounded-2xl border border-slate-100">
               <Icon size={18} className="text-green-600 mx-auto mb-1.5" />
-              <div className="font-bold text-navy-900 text-xl leading-tight">{value}</div>
-              <div className="text-slate-500 text-xs mt-0.5">{label}</div>
+              <div className="font-bold text-navy-900 text-2xl leading-tight">{value}</div>
+              <div className="text-slate-500 text-base mt-0.5">{label}</div>
             </div>
           ))}
         </div>

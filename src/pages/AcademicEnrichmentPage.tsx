@@ -117,7 +117,7 @@ function ScholarshipTable({ cols, rows }: { cols: string[]; rows: string[][] }) 
         <thead>
           <tr className="bg-slate-50 border-b border-slate-100">
             {cols.map(c => (
-              <th key={c} className="text-left px-4 py-2.5 font-bold text-navy-900 text-xs uppercase tracking-wide whitespace-nowrap">{c}</th>
+              <th key={c} className="text-left px-4 py-2.5 font-bold text-navy-900 text-sm uppercase tracking-wide whitespace-nowrap">{c}</th>
             ))}
           </tr>
         </thead>
@@ -145,7 +145,7 @@ function Accordion({ items }: { items: { title: string; content: React.ReactNode
             onClick={() => setOpen(open === i ? null : i)}
             className="w-full flex items-center justify-between px-4 py-3.5 text-left hover:bg-slate-50 transition-colors"
           >
-            <span className="font-semibold text-navy-900 text-sm sm:text-base">{item.title}</span>
+            <span className="font-semibold text-navy-900 text-base sm:text-lg">{item.title}</span>
             <ChevronDown size={16} className={`text-slate-400 transition-transform duration-200 flex-shrink-0 ${open === i ? 'rotate-180' : ''}`} />
           </button>
           <div className={`overflow-hidden transition-all duration-300 ${open === i ? 'max-h-[500px]' : 'max-h-0'}`}>
@@ -182,7 +182,7 @@ export default function AcademicEnrichmentPage() {
 
       {/* ── Breadcrumb ── */}
       <div className="bg-white border-b border-slate-100">
-        <div className="container-wide py-3 flex items-center gap-2 text-sm text-slate-400">
+        <div className="container-wide py-3 flex items-center gap-2 text-base text-slate-400">
           <Link to="/admissions" className="hover:text-navy-900 transition-colors">Admissions</Link>
           <ChevronRight size={14} />
           <span className="text-navy-900 font-semibold">Academic Enrichment Programs</span>
@@ -193,7 +193,7 @@ export default function AcademicEnrichmentPage() {
       <div className="bg-white border-b border-slate-100">
         <AnimateIn variant="fade-up">
         <div className="container-wide py-10 max-w-3xl">
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 text-lg sm:text-xl leading-relaxed">
             At <strong className="text-navy-900">New Horizon College of Engineering</strong>, students are provided with opportunities that extend beyond the regular curriculum. Through <strong>Minor Degree Programs</strong>, <strong>Scholarships</strong>, and <strong>Study Abroad Initiatives</strong>, students can enhance their academic profile, gain global exposure, and receive financial support for their educational journey.
           </p>
         </div>
@@ -227,10 +227,10 @@ export default function AcademicEnrichmentPage() {
             <a key={card.title} href={card.href}
               className={`group bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer`}>
               <span className="text-3xl mb-3 block">{card.emoji}</span>
-              <p className={`text-xs font-bold uppercase tracking-widest mb-1 text-${card.color}-600`}>{card.title}</p>
-              <h3 className="font-display font-bold text-navy-900 text-lg mb-2 leading-snug">{card.sub}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">{card.desc}</p>
-              <span className={`inline-flex items-center gap-1 text-xs font-semibold text-${card.color}-600 mt-4`}>
+              <p className={`text-sm font-bold uppercase tracking-widest mb-1 text-${card.color}-600`}>{card.title}</p>
+              <h3 className="font-display font-bold text-navy-900 text-xl mb-2 leading-snug">{card.sub}</h3>
+              <p className="text-slate-500 text-base leading-relaxed">{card.desc}</p>
+              <span className={`inline-flex items-center gap-1 text-sm font-semibold text-${card.color}-600 mt-4`}>
                 Learn more <ChevronRight size={12} />
               </span>
             </a>
@@ -254,13 +254,13 @@ export default function AcademicEnrichmentPage() {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400" />
 
               <div className="relative z-10">
-                <span className="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/80 mb-4">
+                <span className="inline-flex items-center gap-2 text-sm font-bold px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/80 mb-4">
                   <GraduationCap size={12} /> Minor Degree Programs
                 </span>
                 <h2 className="font-display font-black text-white text-2xl sm:text-3xl lg:text-4xl leading-tight mb-3">
                   Minor Degree in<br className="hidden sm:block" /> Engineering Programs
                 </h2>
-                <p className="text-white/60 text-sm sm:text-base leading-relaxed max-w-2xl mb-8">
+                <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
                   Supplementary programs offered alongside your primary B.E / B.Tech degree — enhance employability with 25 emerging specializations across 4 tracks.
                 </p>
                 {/* Stats */}
@@ -274,7 +274,7 @@ export default function AcademicEnrichmentPage() {
                     <div key={s.label} className="bg-white/8 border border-white/10 backdrop-blur-sm rounded-xl px-4 py-3.5 text-center">
                       <span className="text-xl block mb-1">{s.icon}</span>
                       <p className="font-black text-white text-xl sm:text-2xl leading-none">{s.num}</p>
-                      <p className="text-white/50 text-[10px] sm:text-xs mt-1">{s.label}</p>
+                      <p className="text-white/50 text-xs sm:text-sm mt-1">{s.label}</p>
                     </div>
                   ))}
                 </div>
@@ -288,7 +288,7 @@ export default function AcademicEnrichmentPage() {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-1 h-5 bg-blue-500 rounded-full" />
-                  <p className="text-sm font-bold text-navy-900">Program Objectives</p>
+                  <p className="text-base font-bold text-navy-900">Program Objectives</p>
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {[
@@ -300,7 +300,7 @@ export default function AcademicEnrichmentPage() {
                   ].map(obj => (
                     <div key={obj.text} className="flex items-start gap-3 bg-blue-50 border border-blue-100 rounded-xl px-4 py-3">
                       <span className="text-lg flex-shrink-0">{obj.icon}</span>
-                      <p className="text-slate-700 text-xs sm:text-sm font-medium leading-snug">{obj.text}</p>
+                      <p className="text-slate-700 text-sm sm:text-base font-medium leading-snug">{obj.text}</p>
                     </div>
                   ))}
                 </div>
@@ -310,7 +310,7 @@ export default function AcademicEnrichmentPage() {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-1 h-5 bg-blue-500 rounded-full" />
-                  <p className="text-sm font-bold text-navy-900">Explore by Track</p>
+                  <p className="text-base font-bold text-navy-900">Explore by Track</p>
                 </div>
                 {/* Tab buttons */}
                 <div className="flex flex-wrap gap-2 mb-5">
@@ -318,14 +318,14 @@ export default function AcademicEnrichmentPage() {
                     const active = activeTrack === t.id;
                     return (
                       <button key={t.id} onClick={() => setActiveTrack(t.id)}
-                        className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
+                        className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm sm:text-base font-semibold transition-all border ${
                           active
                             ? 'bg-navy-900 text-white border-navy-900 shadow-sm'
                             : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                         }`}>
                         <t.Icon size={14} />
                         {t.label}
-                        <span className={`text-[10px] font-black rounded-full px-1.5 py-0.5 ${active ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                        <span className={`text-xs font-black rounded-full px-1.5 py-0.5 ${active ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'}`}>
                           {t.programs.length}
                         </span>
                       </button>
@@ -337,14 +337,14 @@ export default function AcademicEnrichmentPage() {
                 <div className={`rounded-2xl border-2 ${currentTrack.accent} overflow-hidden`}>
                   <div className={`px-5 py-3 flex items-center gap-3 ${currentTrack.badge} border-b border-opacity-20`}>
                     <currentTrack.Icon size={16} />
-                    <h3 className="font-bold text-sm">{currentTrack.label}</h3>
-                    <span className="ml-auto font-black text-xs">{currentTrack.programs.length} programs</span>
+                    <h3 className="font-bold text-base">{currentTrack.label}</h3>
+                    <span className="ml-auto font-black text-sm">{currentTrack.programs.length} programs</span>
                   </div>
                   <div className="bg-white p-5">
                     <div className="flex flex-wrap gap-2">
                       {currentTrack.programs.map((p, i) => (
-                        <span key={p} className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-xs sm:text-sm font-medium px-3 py-2 rounded-full transition-colors">
-                          <span className="w-4 h-4 rounded-full bg-navy-900 text-white text-[9px] font-black flex items-center justify-center flex-shrink-0">{i + 1}</span>
+                        <span key={p} className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 hover:border-slate-300 text-slate-700 text-sm sm:text-base font-medium px-3 py-2 rounded-full transition-colors">
+                          <span className="w-4 h-4 rounded-full bg-navy-900 text-white text-xs font-black flex items-center justify-center flex-shrink-0">{i + 1}</span>
                           {p}
                         </span>
                       ))}
@@ -359,8 +359,8 @@ export default function AcademicEnrichmentPage() {
                   <BookOpen size={14} className="text-white" />
                 </div>
                 <div>
-                  <p className="font-bold text-navy-900 text-sm mb-0.5">Eligibility</p>
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  <p className="font-bold text-navy-900 text-base mb-0.5">Eligibility</p>
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                     Open to all B.E / B.Tech students across all branches. Some programs restrict students from closely related major disciplines. Contact the academic office for branch-specific eligibility.
                   </p>
                 </div>
@@ -383,13 +383,13 @@ export default function AcademicEnrichmentPage() {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400" />
 
               <div className="relative z-10">
-                <span className="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/80 mb-4">
+                <span className="inline-flex items-center gap-2 text-sm font-bold px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/80 mb-4">
                   <DollarSign size={12} /> Scholarships & Financial Support
                 </span>
                 <h2 className="font-display font-black text-white text-2xl sm:text-3xl lg:text-4xl leading-tight mb-3">
                   Scholarships &<br className="hidden sm:block" /> Financial Support
                 </h2>
-                <p className="text-white/60 text-sm sm:text-base leading-relaxed max-w-2xl mb-8">
+                <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
                   NHCE offers a wide range of scholarships — merit-based, rank-based, PG and sports — ensuring financial constraints never come in the way of quality education.
                 </p>
                 {/* Stats */}
@@ -403,7 +403,7 @@ export default function AcademicEnrichmentPage() {
                     <div key={s.label} className="bg-white/8 border border-white/10 backdrop-blur-sm rounded-xl px-4 py-3.5 text-center">
                       <span className="text-xl block mb-1">{s.icon}</span>
                       <p className="font-black text-white text-xl sm:text-2xl leading-none">{s.num}</p>
-                      <p className="text-white/50 text-[10px] sm:text-xs mt-1">{s.label}</p>
+                      <p className="text-white/50 text-xs sm:text-sm mt-1">{s.label}</p>
                     </div>
                   ))}
                 </div>
@@ -417,13 +417,13 @@ export default function AcademicEnrichmentPage() {
               <div>
                 <div className="flex items-center gap-2 mb-5">
                   <span className="w-1 h-5 bg-violet-500 rounded-full" />
-                  <p className="text-sm font-bold text-navy-900">Scholarship Categories</p>
+                  <p className="text-base font-bold text-navy-900">Scholarship Categories</p>
                 </div>
                 <Accordion items={SCHOLARSHIP_SECTIONS.map(s => ({
                   title: `${s.emoji}  ${s.title}`,
                   content: (
                     <div>
-                      <p className="text-slate-500 text-sm mb-3">{s.desc}</p>
+                      <p className="text-slate-500 text-base mb-3">{s.desc}</p>
                       <ScholarshipTable cols={s.table.cols} rows={s.table.rows} />
                     </div>
                   ),
@@ -434,7 +434,7 @@ export default function AcademicEnrichmentPage() {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-1 h-5 bg-violet-500 rounded-full" />
-                  <p className="text-sm font-bold text-navy-900">Key Highlights</p>
+                  <p className="text-base font-bold text-navy-900">Key Highlights</p>
                 </div>
                 <div className="grid sm:grid-cols-3 gap-3">
                   {[
@@ -444,8 +444,8 @@ export default function AcademicEnrichmentPage() {
                   ].map(h => (
                     <div key={h.title} className="bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 rounded-2xl p-4">
                       <span className="text-2xl mb-2 block">{h.icon}</span>
-                      <p className="font-bold text-navy-900 text-sm mb-1">{h.title}</p>
-                      <p className="text-slate-600 text-xs leading-relaxed">{h.desc}</p>
+                      <p className="font-bold text-navy-900 text-base mb-1">{h.title}</p>
+                      <p className="text-slate-600 text-sm leading-relaxed">{h.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -457,8 +457,8 @@ export default function AcademicEnrichmentPage() {
                   <Award size={14} className="text-white" />
                 </div>
                 <div>
-                  <p className="font-bold text-navy-900 text-sm mb-0.5">Post-Metric Scholarships</p>
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  <p className="font-bold text-navy-900 text-base mb-0.5">Post-Metric Scholarships</p>
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                     Available through the State Post Matric Scholarship Portal for eligible candidates. A 50% freeship is also offered for top performers in B.E. AI & ML, Civil, CSE, MCA, and MBA programs. Contact the admissions office for details.
                   </p>
                 </div>
@@ -483,7 +483,7 @@ export default function AcademicEnrichmentPage() {
 
               <div className="relative z-10">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/80">
+                  <span className="inline-flex items-center gap-2 text-sm font-bold px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/80">
                     <Globe size={12} /> Study Abroad Program
                   </span>
                   <span className="text-lg">🇫🇷</span>
@@ -491,7 +491,7 @@ export default function AcademicEnrichmentPage() {
                 <h2 className="font-display font-black text-white text-2xl sm:text-3xl lg:text-4xl leading-tight mb-3">
                   International Study<br className="hidden sm:block" /> Abroad Program
                 </h2>
-                <p className="text-white/60 text-sm sm:text-base leading-relaxed max-w-2xl mb-8">
+                <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-2xl mb-8">
                   A semester-long student exchange in collaboration with six leading French engineering institutions, backed by a tripartite MoU with the French Ministry of National Education and Schneider Electric.
                 </p>
 
@@ -506,7 +506,7 @@ export default function AcademicEnrichmentPage() {
                     <div key={s.label} className="bg-white/8 border border-white/10 backdrop-blur-sm rounded-xl px-4 py-3.5 text-center">
                       <span className="text-xl block mb-1">{s.icon}</span>
                       <p className="font-black text-white text-xl sm:text-2xl leading-none">{s.num}</p>
-                      <p className="text-white/50 text-[10px] sm:text-xs mt-1">{s.label}</p>
+                      <p className="text-white/50 text-xs sm:text-sm mt-1">{s.label}</p>
                     </div>
                   ))}
                 </div>
@@ -520,24 +520,24 @@ export default function AcademicEnrichmentPage() {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-1 h-5 bg-violet-500 rounded-full" />
-                  <p className="text-sm font-bold text-navy-900">Partner Universities in France</p>
+                  <p className="text-base font-bold text-navy-900">Partner Universities in France</p>
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {PARTNER_UNIVERSITIES.map((u, i) => (
                     <div key={u.name}
                       className="group relative bg-gradient-to-br from-slate-50 to-white border border-slate-100 rounded-2xl px-4 py-4 hover:border-violet-300 hover:shadow-md transition-all overflow-hidden">
                       {/* Number badge */}
-                      <span className="absolute top-3 right-3 text-[10px] font-black text-slate-300">#{i + 1}</span>
+                      <span className="absolute top-3 right-3 text-xs font-black text-slate-300">#{i + 1}</span>
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100 border border-violet-100 flex items-center justify-center flex-shrink-0 group-hover:from-violet-200 group-hover:to-indigo-200 transition-colors">
                           <span className="text-base">🇫🇷</span>
                         </div>
                         <div className="min-w-0">
-                          <p className="font-bold text-navy-900 text-sm leading-snug">{u.name}</p>
-                          <p className="text-slate-400 text-xs mt-0.5 leading-snug">{u.type}</p>
+                          <p className="font-bold text-navy-900 text-base leading-snug">{u.name}</p>
+                          <p className="text-slate-400 text-sm mt-0.5 leading-snug">{u.type}</p>
                           <div className="flex items-center gap-1 mt-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-violet-400" />
-                            <p className="text-violet-600 text-xs font-semibold">{u.city}</p>
+                            <p className="text-violet-600 text-sm font-semibold">{u.city}</p>
                           </div>
                         </div>
                       </div>
@@ -555,8 +555,8 @@ export default function AcademicEnrichmentPage() {
                 ].map(h => (
                   <div key={h.title} className="bg-indigo-50 border border-indigo-100 rounded-xl p-4">
                     <span className="text-2xl block mb-2">{h.icon}</span>
-                    <p className="font-bold text-navy-900 text-sm mb-1">{h.title}</p>
-                    <p className="text-slate-500 text-xs leading-relaxed">{h.desc}</p>
+                    <p className="font-bold text-navy-900 text-base mb-1">{h.title}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{h.desc}</p>
                   </div>
                 ))}
               </div>
@@ -565,12 +565,12 @@ export default function AcademicEnrichmentPage() {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-1 h-5 bg-violet-500 rounded-full" />
-                  <p className="text-sm font-bold text-navy-900">Student Participation History</p>
+                  <p className="text-base font-bold text-navy-900">Student Participation History</p>
                 </div>
                 <div className="space-y-3">
                   {PARTICIPATION.map((p) => (
                     <div key={p.year} className="flex items-center gap-4 bg-slate-50 rounded-xl px-4 py-3.5 border border-slate-100">
-                      <span className="font-black text-navy-900 text-sm w-16 flex-shrink-0">{p.year}</span>
+                      <span className="font-black text-navy-900 text-base w-16 flex-shrink-0">{p.year}</span>
                       <div className="flex-1 min-w-0">
                         <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
                           <div
@@ -580,10 +580,10 @@ export default function AcademicEnrichmentPage() {
                         </div>
                       </div>
                       <div className="flex items-center gap-3 flex-shrink-0">
-                        <span className="inline-flex items-center gap-1 bg-violet-100 text-violet-800 text-xs font-black px-2.5 py-1 rounded-full">
+                        <span className="inline-flex items-center gap-1 bg-violet-100 text-violet-800 text-sm font-black px-2.5 py-1 rounded-full">
                           <Users size={10} /> {p.count}
                         </span>
-                        <span className="text-slate-400 text-xs hidden sm:block max-w-[180px] truncate">{p.detail}</span>
+                        <span className="text-slate-400 text-sm hidden sm:block max-w-[180px] truncate">{p.detail}</span>
                       </div>
                     </div>
                   ))}
@@ -594,11 +594,11 @@ export default function AcademicEnrichmentPage() {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="w-1 h-5 bg-violet-500 rounded-full" />
-                  <p className="text-sm font-bold text-navy-900">Eligible Branches</p>
+                  <p className="text-base font-bold text-navy-900">Eligible Branches</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {ELIGIBLE_BRANCHES.map(b => (
-                    <span key={b} className="inline-flex items-center gap-1.5 bg-gradient-to-r from-violet-50 to-indigo-50 border border-violet-200 text-violet-800 text-xs sm:text-sm font-semibold px-4 py-2 rounded-full hover:bg-violet-100 transition-colors">
+                    <span key={b} className="inline-flex items-center gap-1.5 bg-gradient-to-r from-violet-50 to-indigo-50 border border-violet-200 text-violet-800 text-sm sm:text-base font-semibold px-4 py-2 rounded-full hover:bg-violet-100 transition-colors">
                       <span className="w-1.5 h-1.5 rounded-full bg-violet-500 flex-shrink-0" />
                       {b}
                     </span>
@@ -613,18 +613,18 @@ export default function AcademicEnrichmentPage() {
                   {/* Left: content */}
                   <div className="bg-white px-6 py-6 flex flex-col gap-4">
                     <div className="flex items-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-700 text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">
+                      <span className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-700 text-xs font-black uppercase tracking-widest px-2.5 py-1 rounded-full">
                         <Zap size={10} /> Centre of Excellence
                       </span>
-                      <span className="text-slate-300 text-sm">·</span>
-                      <span className="text-slate-400 text-xs">Electricity · Automation · Energy</span>
+                      <span className="text-slate-300 text-base">·</span>
+                      <span className="text-slate-400 text-sm">Electricity · Automation · Energy</span>
                     </div>
 
                     <div>
                       <h4 className="font-black text-navy-900 text-lg sm:text-xl leading-snug mb-2">
                         Indian-French Centre of Excellence
                       </h4>
-                      <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                      <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
                         A tripartite initiative delivering comprehensive technical training and curriculum development — enabling deep knowledge transfer between India and France in cutting-edge engineering.
                       </p>
                     </div>
@@ -638,7 +638,7 @@ export default function AcademicEnrichmentPage() {
                       ].map(tag => (
                         <div key={tag.label} className="flex items-center gap-2 bg-slate-50 border border-slate-100 rounded-lg px-3 py-2">
                           <span className="text-base flex-shrink-0">{tag.icon}</span>
-                          <span className="text-navy-800 text-xs font-semibold leading-tight">{tag.label}</span>
+                          <span className="text-navy-800 text-sm font-semibold leading-tight">{tag.label}</span>
                         </div>
                       ))}
                     </div>
@@ -647,14 +647,14 @@ export default function AcademicEnrichmentPage() {
                   {/* Right: partner logos panel */}
                   <div className="bg-slate-50 border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-row lg:flex-col items-center justify-center gap-0 divide-x lg:divide-x-0 lg:divide-y divide-slate-200 min-w-[220px]">
                     <div className="flex-1 lg:flex-none flex flex-col items-center justify-center gap-2 px-6 py-5 w-full">
-                      <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 text-center">Industry Partner</p>
+                      <p className="text-xs font-black uppercase tracking-widest text-slate-400 text-center">Industry Partner</p>
                       <img src="/Schneider_Electric-logo.png" alt="Schneider Electric" className="h-14 w-auto object-contain" />
                     </div>
                     <div className="flex-1 lg:flex-none flex flex-col items-center justify-center gap-2 px-6 py-5 w-full">
-                      <p className="text-[9px] font-black uppercase tracking-widest text-slate-400 text-center">Government Partner</p>
+                      <p className="text-xs font-black uppercase tracking-widest text-slate-400 text-center">Government Partner</p>
                       <div className="flex items-center gap-3">
                         <img src="/french_ministry.png" alt="French Ministry" className="h-24 w-auto object-contain flex-shrink-0" />
-                        <p className="text-[14px] font-bold text-slate-700 leading-snug max-w-[90px]">French Ministry of National Education</p>
+                        <p className="text-base font-bold text-slate-700 leading-snug max-w-[90px]">French Ministry of National Education</p>
                       </div>
                     </div>
                   </div>
@@ -678,7 +678,7 @@ export default function AcademicEnrichmentPage() {
       <div className="container-wide pb-16">
         <div className="bg-navy-950 rounded-3xl px-6 sm:px-10 py-10 text-white text-center">
           <h3 className="font-display font-bold text-2xl sm:text-3xl mb-3">Ready to Explore Your Options?</h3>
-          <p className="text-white/60 text-sm sm:text-base max-w-lg mx-auto mb-8 leading-relaxed">
+          <p className="text-white/60 text-base sm:text-lg max-w-lg mx-auto mb-8 leading-relaxed">
             Speak with our admissions counselors to find the right enrichment program, scholarship, or exchange opportunity for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -687,7 +687,7 @@ export default function AcademicEnrichmentPage() {
               Apply Now 2025–26 <ChevronRight size={14} />
             </a>
             <Link to="/admissions"
-              className="inline-flex items-center justify-center gap-2 border border-white/20 text-white/80 hover:text-white hover:border-white/50 text-sm font-semibold px-6 py-2.5 rounded-full transition-all">
+              className="inline-flex items-center justify-center gap-2 border border-white/20 text-white/80 hover:text-white hover:border-white/50 text-base font-semibold px-6 py-2.5 rounded-full transition-all">
               Back to Admissions
             </Link>
           </div>

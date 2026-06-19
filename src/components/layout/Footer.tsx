@@ -38,7 +38,7 @@ export default function Footer() {
       <div className="container-wide py-12 flex flex-col items-center text-center gap-8">
 
         {/* Contact details */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-xs text-white/60">  
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm text-white/60">  
           <div className="flex items-center gap-1.5">
             <Phone size={13} className="text-gold-400 flex-shrink-0" />
             <a href="tel:+919880534935" className="hover:text-white transition-colors">+91-98805 34935</a>
@@ -56,7 +56,7 @@ export default function Footer() {
         {/* Quick links */}
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
           {LINKS.map(l => (
-            <a key={l.label} href={l.href} className="text-sm text-white/60 hover:text-white transition-colors">
+            <a key={l.label} href={l.href} className="text-base text-white/60 hover:text-white transition-colors">
               {l.label}
             </a>
           ))}
@@ -64,7 +64,7 @@ export default function Footer() {
 
         {/* Social icons */}
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold-400 mb-3">Follow Us</p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-gold-400 mb-3">Follow Us</p>
           <div className="flex items-center justify-center gap-2">
             {SOCIALS.map(s => (
               <a
@@ -83,7 +83,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="container-wide py-4 flex flex-col sm:flex-row items-center justify-center gap-3 text-xs text-white/40">
+        <div className="container-wide py-4 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-white/40">
           <p>© 2025 New Horizon College of Engineering. All rights reserved.</p>
           <span className="hidden sm:block">·</span>
           <div className="flex gap-4">

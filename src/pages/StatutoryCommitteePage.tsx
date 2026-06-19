@@ -376,14 +376,14 @@ function CommitteeAccordion({ c, index }: { c: typeof COMMITTEES[0]; index: numb
           {index + 1}
         </span>
         <div className="flex-1 min-w-0">
-          <p className={`font-bold text-sm leading-snug ${open ? 'text-white' : 'text-navy-900'}`}>{c.name}</p>
-          <p className={`text-xs mt-0.5 ${open ? 'text-white/60' : 'text-slate-400'}`}>
+          <p className={`font-bold text-base leading-snug ${open ? 'text-white' : 'text-navy-900'}`}>{c.name}</p>
+          <p className={`text-sm mt-0.5 ${open ? 'text-white/60' : 'text-slate-400'}`}>
             In-charge: {c.incharge} · {c.designation}
           </p>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0">
           {c.minutes && (
-            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${open ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-700'}`}>
+            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${open ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-700'}`}>
               Minutes
             </span>
           )}
@@ -398,14 +398,14 @@ function CommitteeAccordion({ c, index }: { c: typeof COMMITTEES[0]; index: numb
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-100">
                   {['Sl.', 'Role in Committee', 'Name', 'Department'].map(h => (
-                    <th key={h} className="text-left px-4 py-2.5 font-bold text-navy-900 text-xs uppercase tracking-wide whitespace-nowrap">{h}</th>
+                    <th key={h} className="text-left px-4 py-2.5 font-bold text-navy-900 text-sm uppercase tracking-wide whitespace-nowrap">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {c.members.map((m, i) => (
                   <tr key={i} className={`border-b border-slate-50 ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}`}>
-                    <td className="px-4 py-2.5 text-slate-400 text-xs font-medium">{i + 1}</td>
+                    <td className="px-4 py-2.5 text-slate-400 text-sm font-medium">{i + 1}</td>
                     <td className="px-4 py-2.5 text-slate-700 font-semibold whitespace-nowrap">{m.role}</td>
                     <td className="px-4 py-2.5 text-navy-900 font-bold">{m.name}</td>
                     <td className="px-4 py-2.5 text-slate-500">{m.dept}</td>
@@ -418,13 +418,13 @@ function CommitteeAccordion({ c, index }: { c: typeof COMMITTEES[0]; index: numb
             <div className="mt-4 flex items-center gap-3 bg-slate-50 rounded-xl p-3 border border-slate-100">
               <Download size={14} className="text-slate-400 flex-shrink-0" />
               <div className="flex-1 min-w-0">
-                <p className="text-xs font-semibold text-navy-900">Meeting Minutes Available</p>
-                <p className="text-xs text-slate-400">Records from 2020–2026</p>
+                <p className="text-sm font-semibold text-navy-900">Meeting Minutes Available</p>
+                <p className="text-sm text-slate-400">Records from 2020–2026</p>
               </div>
               <a
                 href="https://newhorizoncollegeofengineering.in/statutory-committee/"
                 target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 whitespace-nowrap"
+                className="inline-flex items-center gap-1 text-sm font-bold text-blue-600 hover:text-blue-700 whitespace-nowrap"
               >
                 View PDFs <ExternalLink size={10} />
               </a>
@@ -454,7 +454,7 @@ export default function StatutoryCommitteePage() {
       <div className="relative overflow-hidden min-h-screen flex items-center border-b border-slate-200 bg-white">
         <img src="/campus.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" aria-hidden="true" />
         <div className="relative z-10 container-wide py-12 sm:py-16 w-full">
-          <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
+          <div className="flex items-center gap-2 text-base text-slate-400 mb-4">
             <Link to="/governance" className="hover:text-navy-900 transition-colors">Governance</Link>
             <ChevronRight size={14} />
             <span className="text-navy-900 font-semibold">Statutory Committees</span>
@@ -462,14 +462,14 @@ export default function StatutoryCommitteePage() {
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <AnimateIn variant="fade-right">
             <div>
-              <span className="inline-flex items-center gap-2 text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-100 px-3 py-1.5 rounded-full mb-5">
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 bg-amber-50 border border-amber-100 px-3 py-1.5 rounded-full mb-5">
                 ⚖️ Statutory Committees · NHCE
               </span>
               <h1 className="font-display text-2xl sm:text-4xl font-bold text-navy-950 leading-tight mb-4">
                 30 Institutional<br />
                 <span className="text-amber-600">Statutory Committees</span>
               </h1>
-              <p className="text-slate-500 text-base leading-relaxed mb-6 max-w-md">
+              <p className="text-slate-500 text-lg leading-relaxed mb-6 max-w-md">
                 Constituted as mandated by UGC, AICTE, VTU and the Government of Karnataka to ensure student welfare, institutional integrity and regulatory compliance.
               </p>
               <div className="flex flex-wrap gap-4 text-center">
@@ -481,7 +481,7 @@ export default function StatutoryCommitteePage() {
                 ].map(s => (
                   <div key={s.label} className="bg-amber-50 border border-amber-100 rounded-xl px-5 py-3">
                     <p className="font-black text-amber-700 text-xl leading-none">{s.num}</p>
-                    <p className="text-slate-500 text-xs mt-0.5">{s.label}</p>
+                    <p className="text-slate-500 text-sm mt-0.5">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -490,10 +490,10 @@ export default function StatutoryCommitteePage() {
             <AnimateIn variant="fade-left" delay={120}>
             <div className="hidden lg:block">
               <div className="bg-amber-50 border border-amber-100 rounded-3xl p-6">
-                <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-4">Key Committees</p>
+                <p className="text-sm font-bold text-amber-700 uppercase tracking-wide mb-4">Key Committees</p>
                 <div className="grid grid-cols-2 gap-2">
                   {['Anti-Ragging', 'ICC / CICC', 'IQAC', 'Examination', 'Placement', 'Research & Dev', 'Women\'s Cell', 'SC/ST Welfare', 'Student Grievance', 'Finance Committee'].map(t => (
-                    <div key={t} className="bg-white rounded-lg px-3 py-2 text-xs font-semibold text-slate-700 border border-amber-100 flex items-center gap-2">
+                    <div key={t} className="bg-white rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 border border-amber-100 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" />
                       {t}
                     </div>
@@ -514,14 +514,14 @@ export default function StatutoryCommitteePage() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
           <div>
             <h2 className="font-display font-bold text-navy-950 text-lg sm:text-xl">All Committees</h2>
-            <p className="text-slate-400 text-sm mt-0.5">Click any row to view member details</p>
+            <p className="text-slate-400 text-base mt-0.5">Click any row to view member details</p>
           </div>
           <input
             type="text"
             placeholder="Search committee or in-charge..."
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="w-full sm:w-72 px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-900/20 bg-white"
+            className="w-full sm:w-72 px-4 py-2.5 rounded-xl border border-slate-200 text-base focus:outline-none focus:ring-2 focus:ring-navy-900/20 bg-white"
           />
         </div>
         </AnimateIn>
@@ -533,24 +533,24 @@ export default function StatutoryCommitteePage() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-navy-900">
-                  <th className="text-left px-4 py-3 font-bold text-white text-xs uppercase tracking-wide whitespace-nowrap">Sl.</th>
-                  <th className="text-left px-4 py-3 font-bold text-white text-xs uppercase tracking-wide">Committee Name</th>
-                  <th className="text-left px-4 py-3 font-bold text-white text-xs uppercase tracking-wide whitespace-nowrap">In-Charge</th>
-                  <th className="text-left px-4 py-3 font-bold text-white text-xs uppercase tracking-wide">Designation</th>
-                  <th className="text-center px-4 py-3 font-bold text-white text-xs uppercase tracking-wide whitespace-nowrap">Minutes</th>
+                  <th className="text-left px-4 py-3 font-bold text-white text-sm uppercase tracking-wide whitespace-nowrap">Sl.</th>
+                  <th className="text-left px-4 py-3 font-bold text-white text-sm uppercase tracking-wide">Committee Name</th>
+                  <th className="text-left px-4 py-3 font-bold text-white text-sm uppercase tracking-wide whitespace-nowrap">In-Charge</th>
+                  <th className="text-left px-4 py-3 font-bold text-white text-sm uppercase tracking-wide">Designation</th>
+                  <th className="text-center px-4 py-3 font-bold text-white text-sm uppercase tracking-wide whitespace-nowrap">Minutes</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((c, i) => (
                   <tr key={i} className={`border-b border-slate-50 ${i % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}`}>
-                    <td className="px-4 py-3 text-slate-400 text-xs font-medium">{COMMITTEES.indexOf(c) + 1}</td>
+                    <td className="px-4 py-3 text-slate-400 text-sm font-medium">{COMMITTEES.indexOf(c) + 1}</td>
                     <td className="px-4 py-3 text-navy-900 font-semibold">{c.name}</td>
                     <td className="px-4 py-3 text-slate-700 font-medium whitespace-nowrap">{c.incharge}</td>
                     <td className="px-4 py-3 text-slate-500">{c.designation}</td>
                     <td className="px-4 py-3 text-center">
                       {c.minutes
-                        ? <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">✓ Available</span>
-                        : <span className="text-slate-300 text-xs">—</span>
+                        ? <span className="inline-flex items-center gap-1 text-sm font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">✓ Available</span>
+                        : <span className="text-slate-300 text-sm">—</span>
                       }
                     </td>
                   </tr>
@@ -575,8 +575,8 @@ export default function StatutoryCommitteePage() {
           </div>
           {filtered.length === 0 && (
             <div className="bg-white rounded-2xl border border-slate-100 p-10 text-center">
-              <p className="text-slate-400 text-sm">No committees found matching "{search}"</p>
-              <button onClick={() => setSearch('')} className="mt-3 text-xs font-semibold text-blue-600 hover:underline">Clear search</button>
+              <p className="text-slate-400 text-base">No committees found matching "{search}"</p>
+              <button onClick={() => setSearch('')} className="mt-3 text-sm font-semibold text-blue-600 hover:underline">Clear search</button>
             </div>
           )}
         </div>
@@ -587,13 +587,13 @@ export default function StatutoryCommitteePage() {
         <AnimateIn variant="fade-up" delay={80}>
         <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <p className="font-bold text-amber-900 text-sm">Meeting Minutes &amp; Official Records</p>
-            <p className="text-amber-700 text-xs mt-0.5">Downloadable PDFs for all committees are available on the official NHCE website.</p>
+            <p className="font-bold text-amber-900 text-base">Meeting Minutes &amp; Official Records</p>
+            <p className="text-amber-700 text-sm mt-0.5">Downloadable PDFs for all committees are available on the official NHCE website.</p>
           </div>
           <a
             href="https://newhorizoncollegeofengineering.in/statutory-committee/"
             target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap flex-shrink-0"
+            className="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-base font-bold px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap flex-shrink-0"
           >
             Official Records <ExternalLink size={13} />
           </a>

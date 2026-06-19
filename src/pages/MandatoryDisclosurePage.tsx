@@ -57,8 +57,8 @@ function DocCard({ title, subtitle, icon: Icon, href }: { title: string; subtitl
         <I size={15} className="text-slate-400 group-hover:text-navy-700 transition-colors" />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="font-semibold text-sm text-navy-900 leading-snug group-hover:text-blue-700 transition-colors">{title}</p>
-        {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
+        <p className="font-semibold text-base text-navy-900 leading-snug group-hover:text-blue-700 transition-colors">{title}</p>
+        {subtitle && <p className="text-sm text-slate-400 mt-0.5">{subtitle}</p>}
       </div>
       <Download size={13} className="text-slate-300 group-hover:text-blue-500 flex-shrink-0 transition-colors" />
     </a>
@@ -81,10 +81,10 @@ function Section({
             <h3 className="font-display font-bold text-navy-950 text-base sm:text-lg leading-tight">{title}</h3>
           </div>
           {count && (
-            <span className="text-xs font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full flex-shrink-0 whitespace-nowrap">{count}</span>
+            <span className="text-sm font-bold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full flex-shrink-0 whitespace-nowrap">{count}</span>
           )}
         </div>
-        <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
+        <p className="text-slate-500 text-base leading-relaxed">{desc}</p>
       </div>
       <div className="px-4 sm:px-6 pb-4 sm:pb-6">{children}</div>
     </div>
@@ -103,7 +103,7 @@ export default function MandatoryDisclosurePage() {
       <div className="relative overflow-hidden border-b border-slate-200 bg-white sm:min-h-screen sm:flex sm:items-center">
         <img src="/campus.jpg" alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" aria-hidden="true" />
         <div className="relative z-10 container-wide pt-28 pb-10 sm:py-16 w-full">
-          <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
+          <div className="flex items-center gap-2 text-base text-slate-400 mb-4">
             <Link to="/governance" className="hover:text-navy-900 transition-colors">Governance</Link>
             <ChevronRight size={14} />
             <span className="text-navy-900 font-semibold">Mandatory Disclosure</span>
@@ -111,14 +111,14 @@ export default function MandatoryDisclosurePage() {
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <AnimateIn variant="fade-right">
             <div>
-              <span className="inline-flex items-center gap-2 text-xs font-semibold text-rose-700 bg-rose-50 border border-rose-100 px-3 py-1.5 rounded-full mb-5">
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-rose-700 bg-rose-50 border border-rose-100 px-3 py-1.5 rounded-full mb-5">
                 📋 Mandatory Disclosure · AICTE · NHCE
               </span>
               <h1 className="font-display text-2xl sm:text-4xl font-bold text-navy-950 leading-tight mb-4">
                 Mandatory<br />
                 <span className="text-rose-600">Disclosure</span>
               </h1>
-              <p className="text-slate-500 text-base leading-relaxed mb-6 max-w-md">
+              <p className="text-slate-500 text-lg leading-relaxed mb-6 max-w-md">
                 Complete AICTE-mandated institutional transparency documents — governance structure, financial records, council proceedings, and Board of Studies minutes for all academic departments.
               </p>
               <div className="flex flex-wrap gap-3 mb-5">
@@ -132,7 +132,7 @@ export default function MandatoryDisclosurePage() {
                 <a
                   href={REFERENCE_URL}
                   target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-semibold px-5 py-2.5 rounded-full transition-all"
+                  className="inline-flex items-center gap-2 border border-slate-200 text-slate-700 hover:bg-slate-50 text-base font-semibold px-5 py-2.5 rounded-full transition-all"
                 >
                   Official Website <ExternalLink size={13} />
                 </a>
@@ -146,7 +146,7 @@ export default function MandatoryDisclosurePage() {
                 ].map(s => (
                   <div key={s.label} className="bg-rose-50 border border-rose-100 rounded-xl px-4 py-2.5">
                     <p className="font-black text-rose-700 text-xl leading-none">{s.num}</p>
-                    <p className="text-slate-500 text-xs mt-0.5">{s.label}</p>
+                    <p className="text-slate-500 text-sm mt-0.5">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -165,8 +165,8 @@ export default function MandatoryDisclosurePage() {
                   <div key={item.label} className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 border border-rose-100">
                     <item.icon size={16} className="text-rose-500 flex-shrink-0" />
                     <div>
-                      <p className="text-sm font-bold text-navy-900 leading-none">{item.label}</p>
-                      <p className="text-xs text-slate-400 mt-0.5">{item.sub}</p>
+                      <p className="text-base font-bold text-navy-900 leading-none">{item.label}</p>
+                      <p className="text-sm text-slate-400 mt-0.5">{item.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -206,8 +206,8 @@ export default function MandatoryDisclosurePage() {
                 <FileText size={18} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-bold text-sm leading-snug">Mandatory Disclosure 2024–25</p>
-                <p className="text-white/60 text-xs mt-0.5">AICTE | NHCE | Updated April 2024</p>
+                <p className="font-bold text-base leading-snug">Mandatory Disclosure 2024–25</p>
+                <p className="text-white/60 text-sm mt-0.5">AICTE | NHCE | Updated April 2024</p>
               </div>
               <Download size={16} className="opacity-60 flex-shrink-0" />
             </a>
@@ -264,12 +264,12 @@ export default function MandatoryDisclosurePage() {
                 target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-3 bg-white border border-slate-100 hover:border-amber-200 hover:shadow-sm rounded-xl px-4 py-3.5 transition-all group"
               >
-                <span className="w-11 text-center text-xs font-black text-amber-700 bg-amber-50 border border-amber-100 px-2 py-1.5 rounded-lg flex-shrink-0 group-hover:bg-amber-100 transition-colors">
+                <span className="w-11 text-center text-sm font-black text-amber-700 bg-amber-50 border border-amber-100 px-2 py-1.5 rounded-lg flex-shrink-0 group-hover:bg-amber-100 transition-colors">
                   {d.code}
                 </span>
                 <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-sm text-navy-900 leading-snug group-hover:text-blue-700 transition-colors">{d.dept}</p>
-                  <p className="text-xs text-slate-400 mt-0.5">BOS Meeting Minutes</p>
+                  <p className="font-semibold text-base text-navy-900 leading-snug group-hover:text-blue-700 transition-colors">{d.dept}</p>
+                  <p className="text-sm text-slate-400 mt-0.5">BOS Meeting Minutes</p>
                 </div>
                 <Download size={13} className="text-slate-300 group-hover:text-blue-500 flex-shrink-0 transition-colors" />
               </a>
@@ -283,21 +283,21 @@ export default function MandatoryDisclosurePage() {
         <AnimateIn variant="scale" delay={80}>
         <div className="bg-navy-950 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div>
-            <p className="font-display font-bold text-white text-lg mb-1">Need Official Documents?</p>
-            <p className="text-white/60 text-sm">All documents are available for download on the official NHCE website. For queries, contact the administrative office.</p>
+            <p className="font-display font-bold text-white text-xl mb-1">Need Official Documents?</p>
+            <p className="text-white/60 text-base">All documents are available for download on the official NHCE website. For queries, contact the administrative office.</p>
           </div>
           <div className="flex flex-wrap gap-3 flex-shrink-0">
             <a
               href={MAIN_DISCLOSURE_URL}
               target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-navy-950 text-sm font-bold px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-navy-950 text-base font-bold px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap"
             >
               <Download size={14} /> Download PDF
             </a>
             <a
               href={REFERENCE_URL}
               target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-base font-bold px-5 py-2.5 rounded-xl transition-colors whitespace-nowrap"
             >
               Official Website <ExternalLink size={13} />
             </a>

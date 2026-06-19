@@ -85,7 +85,7 @@ const STEER_MEMBERS = [
 function MemberTable({ cols, rows }: { cols: string[]; rows: string[][] }) {
   return (
     <div className="overflow-x-auto rounded-xl border border-slate-100 -mx-0">
-      <table className="w-full text-xs sm:text-sm min-w-[480px]">
+      <table className="w-full text-sm sm:text-base min-w-[480px]">
         <thead>
           <tr className="bg-slate-50 border-b border-slate-100">
             {cols.map(c => (
@@ -116,11 +116,11 @@ function SectionCard({
   return (
     <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden animate-[fadeIn_0.3s_ease-out]">
       <div className={`border-l-4 ${accent} px-4 sm:px-6 pt-5 pb-3 sm:pt-6 sm:pb-4`}>
-        <span className={`inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full border ${badge} mb-3`}>
+        <span className={`inline-flex items-center gap-2 text-sm font-bold px-3 py-1.5 rounded-full border ${badge} mb-3`}>
           <Icon size={12} /> {title}
         </span>
         <h2 className="font-display font-bold text-navy-950 text-lg sm:text-2xl mb-2">{title}</h2>
-        <p className="text-slate-500 text-sm leading-relaxed max-w-2xl">{desc}</p>
+        <p className="text-slate-500 text-base leading-relaxed max-w-2xl">{desc}</p>
       </div>
       <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-2">{children}</div>
     </div>
@@ -164,13 +164,13 @@ export default function GovernancePage() {
               <button
                 key={s.id}
                 onClick={() => selectTab(s.id)}
-                className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold transition-colors flex-shrink-0 ${
+                className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-semibold transition-colors flex-shrink-0 ${
                   activeTab === s.id
                     ? 'bg-navy-900 text-white'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
-                <span className="text-[10px] font-black opacity-60">{i + 1}</span>
+                <span className="text-xs font-black opacity-60">{i + 1}</span>
                 {s.label}
               </button>
             ))}
@@ -203,7 +203,7 @@ export default function GovernancePage() {
           <AnimateIn variant="fade-right" className="min-w-0">
           <aside className="hidden lg:block sticky top-24 self-start">
             <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-4">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 px-2">Sections</p>
+              <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 px-2">Sections</p>
               <nav className="space-y-0.5">
                 {NAV.map((s, i) => {
                   const Icon = s.icon;
@@ -212,13 +212,13 @@ export default function GovernancePage() {
                     <button
                       key={s.id}
                       onClick={() => setActiveTab(s.id)}
-                      className={`w-full flex items-center gap-3 px-3 py-4 rounded-xl text-sm font-medium transition-all text-left ${
+                      className={`w-full flex items-center gap-3 px-3 py-4 rounded-xl text-base font-medium transition-all text-left ${
                         active
                           ? 'bg-navy-900 text-white shadow-sm'
                           : 'text-slate-600 hover:bg-slate-50 hover:text-navy-900'
                       }`}
                     >
-                      <span className={`w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 ${
+                      <span className={`w-5 h-5 rounded-full text-sm font-bold flex items-center justify-center flex-shrink-0 ${
                         active ? 'bg-white/20 text-white' : 'bg-navy-900 text-white'
                       }`}>
                         {i + 1}
@@ -286,16 +286,16 @@ export default function GovernancePage() {
                     <div key={cat.roman} className="rounded-xl border border-slate-100 overflow-hidden">
                       {/* Category header */}
                       <div className="flex items-center gap-3 px-4 py-3 bg-violet-50 border-b border-violet-100">
-                        <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-violet-600 text-white text-xs font-black flex items-center justify-center">
+                        <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-violet-600 text-white text-sm font-black flex items-center justify-center">
                           {cat.roman}
                         </span>
-                        <p className="font-bold text-navy-900 text-sm leading-snug">{cat.category}</p>
+                        <p className="font-bold text-navy-900 text-base leading-snug">{cat.category}</p>
                       </div>
                       {/* Members */}
                       <div className="bg-white px-4 py-3 flex flex-col sm:flex-row sm:flex-wrap gap-2">
                         {cat.members.map((member, mi) => (
                           <div key={mi} className="flex items-center gap-2 text-sm text-slate-700 sm:min-w-[260px]">
-                            <span className="w-5 h-5 rounded-full bg-violet-50 border border-violet-200 text-violet-600 text-[10px] font-bold flex items-center justify-center flex-shrink-0">
+                            <span className="w-5 h-5 rounded-full bg-violet-50 border border-violet-200 text-violet-600 text-xs font-bold flex items-center justify-center flex-shrink-0">
                               {mi + 1}
                             </span>
                             <span>{member}</span>
@@ -323,29 +323,29 @@ export default function GovernancePage() {
                       <div key={s.label} className="bg-white rounded-xl p-3 sm:p-4 text-center border border-amber-100">
                         <span className="text-xl sm:text-2xl">{s.icon}</span>
                         <p className="font-black text-navy-900 text-lg sm:text-2xl mt-1">{s.num}</p>
-                        <p className="text-slate-500 text-[10px] sm:text-xs">{s.label}</p>
+                        <p className="text-slate-500 text-xs sm:text-sm">{s.label}</p>
                       </div>
                     ))}
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-5">
+                  <p className="text-slate-600 text-base leading-relaxed mb-5">
                     NHCE has constituted <strong>30 statutory committees</strong> as mandated by regulatory bodies including UGC, AICTE, VTU and the Government of Karnataka. Each committee has a defined composition, clear mandate and documented meeting minutes available for transparency.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {['Anti-Ragging Committee', 'Internal Complaints Committee', 'IQAC', 'Grievance Redressal', "Women's Cell", 'Placement Committee', 'Research & Development', 'SC/ST Cell', 'NSS Committee', 'NCC Committee'].map(tag => (
-                      <span key={tag} className="text-xs font-semibold bg-white border border-amber-200 text-amber-800 px-3 py-1 rounded-full">{tag}</span>
+                      <span key={tag} className="text-sm font-semibold bg-white border border-amber-200 text-amber-800 px-3 py-1 rounded-full">{tag}</span>
                     ))}
-                    <span className="text-xs font-semibold bg-amber-200 text-amber-900 px-3 py-1 rounded-full">+20 more</span>
+                    <span className="text-sm font-semibold bg-amber-200 text-amber-900 px-3 py-1 rounded-full">+20 more</span>
                   </div>
                   <Link
                     to="/statutory-committee"
-                    className="flex sm:inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-sm font-bold px-6 py-3 rounded-xl transition-colors"
+                    className="flex sm:inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-base font-bold px-6 py-3 rounded-xl transition-colors"
                   >
                     Explore All 30 Committees <ArrowRight size={14} />
                   </Link>
                 </div>
                 <div className="flex items-start gap-3 bg-slate-50 rounded-xl p-4 border border-slate-100">
                   <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 flex-shrink-0" />
-                  <p className="text-xs text-slate-500 leading-relaxed">
+                  <p className="text-sm text-slate-500 leading-relaxed">
                     All committees are reconstituted annually with updated member lists and meeting schedules. Minutes of meetings are recorded and available as downloadable PDFs on the full committees page.
                   </p>
                 </div>
@@ -364,20 +364,20 @@ export default function GovernancePage() {
                   </div>
                   {/* Info */}
                   <div className="flex-1 min-w-0">
-                    <p className="font-bold text-navy-900 text-base mb-1">Institutional Strategic Plan 2025–2028</p>
-                    <p className="text-slate-500 text-sm leading-relaxed mb-4">
+                    <p className="font-bold text-navy-900 text-lg mb-1">Institutional Strategic Plan 2025–2028</p>
+                    <p className="text-slate-500 text-base leading-relaxed mb-4">
                       The strategic plan sets a roadmap for NHCE's growth covering academic quality, research output, industry collaboration, infrastructure expansion and student placement targets for the next three years.
                     </p>
                     <div className="flex flex-wrap gap-2 mb-5">
                       {['Academic Excellence', 'Research & Innovation', 'Industry Collaboration', 'Infrastructure', 'Student Outcomes', 'Global Connect'].map(tag => (
-                        <span key={tag} className="text-xs font-semibold bg-white border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full">{tag}</span>
+                        <span key={tag} className="text-sm font-semibold bg-white border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full">{tag}</span>
                       ))}
                     </div>
                     <a
                       href="https://newhorizoncollegeofengineering.in/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-sm font-bold px-6 py-3 rounded-xl transition-colors"
+                      className="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-base font-bold px-6 py-3 rounded-xl transition-colors"
                     >
                       <Download size={14} /> Download Strategic Plan PDF
                     </a>
@@ -385,7 +385,7 @@ export default function GovernancePage() {
                 </div>
                 <div className="flex items-start gap-3 bg-slate-50 rounded-xl p-4 border border-slate-100 mt-4">
                   <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 flex-shrink-0" />
-                  <p className="text-xs text-slate-500 leading-relaxed">
+                  <p className="text-sm text-slate-500 leading-relaxed">
                     The Institutional Strategic Plan is reviewed annually by the Steering Committee and updated in alignment with NAAC, NBA and AICTE quality benchmarks.
                   </p>
                 </div>
@@ -407,21 +407,21 @@ export default function GovernancePage() {
                       <div key={s.label} className="bg-white rounded-xl p-3 sm:p-4 text-center border border-rose-100">
                         <span className="text-xl sm:text-2xl">{s.icon}</span>
                         <p className="font-black text-navy-900 text-lg sm:text-2xl mt-1">{s.num}</p>
-                        <p className="text-slate-500 text-[10px] sm:text-xs">{s.label}</p>
+                        <p className="text-slate-500 text-xs sm:text-sm">{s.label}</p>
                       </div>
                     ))}
                   </div>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-5">
+                  <p className="text-slate-600 text-base leading-relaxed mb-5">
                     The mandatory disclosure includes governance body structures and norms, annual financial statements from <strong>2016–17 to 2024–25</strong>, proceedings of <strong>23 Governing Body</strong> and <strong>27 Academic Council</strong> meetings, plus Board of Studies minutes for <strong>11 academic departments</strong>.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {['Governing Body Norms', 'Academic Council Norms', 'Finance Committee', 'Financial Statements', 'BOS Minutes', 'Meeting Proceedings', 'Service Rules', 'NAAC/NBA Status'].map(tag => (
-                      <span key={tag} className="text-xs font-semibold bg-white border border-rose-200 text-rose-800 px-3 py-1 rounded-full">{tag}</span>
+                      <span key={tag} className="text-sm font-semibold bg-white border border-rose-200 text-rose-800 px-3 py-1 rounded-full">{tag}</span>
                     ))}
                   </div>
                   <Link
                     to="/mandatory-disclosure"
-                    className="flex sm:inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-sm font-bold px-6 py-3 rounded-xl transition-colors"
+                    className="flex sm:inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-base font-bold px-6 py-3 rounded-xl transition-colors"
                   >
                     View Full Disclosure <ArrowRight size={14} />
                   </Link>
@@ -429,7 +429,7 @@ export default function GovernancePage() {
                 <a
                   href="https://newhorizoncollegeofengineering.in/wp-content/uploads/2024/06/Mandatory-Disclosure-2024-25.pdf"
                   target="_blank" rel="noopener noreferrer"
-                  className="flex sm:inline-flex items-center justify-center gap-2 border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all"
+                  className="flex sm:inline-flex items-center justify-center gap-2 border border-slate-200 text-slate-700 hover:bg-slate-50 text-base font-semibold px-5 py-2.5 rounded-xl transition-all"
                 >
                   <Download size={14} /> Quick Download: Disclosure PDF 2024–25
                 </a>

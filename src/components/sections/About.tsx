@@ -33,7 +33,7 @@ function CountUp({ value, suffix, delay }: { value: number; suffix: string; dela
   }, [visible, value, delay]);
 
   return (
-    <div ref={ref} className="font-display font-black text-navy-950 leading-none text-3xl">
+    <div ref={ref} className="font-display font-black text-navy-950 leading-none text-xl sm:text-2xl md:text-3xl">
       {count.toLocaleString()}<span className="text-amber-500">{suffix}</span>
     </div>
   );
@@ -56,21 +56,21 @@ export default function About() {
                 Engineering Excellence
               </span>
             </h2>
-            <p className="text-slate-600 leading-relaxed mb-4">
+            <p className="text-slate-600 text-lg leading-relaxed mb-4">
               New Horizon College of Engineering (NHCE) is a premier technical institution affiliated to
               Visvesvaraya Technological University (VTU), approved by AICTE, and accredited with the
               prestigious NAAC A+ grade — the highest achievable rating.
             </p>
-            <p className="text-slate-600 leading-relaxed mb-7">
+            <p className="text-slate-600 text-lg leading-relaxed mb-7">
               Located in the heart of Bengaluru's tech hub, NHCE has consistently produced
               industry-ready engineers who lead at top companies globally. With state-of-the-art
               infrastructure, research centers, and an industry-aligned curriculum, we prepare students
               not just for jobs — but for careers that matter.
             </p>
 
-            <div className="flex gap-3">
-              <button className="btn-primary">Download Brochure</button>
-              <button className="border border-slate-200 bg-white text-slate-700 hover:border-navy-400 hover:text-navy-700 text-sm font-medium px-6 py-3.5 rounded-full transition-all duration-300">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button className="btn-primary justify-center whitespace-nowrap">Download Brochure</button>
+              <button className="border border-slate-200 bg-white text-slate-700 hover:border-navy-400 hover:text-navy-700 text-base font-medium px-6 py-3.5 rounded-full transition-all duration-300 whitespace-nowrap justify-center flex items-center">
                 Virtual Tour →
               </button>
             </div>
@@ -92,15 +92,15 @@ export default function About() {
             <div className="absolute bottom-4 left-4 right-4 grid grid-cols-2 gap-2.5">
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-white">
                 <div className="text-xl mb-2">🎯</div>
-                <h4 className="font-display font-bold text-sm mb-1.5">Our Mission</h4>
-                <p className="text-white/70 text-xs leading-relaxed">
+                <h4 className="font-display font-bold text-base mb-1.5">Our Mission</h4>
+                <p className="text-white/70 text-sm leading-relaxed">
                   To provide quality technical education and foster innovation, research, and ethical leadership.
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-white">
                 <div className="text-xl mb-2">🔭</div>
-                <h4 className="font-display font-bold text-sm mb-1.5">Our Vision</h4>
-                <p className="text-white/70 text-xs leading-relaxed">
+                <h4 className="font-display font-bold text-base mb-1.5">Our Vision</h4>
+                <p className="text-white/70 text-sm leading-relaxed">
                   To be a world-class institution recognized globally for academic excellence and industry partnership.
                 </p>
               </div>
@@ -113,10 +113,10 @@ export default function About() {
         <AnimateIn variant="fade-up" delay={150}>
         <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-slate-200 border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm">
           {STATS.map((stat, i) => (
-            <div key={stat.label} className="flex flex-col items-center text-center px-4 py-6 hover:bg-slate-50 transition-colors duration-200">
-              <span className="text-2xl mb-2">{stat.icon}</span>
+            <div key={stat.label} className="flex flex-col items-center text-center px-2 py-4 sm:px-4 sm:py-6 hover:bg-slate-50 transition-colors duration-200">
+              <span className="text-lg sm:text-2xl mb-1.5">{stat.icon}</span>
               <CountUp value={stat.value} suffix={stat.suffix} delay={i * 100} />
-              <p className="text-slate-500 text-[10px] font-semibold uppercase tracking-widest mt-1.5 leading-tight">
+              <p className="text-slate-500 text-[9px] sm:text-[10px] md:text-xs font-semibold uppercase tracking-wider md:tracking-widest mt-1.5 leading-tight">
                 {stat.label}
               </p>
             </div>

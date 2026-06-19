@@ -64,7 +64,7 @@ function ExploreButton() {
               <button
                 key={item.label}
                 onClick={() => handleClick(item)}
-                className="flex items-center gap-3 bg-white text-navy-800 font-semibold text-sm px-5 py-3 rounded-full shadow-lg border border-slate-100 animate-[fadeSlideUp_0.2s_ease_both]"
+                className="flex items-center gap-3 bg-white text-navy-800 font-semibold text-lg px-5 py-3 rounded-full shadow-lg border border-slate-100 animate-[fadeSlideUp_0.2s_ease_both]"
               >
                 {item.label}
                 <item.icon size={15} className="text-blue-600" />
@@ -84,7 +84,7 @@ function ExploreButton() {
       ) : (
         <button
           onClick={() => setOpen(true)}
-          className="flex items-center gap-2 bg-navy-700 text-white font-bold text-sm px-5 py-3 rounded-full shadow-xl"
+          className="flex items-center gap-2 bg-navy-700 text-white font-bold text-lg px-5 py-3 rounded-full shadow-xl"
         >
           <Search size={16} />
           Explore

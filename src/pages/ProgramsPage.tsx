@@ -102,7 +102,7 @@ function InfoTabs({ type }: { type: 'ug' | 'pg' }) {
   return (
     <div className={`${type === 'ug' ? 'bg-slate-50' : 'bg-blue-50'} border-b border-slate-200`}>
       <div className="container-wide pt-5 pb-20">
-        <h3 className="font-bold text-navy-950 text-base mb-5 flex items-center gap-2">
+        <h3 className="font-bold text-navy-950 text-lg mb-5 flex items-center gap-2">
           <span className="w-1 h-5 bg-blue-600 rounded-full" />
           Eligibility Criteria
         </h3>
@@ -110,16 +110,16 @@ function InfoTabs({ type }: { type: 'ug' | 'pg' }) {
         {type === 'ug' && (
           <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className="text-slate-600 text-base leading-relaxed">
                 The student should have passed 2nd PUC / 12th standard or equivalent examination with English as one of the languages and should have scored an aggregate of <strong>45% in Physics and Mathematics</strong> as compulsory subjects along with Chemistry / Bio-Technology / Computer Science / Electronics / Biology.
               </p>
-              <p className="text-slate-600 text-sm leading-relaxed mt-3">
+              <p className="text-slate-600 text-base leading-relaxed mt-3">
                 For Karnataka SC, ST and other Backward Classes (Category I, 2A, 2B, 3A and 3B), the minimum marks will be <strong>40% aggregate</strong> in the optional subjects.
               </p>
             </div>
             <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4">
-              <p className="text-xs font-semibold text-blue-700 uppercase tracking-wide mb-1">Duration</p>
-              <p className="text-slate-700 text-sm">
+              <p className="text-sm font-semibold text-blue-700 uppercase tracking-wide mb-1">Duration</p>
+              <p className="text-slate-700 text-base">
                 <strong>4 academic years</strong> · 8 semesters · Each semester 16 weeks
               </p>
             </div>
@@ -135,10 +135,10 @@ function InfoTabs({ type }: { type: 'ug' | 'pg' }) {
             ].map(p => (
               <div key={p.prog} className="bg-slate-50 border border-slate-100 rounded-xl p-4 flex items-start justify-between gap-3">
                 <div>
-                  <h4 className="font-semibold text-navy-900 text-sm mb-1">{p.prog}</h4>
-                  <p className="text-slate-600 text-xs leading-relaxed">{p.criteria}</p>
+                  <h4 className="font-semibold text-navy-900 text-base mb-1">{p.prog}</h4>
+                  <p className="text-slate-600 text-sm leading-relaxed">{p.criteria}</p>
                 </div>
-                <span className="flex-shrink-0 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-0.5 rounded-full">{p.exam}</span>
+                <span className="flex-shrink-0 text-sm font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-0.5 rounded-full">{p.exam}</span>
               </div>
             ))}
           </div>
@@ -182,7 +182,7 @@ function CommonTabs() {
           <div className="flex-1 min-w-0">
             {active === 'Documents Required' && (
               <div>
-                <p className="text-slate-500 text-sm mb-5">Once the seat is confirmed, candidates must submit original documents along with photocopies.</p>
+                <p className="text-slate-500 text-base mb-5">Once the seat is confirmed, candidates must submit original documents along with photocopies.</p>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {[
                     { label: '10th / SSLC Marks Card',    detail: 'Original + 2 sets of Photocopy' },
@@ -193,12 +193,12 @@ function CommonTabs() {
                     { label: 'Migration Certificate',      detail: 'For students from boards other than Karnataka PU Board' },
                   ].map((doc, i) => (
                     <div key={i} className="flex items-start gap-3 bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-blue-100 transition-all">
-                      <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-navy-900 text-white text-xs font-black flex items-center justify-center">
+                      <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-navy-900 text-white text-sm font-black flex items-center justify-center">
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <div>
-                        <p className="font-semibold text-navy-900 text-sm leading-snug">{doc.label}</p>
-                        <p className="text-slate-500 text-xs mt-0.5">{doc.detail}</p>
+                        <p className="font-semibold text-navy-900 text-base leading-snug">{doc.label}</p>
+                        <p className="text-slate-500 text-sm mt-0.5">{doc.detail}</p>
                       </div>
                     </div>
                   ))}
@@ -217,23 +217,23 @@ function CommonTabs() {
                   ].map(s => (
                     <div key={s.step} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all">
                       <span className="inline-block text-2xl font-black text-slate-200 leading-none mb-3">{s.step}</span>
-                      <h4 className="font-bold text-navy-900 text-sm mb-1">{s.title}</h4>
-                      <p className="text-slate-500 text-xs leading-relaxed">{s.desc}</p>
+                      <h4 className="font-bold text-navy-900 text-base mb-1">{s.title}</h4>
+                      <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
                     </div>
                   ))}
                 </div>
                 {/* CTA buttons */}
                 <div className="flex flex-wrap gap-3">
                   <a href="https://newhorizoncollegeofengineering.in/admissions/" target="_blank" rel="noopener noreferrer"
-                    className="bg-navy-700 hover:bg-navy-800 text-white text-sm font-bold px-6 py-2.5 rounded-full transition-colors">
+                    className="bg-navy-700 hover:bg-navy-800 text-white text-base font-bold px-6 py-2.5 rounded-full transition-colors">
                     Enquiry Form
                   </a>
                   <a href="https://newhorizoncollegeofengineering.in/admissions/" target="_blank" rel="noopener noreferrer"
-                    className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-6 py-2.5 rounded-full transition-colors">
+                    className="bg-blue-600 hover:bg-blue-700 text-white text-base font-bold px-6 py-2.5 rounded-full transition-colors">
                     E-Application Form
                   </a>
                   <a href="https://newhorizoncollegeofengineering.in/wp-content/uploads/2026/05/BE-NHCE-Guideline-for-2022-23.pdf" target="_blank" rel="noopener noreferrer"
-                    className="bg-slate-600 hover:bg-slate-700 text-white text-sm font-bold px-6 py-2.5 rounded-full transition-colors">
+                    className="bg-slate-600 hover:bg-slate-700 text-white text-base font-bold px-6 py-2.5 rounded-full transition-colors">
                     Download Form
                   </a>
                 </div>
@@ -250,14 +250,20 @@ function CommonTabs() {
 
 export default function ProgramsPage() {
   const { hash } = useLocation();
+  const [activeTab, setActiveTab] = useState<'ug' | 'pg' | 'phd'>('ug');
 
   useEffect(() => {
     if (hash) {
-      // instant scroll so section is in view before fade-in plays
-      const el = document.querySelector(hash);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 96;
-        window.scrollTo({ top, behavior: 'instant' as ScrollBehavior });
+      const tabId = hash.replace('#', '');
+      if (tabId === 'ug' || tabId === 'pg' || tabId === 'phd') {
+        setActiveTab(tabId);
+        setTimeout(() => {
+          const el = document.getElementById('programs-tabs');
+          if (el) {
+            const top = el.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        }, 100);
       }
     }
   }, [hash]);
@@ -274,167 +280,212 @@ export default function ProgramsPage() {
         description="From B.E. to Ph.D — 20+ industry-aligned programmes, VTU affiliated, designed to launch world-class careers."
         button={{
           label: 'Explore Programmes',
-          href: '#ug',
-          onClick: e => { e?.preventDefault(); document.querySelector('#ug')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); },
+          href: '#programs-tabs',
+          onClick: e => {
+            e?.preventDefault();
+            document.querySelector('#programs-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          },
         }}
       />
 
-      {/* ── UG Programs ── */}
-      <div id="ug" className="container-wide pt-10 sm:pt-16 pb-12">
-        {/* Section header */}
-        <AnimateIn variant="fade-up">
-        <div className="flex items-end justify-between mb-4 pb-4">
-          <div>
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">01 — Undergraduate</p>
-            <h2 className="font-display font-bold text-navy-950 text-xl sm:text-2xl">B.E. Programmes</h2>
+      {/* ── Tabs Navigation ── */}
+      <div id="programs-tabs" className="bg-white border-b border-slate-200 sticky top-20 sm:top-16 z-30 shadow-sm scroll-mt-24 sm:scroll-mt-20">
+        <div className="container-wide py-4">
+          <div className="flex justify-center gap-2 sm:gap-4">
+            {[
+              { id: 'ug', label: 'Undergraduate' },
+              { id: 'pg', label: 'Postgraduate' },
+              { id: 'phd', label: 'Doctoral' },
+            ].map(tab => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    setActiveTab(tab.id as 'ug' | 'pg' | 'phd');
+                    window.history.pushState(null, '', `#${tab.id}`);
+                  }}
+                  className={`px-4 sm:px-6 py-2.5 rounded-full text-sm sm:text-base font-bold transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? 'bg-navy-900 text-white shadow-md'
+                      : 'text-slate-500 hover:bg-slate-100 hover:text-navy-950'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
-          <div className="text-right hidden sm:block">
-            <p className="text-xs text-slate-500">Duration: 4 Years</p>
-            <p className="text-xs text-slate-500">Eligibility: 10+2 PCM · Min 50%</p>
-          </div>
         </div>
-
-        </AnimateIn>
-        <AnimateIn variant="fade-up" delay={100}>
-        <div className="pb-7 text-slate-600 text-base leading-relaxed">
-          <p>Our Undergraduate programs comprise a syllabus that is worked on for months to bring out the best to students across the country who are picking up application forms for engineering colleges. We have state-of-the-art labs, excellent facilities for outstation students, multiple co-curricular activities to be a part of impeccable placement offers with over 126+ companies as recruiters.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {UG_PROGRAMS.map((p, i) => (
-            <a
-              key={p.code}
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group bg-white rounded-2xl border border-slate-200 hover:border-slate-200 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col"
-            >
-              {/* Top accent bar */}
-              <div className={`h-1.5 ${p.color}`} />
-              <div className="p-5 flex flex-col flex-1">
-                {/* Number + code */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`text-xs font-black px-2.5 py-1 rounded-lg ${p.light} ${p.text}`}>{p.code}</span>
-                  <span className="text-slate-300 font-black text-lg">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                </div>
-                {/* Name */}
-                <h3 className="font-bold text-navy-900 text-sm sm:text-base leading-snug mb-2 flex-1">{p.name}</h3>
-                {/* Desc */}
-                <p className="text-xs text-slate-500 leading-relaxed line-clamp-3 mb-4">{p.desc}</p>
-                {/* Footer */}
-                <div className="flex items-end justify-end pt-3 border-t border-slate-100">
-                  <span className={`${p.text} flex items-center gap-0.5 text-xs font-semibold opacity-100`}>
-                    Explore <ArrowUpRight size={12} />
-                  </span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-        </AnimateIn>
       </div>
 
-      <InfoTabs type="ug" />
-
-      {/* ── PG Programs ── */}
-      <div id="pg" className="bg-blue-50">
-        <div className="container-wide py-12">
-          <AnimateIn variant="fade-up">
-          <div className="flex items-end justify-between mb-4 border-b border-slate-200 pb-4">
-            <div>
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">02 — Postgraduate</p>
-              <h2 className="font-display font-bold text-navy-950 text-xl sm:text-2xl">Masters Programmes</h2>
-            </div>
-            <div className="text-right hidden sm:block">
-              <p className="text-xs text-slate-500">Duration: 2 Years</p>
-              <p className="text-xs text-slate-500">Eligibility: Degree + GATE / PGCET / KMAT</p>
-            </div>
-            
-          </div>
-          </AnimateIn>
-        <AnimateIn variant="fade-up" delay={100}>
-        <div className="pb-7 text-slate-600 text-base leading-relaxed">
-          <p>We offers quality postgraduate programs including M.Tech (Computer Science & Engineering), MBA, and MCA. M.Tech admissions require a valid GATE score, while MBA and MCA admissions are based on PGCET, MAT, or KMAT scores. With experienced faculty and industry-focused education, NHCE is a preferred choice for postgraduate studies.
-          </p>
-        </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {PG_PROGRAMS.map((p, i) => (
-              <a
-                key={p.code}
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-slate-50 rounded-2xl border border-slate-200 hover:border-slate-200 hover:shadow-lg hover:bg-white transition-all duration-300 overflow-hidden flex flex-col"
-              >
-                <div className={`h-1.5 ${p.color}`} />
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-sm font-black px-3 py-1 rounded-lg ${p.light} ${p.text}`}>{p.code}</span>
-                    <span className="text-slate-300 font-black text-lg">{String(i + 1).padStart(2, '0')}</span>
+      {/* ── Active Tab Content ── */}
+      <div className="min-h-[400px]">
+        {activeTab === 'ug' && (
+          <div key="ug" className="animate-[fadeIn_0.35s_ease-out]">
+            {/* ── UG Programs ── */}
+            <div id="ug" className="container-wide pt-10 sm:pt-16 pb-12">
+              {/* Section header */}
+              <AnimateIn variant="fade-up">
+                <div className="flex items-end justify-between mb-4 pb-4">
+                  <div>
+                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">01 — Undergraduate</p>
+                    <h2 className="font-display font-bold text-navy-950 text-xl sm:text-2xl">B.E. Programmes</h2>
                   </div>
-                  <h3 className="font-bold text-navy-900 text-sm sm:text-base leading-snug mb-2 flex-1">{p.name}</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed mb-4">{p.desc}</p>
-                  <div className="pt-3 border-t border-slate-200 space-y-1">
-                    <p className="text-xs text-slate-400">Eligibility: {p.eligibility}</p>
+                  <div className="text-right hidden sm:block">
+                    <p className="text-sm text-slate-500">Duration: 4 Years</p>
+                    <p className="text-sm text-slate-500">Eligibility: 10+2 PCM · Min 50%</p>
                   </div>
-                  <div className="flex items-end justify-end pt-3 border-t border-slate-100">
-                  <span className={`${p.text} flex items-center gap-0.5 text-xs font-semibold opacity-100`}>
-                    Explore <ArrowUpRight size={12} />
-                  </span>
                 </div>
+              </AnimateIn>
+
+              <AnimateIn variant="fade-up" delay={100}>
+                <div className="pb-7 text-slate-600 text-base leading-relaxed">
+                  <p>Our Undergraduate programs comprise a syllabus that is worked on for months to bring out the best to students across the country who are picking up application forms for engineering colleges. We have state-of-the-art labs, excellent facilities for outstation students, multiple co-curricular activities to be a part of impeccable placement offers with over 126+ companies as recruiters.</p>
                 </div>
-              </a>
-            ))}
-          </div>
-        </AnimateIn>
-        </div>
-      </div>
 
-      <InfoTabs type="pg" />
-
-      <CommonTabs />
-
-      {/* ── PhD Programs ── */}
-      <div id="phd" className="container-wide pt-12 pb-20">
-        <AnimateIn variant="fade-up">
-        <div className="flex items-end justify-between mb-4 border-b border-slate-200 pb-4">
-          <div>
-            <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">03 — Doctoral</p>
-            <h2 className="font-display font-bold text-navy-950 text-2xl">Ph.D &amp; Research</h2>
-          </div>
-          <div className="text-right hidden sm:block">
-            <p className="text-xs text-slate-500">Full-time &amp; Part-time</p>
-            <p className="text-xs text-slate-500">VTU / UGC Recognised</p>
-          </div>
-        </div>
-
-        </AnimateIn>
-        <AnimateIn variant="fade-up" delay={100}>
-        <div className="pb-7 text-slate-600 text-base leading-relaxed">
-          <p>For students seeking PhD admission 2026–27 in Engineering, New Horizon College of Engineering provides excellent opportunities. We are proud of the strong turnout for PhD admissions in 2025 across all disciplines in Bangalore. 
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {PHD_PROGRAMS.map((p, i) => (
-            <div key={p.name}
-              className="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-emerald-200 transition-all duration-200">
-              <div className="flex items-start justify-between mb-3">
-                <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded-md">Ph.D</span>
-                <span className="text-slate-200 font-black text-sm">{String(i + 1).padStart(2, '0')}</span>
-              </div>
-              <h3 className="font-bold text-navy-900 text-lg leading-snug mb-2">{p.name}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">{p.area}</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {UG_PROGRAMS.map((p, i) => (
+                    <a
+                      key={p.code}
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group bg-white rounded-2xl border border-slate-200 hover:border-slate-200 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col"
+                    >
+                      {/* Top accent bar */}
+                      <div className={`h-1.5 ${p.color}`} />
+                      <div className="p-5 flex flex-col flex-1">
+                        {/* Number + code */}
+                        <div className="flex items-center justify-between mb-4">
+                          <span className={`text-sm font-black px-2.5 py-1 rounded-lg ${p.light} ${p.text}`}>{p.code}</span>
+                          <span className="text-slate-300 font-black text-lg">
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                        {/* Name */}
+                        <h3 className="font-bold text-navy-900 text-sm sm:text-base leading-snug mb-2 flex-1">{p.name}</h3>
+                        {/* Desc */}
+                        <p className="text-sm text-slate-500 leading-relaxed line-clamp-3 mb-4">{p.desc}</p>
+                        {/* Footer */}
+                        <div className="flex items-end justify-end pt-3 border-t border-slate-100">
+                          <span className={`${p.text} flex items-center gap-0.5 text-xs font-semibold opacity-100`}>
+                            Explore <ArrowUpRight size={12} />
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </AnimateIn>
             </div>
-          ))}
-        </div>
-        </AnimateIn>
+            <InfoTabs type="ug" />
+          </div>
+        )}
 
+        {activeTab === 'pg' && (
+          <div key="pg" className="animate-[fadeIn_0.35s_ease-out]">
+            {/* ── PG Programs ── */}
+            <div id="pg" className="bg-blue-50">
+              <div className="container-wide py-12">
+                <AnimateIn variant="fade-up">
+                  <div className="flex items-end justify-between mb-4 border-b border-slate-200 pb-4">
+                    <div>
+                      <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">02 — Postgraduate</p>
+                      <h2 className="font-display font-bold text-navy-950 text-xl sm:text-2xl">Masters Programmes</h2>
+                    </div>
+                    <div className="text-right hidden sm:block">
+                      <p className="text-sm text-slate-500">Duration: 2 Years</p>
+                      <p className="text-sm text-slate-500">Eligibility: Degree + GATE / PGCET / KMAT</p>
+                    </div>
+                  </div>
+                </AnimateIn>
+
+                <AnimateIn variant="fade-up" delay={100}>
+                  <div className="pb-7 text-slate-600 text-base leading-relaxed">
+                    <p>We offers quality postgraduate programs including M.Tech (Computer Science & Engineering), MBA, and MCA. M.Tech admissions require a valid GATE score, while MBA and MCA admissions are based on PGCET, MAT, or KMAT scores. With experienced faculty and industry-focused education, NHCE is a preferred choice for postgraduate studies.</p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    {PG_PROGRAMS.map((p, i) => (
+                      <a
+                        key={p.code}
+                        href={p.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group bg-slate-50 rounded-2xl border border-slate-200 hover:border-slate-200 hover:shadow-lg hover:bg-white transition-all duration-300 overflow-hidden flex flex-col"
+                      >
+                        <div className={`h-1.5 ${p.color}`} />
+                        <div className="p-6 flex flex-col flex-1">
+                          <div className="flex items-center justify-between mb-4">
+                            <span className={`text-base font-black px-3 py-1 rounded-lg ${p.light} ${p.text}`}>{p.code}</span>
+                            <span className="text-slate-300 font-black text-lg">{String(i + 1).padStart(2, '0')}</span>
+                          </div>
+                          <h3 className="font-bold text-navy-900 text-base sm:text-base leading-snug mb-2 flex-1">{p.name}</h3>
+                          <p className="text-base text-slate-500 leading-relaxed mb-4">{p.desc}</p>
+                          <div className="pt-3 border-t border-slate-200 space-y-1">
+                            <p className="text-sm text-slate-400">Eligibility: {p.eligibility}</p>
+                          </div>
+                          <div className="flex items-end justify-end pt-3 border-t border-slate-100">
+                            <span className={`${p.text} flex items-center gap-0.5 text-sm font-semibold opacity-100`}>
+                              Explore <ArrowUpRight size={12} />
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </AnimateIn>
+              </div>
+            </div>
+            <InfoTabs type="pg" />
+          </div>
+        )}
+
+        {activeTab === 'phd' && (
+          <div key="phd" className="animate-[fadeIn_0.35s_ease-out]">
+            {/* ── PhD Programs ── */}
+            <div id="phd" className="container-wide pt-12 pb-20">
+              <AnimateIn variant="fade-up">
+                <div className="flex items-end justify-between mb-4 border-b border-slate-200 pb-4">
+                  <div>
+                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">03 — Doctoral</p>
+                    <h2 className="font-display font-bold text-navy-950 text-2xl">Ph.D &amp; Research</h2>
+                  </div>
+                  <div className="text-right hidden sm:block">
+                    <p className="text-sm text-slate-500">Full-time &amp; Part-time</p>
+                    <p className="text-sm text-slate-500">VTU / UGC Recognised</p>
+                  </div>
+                </div>
+              </AnimateIn>
+
+              <AnimateIn variant="fade-up" delay={100}>
+                <div className="pb-7 text-slate-600 text-base leading-relaxed">
+                  <p>For students seeking PhD admission 2026–27 in Engineering, New Horizon College of Engineering provides excellent opportunities. We are proud of the strong turnout for PhD admissions in 2025 across all disciplines in Bangalore.</p>
+                </div>
+
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {PHD_PROGRAMS.map((p, i) => (
+                    <div
+                      key={p.name}
+                      className="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md hover:border-emerald-200 transition-all duration-200"
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <span className="bg-emerald-50 text-emerald-700 text-sm font-bold px-2 py-0.5 rounded-md">Ph.D</span>
+                        <span className="text-slate-200 font-black text-sm">{String(i + 1).padStart(2, '0')}</span>
+                      </div>
+                      <h3 className="font-bold text-navy-900 text-base leading-snug mb-2">{p.name}</h3>
+                      <p className="text-sm text-slate-400 leading-relaxed">{p.area}</p>
+                    </div>
+                  ))}
+                </div>
+              </AnimateIn>
+            </div>
+          </div>
+        )}
       </div>
+
+      {activeTab !== 'phd' && <CommonTabs />}
 
     </div>
   );
