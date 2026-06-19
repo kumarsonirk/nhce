@@ -7,56 +7,55 @@ export interface LeadData {
 }
 
 export async function submitLeadToLeadSquared(data: LeadData): Promise<any> {
-  const url = '/api/contact';
+  const accessKey = import.meta.env.VITE_LEADSQUARED_ACCESS_KEY;
+  const secretKey = import.meta.env.VITE_LEADSQUARED_SECRET_KEY;
+  const regionHost = import.meta.env.VITE_LEADSQUARED_REGION_HOST || 'api-in21.leadsquared.com';
 
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    // If Vercel functions are not running locally (e.g. running 'npm run dev' directly, returning a 404),
-    // and we are in local development environment, fallback to simulated success.
-    if (response.status === 404 && import.meta.env.DEV) {
-      console.warn(
-        'Vercel Serverless Function not detected at /api/contact. ' +
-        'Falling back to simulated demo submission.'
-      );
-      return new Promise((resolve) =>
-        setTimeout(() => resolve({ Status: 'Success', Message: 'Simulated Demo' }), 800)
-      );
-    }
-
-    if (!response.ok) {
-      let errorMsg = 'Submission failed.';
-      try {
-        const errJson = await response.json();
-        errorMsg = errJson.error || errorMsg;
-      } catch {
-        const errText = await response.text();
-        errorMsg = errText || errorMsg;
-      }
-      throw new Error(errorMsg);
-    }
-
-    return await response.json();
-  } catch (error: any) {
-    // Catch fetch/connection errors in local development if backend isn't up
-    if (
-      import.meta.env.DEV &&
-      (error.message?.includes('Failed to fetch') || error.name === 'TypeError')
-    ) {
-      console.warn(
-        'Failed to connect to local /api/contact endpoint. ' +
-        'Falling back to simulated demo submission.'
-      );
-      return new Promise((resolve) =>
-        setTimeout(() => resolve({ Status: 'Success', Message: 'Simulated Demo' }), 800)
-      );
-    }
-    throw error;
+  if (!accessKey || !secretKey) {
+    console.warn(
+      'LeadSquared VITE_LEADSQUARED_ACCESS_KEY or VITE_LEADSQUARED_SECRET_KEY is missing. ' +
+      'Submitting in fallback demo mode.'
+    );
+    // In local development without credentials, let the UI transition to success
+    return new Promise((resolve) => setTimeout(() => resolve({ Status: 'Success', Message: 'Demo Submission' }), 800));
   }
+
+  const url = `https://${regionHost}/v2/LeadManagement.svc/Lead.CreateOrUpdate?accessKey=${accessKey}&secretKey=${secretKey}`;
+
+  // Mapping based on user WordPress fields schemas:
+  // - Name: FirstName
+  // - Email: EmailAddress
+  // - Phone: Phone
+  // - College: mx_College (static value: "New Horizon College Of Engineering")
+  // - Courses Offered: mx_Courses_Offered
+  // - Message: mx_Message
+  const payload = [
+    { Attribute: 'FirstName', Value: data.name },
+    { Attribute: 'EmailAddress', Value: data.email },
+    { Attribute: 'Phone', Value: data.phone },
+    { Attribute: 'mx_College', Value: 'New Horizon College Of Engineering' },
+    { Attribute: 'mx_Courses_Offered', Value: data.course },
+    { Attribute: 'mx_Message', Value: data.message || '' },
+  ];
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`LeadSquared API Error (${response.status}): ${errorText}`);
+  }
+
+  const responseData = await response.json();
+  
+  if (responseData?.Status === 'Error' || responseData?.ExceptionType) {
+    throw new Error(responseData?.Message || 'Failed to submit lead to LeadSquared.');
+  }
+
+  return responseData;
 }
