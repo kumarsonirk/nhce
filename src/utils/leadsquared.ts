@@ -20,7 +20,7 @@ export async function submitLeadToLeadSquared(data: LeadData): Promise<any> {
     return new Promise((resolve) => setTimeout(() => resolve({ Status: 'Success', Message: 'Demo Submission' }), 800));
   }
 
-  const url = `https://${regionHost}/v2/LeadManagement.svc/Lead.CreateOrUpdate?accessKey=${accessKey}&secretKey=${secretKey}`;
+  const url = `https://${regionHost}/v2/LeadManagement.svc/Lead.CreateOrUpdate`;
 
   // Mapping based on user WordPress fields schemas:
   // - Name: FirstName
@@ -42,6 +42,8 @@ export async function submitLeadToLeadSquared(data: LeadData): Promise<any> {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'x-LSQ-AccessKey': accessKey,
+      'x-LSQ-SecretKey': secretKey,
     },
     body: JSON.stringify(payload),
   });
