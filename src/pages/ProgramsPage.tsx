@@ -558,9 +558,11 @@ export default function ProgramsPage() {
     <div className="min-h-screen bg-slate-50 relative">
       
       {/* Dynamic ambient backgrounds */}
-      <div className="absolute top-[20%] -right-16 w-64 h-64 sm:right-[-10%] sm:w-[500px] sm:h-[500px] bg-blue-400/10 rounded-full blur-3xl -z-10" />
-      <div className="absolute top-[50%] -left-16 w-64 h-64 sm:left-[-10%] sm:w-[500px] sm:h-[500px] bg-violet-400/10 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-[10%] -right-8 w-56 h-56 sm:right-[-5%] sm:w-[400px] sm:h-[400px] bg-amber-400/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute inset-0 overflow-hidden -z-10 pointer-events-none">
+        <div className="absolute top-[20%] -right-16 w-64 h-64 sm:right-[-10%] sm:w-[500px] sm:h-[500px] bg-blue-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-[50%] -left-16 w-64 h-64 sm:left-[-10%] sm:w-[500px] sm:h-[500px] bg-violet-400/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-[10%] -right-8 w-56 h-56 sm:right-[-5%] sm:w-[400px] sm:h-[400px] bg-amber-400/5 rounded-full blur-3xl" />
+      </div>
 
       <HeroSection
         image="/hero6.png"
