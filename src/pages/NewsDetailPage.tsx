@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import { AlertCircle } from 'lucide-react';
 import AnimateIn from '../components/ui/AnimateIn';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,6 +12,9 @@ const BASE_URL = 'https://newhorizoncollegeofengineering.in/wp-json/wp/v2';
 
 export default function DetailPage() {
   const { category, slug } = useParams<{ category: string, slug: string }>();
+  const location = useLocation();
+  const isNewsRoute = location.pathname.startsWith('/news/');
+  const backHref = isNewsRoute ? '/news' : '/life-at-nhce';
   const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -115,8 +118,8 @@ export default function DetailPage() {
           <AlertCircle size={40} className="text-red-500 mb-4" />
           <h2 className="font-bold text-navy-900 text-xl mb-2">Article Not Found</h2>
           <p className="text-base text-red-600 mb-6">{error || 'The requested news article could not be found.'}</p>
-          <Link to="/everything@nhce" className="bg-white border border-slate-200 text-slate-700 px-6 py-2.5 rounded-xl text-base font-semibold hover:bg-slate-50 transition-colors">
-            Back to News
+          <Link to={backHref} className="bg-white border border-slate-200 text-slate-700 px-6 py-2.5 rounded-xl text-base font-semibold hover:bg-slate-50 transition-colors">
+            {isNewsRoute ? 'Back to News' : 'Back to Life at NHCE'}
           </Link>
         </div>
       </div>
@@ -159,7 +162,7 @@ export default function DetailPage() {
               <h1 className="font-display font-black text-xl sm:text-2xl lg:text-2xl text-navy-950 leading-tight mb-8" dangerouslySetInnerHTML={{ __html: post.title?.rendered || 'Untitled' }} />
               
               <div 
-                className="text-slate-600 leading-relaxed text-lg sm:text-xl [&_p]:pb-[10px] [&_p]:mb-4 [&_h2]:font-bold [&_h2]:text-navy-900 [&_h2]:text-2xl [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:font-bold [&_h3]:text-navy-900 [&_h3]:text-xl [&_h3]:mt-6 [&_h3]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-6 [&_ul>li]:mb-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-6 [&_ol>li]:mb-2 [&_a]:text-blue-600 [&_a]:underline"
+                className="text-slate-600 leading-relaxed text-lg sm:text-base [&_p]:pb-[10px] [&_p]:mb-4 [&_h2]:font-bold [&_h2]:text-navy-900 [&_h2]:text-2xl [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:font-bold [&_h3]:text-navy-900 [&_h3]:text-xl [&_h3]:mt-6 [&_h3]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-6 [&_ul>li]:mb-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-6 [&_ol>li]:mb-2 [&_a]:text-blue-600 [&_a]:underline"
                 dangerouslySetInnerHTML={{ __html: post.cleanedContent || '' }}
               />
             </div>

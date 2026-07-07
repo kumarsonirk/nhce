@@ -3,9 +3,9 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 const SLIDES = [
   {
     id: 0,
-    image: '/main_banner1.jpg',
-    mobileImage: '/banner1.jpeg',
-    alt: 'Admissions Open 2025–26',
+    image: '/sargam1.png',
+    mobileImage: '/sargam_mobile.png',
+    alt: 'sargam',
   },
   {
     id: 1,

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Users, BookOpen, Award, ChevronRight } from 'lucide-react';
 import { DEPARTMENTS } from '../../data/constants';
 import MobileSlider from '../ui/MobileSlider';
@@ -151,9 +152,9 @@ className="bg-white rounded-2xl overflow-hidden cursor-pointer group shadow-sm h
         {/* CTA */}
         <AnimateIn variant="fade-up" delay={80}>
         <div className="text-center mt-10">
-          <button className="btn-primary">
+          <Link to="/programs" className="btn-primary">
             View All Programs & Courses <ChevronRight size={15} />
-          </button>
+          </Link>
         </div>
         </AnimateIn>
       </div>

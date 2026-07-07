@@ -7,7 +7,7 @@ import AnimateIn from '../components/ui/AnimateIn';
 const BASE_URL = 'https://newhorizoncollegeofengineering.in/wp-json/wp/v2';
 const TARGET_CATEGORIES = [11, 34, 22, 156, 21, 180, 141, 155, 13, 18, 14, 1];
 
-export default function EverythingNHCEPage() {
+export default function LifeAtNHCEPage() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const [categories, setCategories] = useState<any[]>([]);
@@ -125,10 +125,10 @@ export default function EverythingNHCEPage() {
     <div className="min-h-screen bg-slate-50">
       <HeroSection
         image="/campus-hero.jpg"
-        badge="Everything @ NHCE"
+        badge="Life at NHCE"
         headingSmall="All updates in one place"
-        headingMain="Everything"
-        headingGhost="@NHCE"
+        headingMain="Life"
+        headingGhost="at NHCE"
         description="Explore the latest happenings, research breakthroughs, events, and announcements from New Horizon College of Engineering."
         button={{ label: 'Read Latest', onClick: () => document.getElementById('news-content')?.scrollIntoView({ behavior: 'smooth' }) }}
       />
@@ -170,7 +170,7 @@ export default function EverythingNHCEPage() {
                 className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pl-10 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
               />
             </div>
-            <div className="flex items-center gap-3 flex-shrink-0 w-full sm:w-auto">
+            <div className="flex items-center flex-wrap gap-3 flex-shrink-0 w-full sm:w-auto">
               <select
                 value={perPage}
                 onChange={(e) => setPerPage(e.target.value)}
@@ -267,7 +267,7 @@ export default function EverythingNHCEPage() {
                     <h2 className="font-bold text-navy-900 text-lg leading-snug mb-3 group-hover:text-blue-700 transition-colors line-clamp-3" dangerouslySetInnerHTML={{ __html: post.title?.rendered || 'Untitled' }} />
                     <div className="text-sm text-slate-500 leading-relaxed mb-5 line-clamp-3 flex-1" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered || 'Read the full article for more details.' }} />
                     <div className="mt-auto border-t border-slate-100 pt-4">
-                      <Link to={`/everything@nhce/${categorySlug}/${post.slug}`} className="inline-flex items-center gap-1.5 text-base font-semibold text-blue-600 hover:text-blue-800 transition-colors group/link">
+                      <Link to={`/life-at-nhce/${categorySlug}/${post.slug}`} className="inline-flex items-center gap-1.5 text-base font-semibold text-blue-600 hover:text-blue-800 transition-colors group/link">
                         Read Article <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
                       </Link>
                     </div>

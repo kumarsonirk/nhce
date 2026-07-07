@@ -14,7 +14,19 @@
       "Bash(Select-String -Pattern \"jpg|jpeg|png|webp|avif\")",
       "Bash(Sort-Object)",
       "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\RahulKumarSoni\\\\Desktop\\\\Website\\\\src\\\\hooks\")",
-      "Bash(Out-Null)"
+      "Bash(Out-Null)",
+      "WebSearch",
+      "WebFetch(domain:in.linkedin.com)",
+      "WebFetch(domain:timesofcollege.com)",
+      "WebFetch(domain:rocketreach.co)",
+      "WebFetch(domain:placements.newhorizoncollegeofengineering.in)",
+      "WebFetch(domain:www.careers360.com)",
+      "WebFetch(domain:newhorizonindia.edu)",
+      "WebFetch(domain:www.businessworld.in)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\RahulKumarSoni\\\\Desktop\\\\Website\\\\public\" -Recurse | Where-Object { $_.Name -match \"newsletter\" -or $_.FullName -match \"newsletter\" } | Select-Object FullName)",
+      "Bash(curl -s \"https://newhorizoncollegeofengineering.in/wp-json/wp/v2/categories?per_page=100&_fields=id,name,slug,count&include=11,34,22,156,21,180,141,155,13,18,14,1\")",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f'ID {d[\\\\\"id\\\\\"]:4} | count {d[\\\\\"count\\\\\"]:4} | {d[\\\\\"slug\\\\\"]:35} | {d[\\\\\"name\\\\\"]}'\\) for d in sorted\\(data, key=lambda x: x['id']\\)]\")",
+      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\); const arr=JSON.parse\\(d\\); arr.sort\\(\\(a,b\\)=>a.id-b.id\\).forEach\\(c=>console.log\\(c.id, '|', c.count, '|', c.slug.padEnd\\(35\\), '|', c.name\\)\\)\")"
     ]
   }
 }

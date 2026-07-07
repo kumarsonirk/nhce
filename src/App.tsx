@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Rankings from './components/sections/Rankings';
+import CallToAction from './components/sections/CallToAction';
 import HomePage from './pages/HomePage';
 import AdmissionsPage from './pages/AdmissionsPage';
 import AboutPage from './pages/AboutPage';
@@ -17,9 +18,22 @@ import SportsPage from './pages/SportsPage';
 import AcademicEnrichmentPage from './pages/AcademicEnrichmentPage';
 import SocialOutreachPage from './pages/SocialOutreachPage';
 import ContactPage from './pages/ContactPage';
-import EverythingNHCEPage from './pages/NewsPage';
+import LifeAtNHCEPage from './pages/NewsPage';
+import NewsListPage from './pages/NewsListPage';
 import DetailPage from './pages/NewsDetailPage';
 import ExamPage from './pages/ExamPage';
+import AlumniPage from './pages/AlumniPage';
+import ProfessionalCounsellingPage from './pages/ProfessionalCounsellingPage';
+import CounsellingServicesPage from './pages/CounsellingServicesPage';
+import CounsellingEventsPage from './pages/CounsellingEventsPage';
+import AchievementsPage from './pages/AchievementsPage';
+import IQACPage from './pages/IQACPage';
+import CulturalActivitiesPage from './pages/CulturalActivitiesPage';
+import KeyExecutivesPage from './pages/KeyExecutivesPage';
+import NewslettersPage from './pages/NewslettersPage';
+import CelebrityDiariesPage from './pages/CelebrityDiariesPage';
+import CelebrityDiaryDetailPage from './pages/CelebrityDiaryDetailPage';
+import EventsPage from './pages/EventsPage';
 import { ArrowUp } from 'lucide-react';
 import { useState } from 'react';
 
@@ -58,6 +72,7 @@ export default function App() {
           <>
             <HomePage />
             <Rankings />
+            <CallToAction />
           </>
         } />
         <Route path="/admissions" element={<AdmissionsPage />} />
@@ -72,9 +87,23 @@ export default function App() {
         <Route path="/sports" element={<SportsPage />} />
         <Route path="/social-outreach" element={<SocialOutreachPage />} />
         <Route path="/academic-enrichment" element={<AcademicEnrichmentPage />} />
-        <Route path="/everything@nhce" element={<EverythingNHCEPage />} />
-        <Route path="/everything@nhce/:category/:slug" element={<DetailPage />} />
+        <Route path="/life-at-nhce" element={<LifeAtNHCEPage />} />
+        <Route path="/life-at-nhce/:category/:slug" element={<DetailPage />} />
+        <Route path="/news" element={<NewsListPage />} />
+        <Route path="/news/:slug" element={<DetailPage />} />
         <Route path="/exam" element={<ExamPage />} />
+        <Route path="/alumni" element={<AlumniPage />} />
+        <Route path="/professional-counselling" element={<ProfessionalCounsellingPage />} />
+        <Route path="/counselling-services" element={<CounsellingServicesPage />} />
+        <Route path="/counselling-events" element={<CounsellingEventsPage />} />
+        <Route path="/achievements" element={<AchievementsPage />} />
+        <Route path="/iqac" element={<IQACPage />} />
+        <Route path="/key-executives" element={<KeyExecutivesPage />} />
+        <Route path="/cultural-activities" element={<CulturalActivitiesPage />} />
+        <Route path="/newsletters" element={<NewslettersPage />} />
+        <Route path="/celebrity-diaries" element={<CelebrityDiariesPage />} />
+        <Route path="/celebrity-diaries/:slug" element={<CelebrityDiaryDetailPage />} />
+        <Route path="/events" element={<EventsPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />

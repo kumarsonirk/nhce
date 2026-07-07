@@ -249,7 +249,7 @@ export default function ContactPage() {
         </AnimateIn>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {DEPARTMENTS.map((d, i) => (
-            <AnimateIn key={d.label} variant="fade-up" delay={i * 50}>
+            <AnimateIn key={d.label} variant="fade-up" delay={i * 50} className="min-w-0">
               <a href={`mailto:${d.email}`}
                 className="group flex items-center gap-4 bg-white border border-slate-100 hover:border-slate-200 hover:shadow-lg rounded-2xl px-5 py-4 transition-all duration-300 hover:-translate-y-0.5">
                 <div className={`w-11 h-11 ${d.iconBg} rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm`}>

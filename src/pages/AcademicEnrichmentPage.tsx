@@ -510,6 +510,21 @@ export default function AcademicEnrichmentPage() {
                     </div>
                   ))}
                 </div>
+
+                {/* Partner logos */}
+                <div className="grid grid-cols-2 gap-3 mt-4">
+                  <div className="bg-white rounded-xl px-5 py-4 flex flex-col items-center gap-2">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Industry Partner</p>
+                    <img src="/Schneider_Electric-logo.png" alt="Schneider Electric" className="h-10 w-auto object-contain" />
+                  </div>
+                  <div className="bg-white rounded-xl px-5 py-4 flex flex-col items-center gap-2">
+                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Government Partner</p>
+                    <div className="flex items-center gap-2.5">
+                      <img src="/french_ministry.png" alt="French Ministry of National Education" className="h-14 w-auto object-contain flex-shrink-0" />
+                      <p className="text-xs font-bold text-slate-700 leading-snug">French Ministry of National Education</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 

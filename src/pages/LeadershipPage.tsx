@@ -131,12 +131,12 @@ function LeaderSpotlight() {
             {/* Left: photo */}
             <div
               key={`img-${selected}`}
-              className="relative min-h-[400px] lg:min-h-0 overflow-hidden animate-[zoomFade_0.55s_ease-out_both]"
+              className="relative min-h-[400px] lg:min-h-0 overflow-hidden"
             >
               <img
                 src={leader.image}
                 alt={leader.name}
-                className="w-full h-full object-cover object-top absolute inset-0"
+                className="w-full h-full object-cover object-top absolute inset-0 animate-[zoomFade_0.55s_ease-out_both]"
               />
             </div>
 
@@ -208,7 +208,7 @@ function LeaderSpotlight() {
                   <img src={l.image} alt={l.name} className="w-full h-full object-cover object-top" />
                 </div>
 
-                <div className="text-center">
+                <div className="text-center w-14 sm:w-44">
                   <p className={`text-sm font-bold leading-snug transition-colors ${isActive ? 'text-navy-900' : 'text-slate-500 group-hover:text-navy-700'}`}>
                     {l.name}
                   </p>

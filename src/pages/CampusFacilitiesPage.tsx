@@ -169,7 +169,7 @@ export default function CampusFacilitiesPage() {
                 Built Around<br />
                 <span className="text-blue-600">How You Learn</span>
               </h2>
-              <p className="text-slate-500 text-xl leading-relaxed">
+              <p className="text-slate-500 text-base leading-relaxed">
                 Right on Bengaluru's IT corridor near Marathahalli — Intel, Accenture, Wipro and Cisco are neighbours. The campus itself reflects that proximity: NVIDIA-certified research labs, IBM-equipped computing rooms, and enough sports infrastructure to keep everyone moving.
               </p>
             </div>
@@ -198,7 +198,7 @@ export default function CampusFacilitiesPage() {
                     <f.icon size={13} className="text-blue-500 flex-shrink-0" />
                     <p className="font-bold text-base text-navy-900">{f.label}</p>
                   </div>
-                  <p className="text-sm text-slate-400 leading-snug">{f.desc}</p>
+                  <p className="text-xs text-slate-400 leading-snug">{f.desc}</p>
                 </div>
               </div>
             ))}
@@ -220,7 +220,7 @@ export default function CampusFacilitiesPage() {
                 Five Places<br />
                 <span className="text-amber-600">to Eat on Campus</span>
               </h2>
-              <p className="text-slate-500 text-xl leading-relaxed">
+              <p className="text-slate-500 text-base leading-relaxed">
                 From the main Students Mess to the Udupi Canteen's morning dosas — NHCE has enough dining options that you never eat the same meal twice in a week.
               </p>
             </div>
@@ -230,7 +230,7 @@ export default function CampusFacilitiesPage() {
               {CAFETERIA_HIGHLIGHTS.map(h => (
                 <div key={h} className="bg-white border border-amber-100 rounded-2xl px-4 py-3.5 flex items-center gap-2.5">
                   <div className="w-2 h-2 rounded-full bg-amber-400 flex-shrink-0" />
-                  <p className="text-base font-semibold text-navy-900">{h}</p>
+                  <p className="text-xs font-semibold text-navy-900">{h}</p>
                 </div>
               ))}
             </div>
@@ -289,7 +289,7 @@ export default function CampusFacilitiesPage() {
               Five Blocks,<br />
               <span className="text-indigo-600">One Community</span>
             </h2>
-            <p className="text-slate-500 text-xl leading-relaxed">
+            <p className="text-slate-500 text-base leading-relaxed">
               Unlike many institutions, NHCE's dormitories are built as spaces to study, relax and socialise — not just sleep. Separate blocks for boys and girls, each with a senior faculty member who acts as warden, friend and guide.
             </p>
           </div>
@@ -363,7 +363,7 @@ export default function CampusFacilitiesPage() {
             {HOSTEL_AMENITIES.map(a => (
               <div key={a.label} className="flex items-center gap-2">
                 <a.icon size={14} className="text-indigo-500 flex-shrink-0" />
-                <p className="text-base font-semibold text-navy-900">{a.label}</p>
+                <p className="text-sm font-semibold text-navy-900">{a.label}</p>
               </div>
             ))}
           </div>

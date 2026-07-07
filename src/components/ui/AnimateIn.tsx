@@ -59,6 +59,23 @@ export default function AnimateIn({
   // Cast to avoid JSX generic element TS error
   const Component = Tag as 'div';
 
+  // fade-left/fade-right translate the element horizontally before it's visible; while
+  // off-screen (below the fold, not yet intersected) that translateX can still register in
+  // document.documentElement.scrollWidth and make the whole page horizontally scrollable on
+  // mobile. Clipping it with an immediate (zero-distance) overflow-hidden wrapper prevents that
+  // — a distant ancestor's overflow-hidden does not reliably contain a transformed descendant.
+  const needsClip = variant === 'fade-left' || variant === 'fade-right';
+
+  if (needsClip) {
+    return (
+      <Component className={className} style={{ overflow: 'hidden' }}>
+        <div ref={ref as React.Ref<HTMLDivElement>} style={style}>
+          {children}
+        </div>
+      </Component>
+    );
+  }
+
   return (
     <Component ref={ref as React.Ref<HTMLDivElement>} className={className} style={style}>
       {children}

@@ -4,7 +4,36 @@ import { ArrowRight, Phone, ChevronRight, ChevronDown } from 'lucide-react';
 
 /* ─── Types ─────────────────────────────────────────────── */
 
-type NavChild = { label: string; href: string; desc: string; children?: NavChild[] };
+type NavChild = { label: string; href?: string; desc: string; children?: NavChild[] };
+
+/* ─── Link helpers ──────────────────────────────────────────
+   External hrefs (http/https) render as <a target="_blank">;
+   everything else renders as a react-router <Link>.        */
+
+function isExternalHref(href?: string) {
+  return !!href && /^https?:\/\//.test(href);
+}
+
+function isPlaceholderHref(href?: string) {
+  return !href || href === '#';
+}
+
+function NavAnchor({ href, onClick, className, style, children }: {
+  href: string; onClick?: () => void; className?: string; style?: React.CSSProperties; children: React.ReactNode;
+}) {
+  if (isExternalHref(href)) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClick} className={className} style={style}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link to={href} onClick={onClick} className={className} style={style}>
+      {children}
+    </Link>
+  );
+}
 
 /* ─── Nav structure ─────────────────────────────────────── */
 
@@ -13,8 +42,11 @@ const NAV_ITEMS = [
   {
     label: 'About',
     children: [
-      { label: 'About the College', href: '/about#about',  desc: 'History, vision and mission'       },
-      { label: 'Leadership',        href: '/leadership',   desc: 'Principal, deans & governance'     },
+      { label: 'About the College', href: '/about#about',    desc: 'History, vision and mission'           },
+      { label: 'Leadership',        href: '/leadership',     desc: 'Principal, deans & governance'         },
+      { label: 'Key Executives',    href: '/key-executives', desc: '29 executives across all departments'  },
+      { label: 'Achievements',      href: '/achievements',   desc: 'Rankings, awards & student milestones' },
+      { label: 'Social Outreach',   href: '/social-outreach', desc: 'NSS, blood drives & community'            },
       {
         label: 'Governance', href: '/governance', desc: 'Councils, committees & disclosure',
         children: [
@@ -22,6 +54,13 @@ const NAV_ITEMS = [
           { label: 'Statutory Committees', href: '/statutory-committee',  desc: '30 institutional committees'  },
         ],
       },
+    ],
+  },
+  {
+    label: 'Admissions', href: '/admissions',
+    children: [
+      { label: 'Admissions Overview',           href: '/admissions',            desc: 'Apply, eligibility & process'               },
+      { label: 'Academic Enrichment Programs',  href: '/academic-enrichment',   desc: 'Minor degrees, scholarships & study abroad' },
     ],
   },
   {
@@ -39,19 +78,44 @@ const NAV_ITEMS = [
       { label: 'Campus Facilities', href: '/campus',           desc: 'Infrastructure, labs & hostel'    },
       { label: 'Student Services',  href: '/student-services', desc: 'Library, counseling & more'       },
       { label: 'Sports',            href: '/sports',           desc: 'Courts, grounds & achievements'   },
-      { label: 'Social Outreach',   href: '/social-outreach',  desc: 'NSS, blood drives & community'    },
     ],
   },
   {
-    label: 'Admissions', href: '/admissions',
+    label: 'Experience NHCE',
     children: [
-      { label: 'Admissions Overview',           href: '/admissions',            desc: 'Apply, eligibility & process'               },
-      { label: 'Academic Enrichment Programs',  href: '/academic-enrichment',   desc: 'Minor degrees, scholarships & study abroad' },
+      { label: 'Life at NHCE',       href: '/life-at-nhce',      desc: 'Campus life, updates & stories'      },
+      { label: 'News',               href: '/news',              desc: 'Latest announcements & updates'      },
+      { label: 'Events',             href: '/events',            desc: 'Fests, workshops & conferences'      },
+      { label: 'Cultural Activities',href: '/cultural-activities', desc: 'Fests, celebrations & campus events' },
+      { label: 'Celebrity Diaries',  href: '/celebrity-diaries', desc: 'Notable guests & celebrity visits'   },
     ],
   },
+  
+  {
+    label: 'Resources',
+    children: [
+      { label: 'Library',       href: 'https://library-new.newhorizoncollegeofengineering.in/', desc: 'Digital catalogue & e-resources' },
+      { label: 'Alumni',        href: '/alumni',                    desc: 'Network, stories & giving back'    },
+      {
+        label: 'Professional Counselling', href: '/professional-counselling', desc: 'Free, confidential student support',
+        children: [
+          { label: 'Counselling Services', href: '/counselling-services', desc: '6 services · free & confidential' },
+          { label: 'Counselling Events',   href: '/counselling-events',  desc: 'Workshops & awareness programs' },
+        ],
+      },
+      {
+        label: 'Online Payment', desc: 'Pay fees securely via your bank',
+        children: [
+          { label: 'HDFC Bank',   href: 'https://forms.eduqfix.com/newhorieng/add', desc: 'Pay fees via HDFC Bank portal'   },
+          { label: 'Indian Bank', href: 'https://forms.easebuzz.in/register/NewNV9Xm/New_Horizon_College_of_Engineering', desc: 'Pay fees via Indian Bank portal' },
+        ],
+      },
+      { label: 'Newsletters',   href: '/newsletters', desc: 'Campus bulletins & department newsletters' },
+    ],
+  },
+  { label: 'IQAC',              href: '/iqac'             },
   { label: 'Examinations',     href: '/exam'             },
   { label: 'Placements',       href: '/#placements'      },
-  { label: 'Everything@NHCE',  href: '/everything@nhce'  },
   { label: 'Contact',          href: '/contact'          },
 ];
 
@@ -75,7 +139,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-40 overflow-y-auto transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled ? 'top-20 sm:top-16' : 'top-20 sm:top-28'} ${
+      className={`fixed inset-x-0 bottom-0 z-40 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${scrolled ? 'top-20 sm:top-16' : 'top-20 sm:top-28'} ${
         open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
       }`}
     >
@@ -87,10 +151,12 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
           className="w-full h-full object-cover object-center opacity-20"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/95 to-slate-950/95" />
+        <div className="absolute inset-0 bg-slate-950/[0.97]" />
       </div>
 
-      <div className="relative z-10 container-wide py-8 sm:py-14 min-h-full flex flex-col">
+      {/* Inner scrollable area — keeps overflow within the fixed container */}
+      <div className="relative z-10 h-full overflow-y-auto overflow-x-hidden">
+      <div className="container-wide py-8 sm:py-14 min-h-full flex flex-col">
 
         {/* ── MOBILE: single-column accordion ── */}
         <nav className="flex flex-col md:hidden flex-1">
@@ -99,7 +165,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
             const isActive    = active === item.label;
             return (
               <div key={item.label} className="border-b border-white/[0.07] last:border-0"
-                style={open ? { animation: `slideUpFade 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 40}ms both` } : { opacity: 0 }}>
+                style={open ? { animation: `slideUpFade 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 40}ms both` } : {}}>
                 {hasChildren ? (
                   <>
                     <div className={`w-full flex items-center justify-between py-4 text-base font-bold transition-colors ${isActive ? 'text-blue-400' : 'text-white/80'}`}>
@@ -114,39 +180,54 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
                         <ChevronDown size={16} className={`transition-transform duration-300 ${isActive ? 'rotate-180 text-blue-400' : 'text-white/30'}`} />
                       </button>
                     </div>
-                    <div className={`overflow-hidden transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${isActive ? 'max-h-96 pb-3' : 'max-h-0'}`}>
-                      {(item.children as {label:string;href:string;desc:string;children?:{label:string;href:string;desc:string}[]}[]).map(child => (
+                    <div className={`overflow-hidden transition-[max-height,padding] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isActive ? 'max-h-[520px] pb-3' : 'max-h-0'}`}>
+                      {(item.children as NavChild[]).map(child => (
                         <div key={child.label}>
                           {child.children ? (
                             <>
                               <div className="flex items-center justify-between py-2.5 pl-4 text-base text-white/60 group">
-                                <Link to={child.href} onClick={onClose} className="flex-1 hover:text-white transition-colors">
-                                  <p className="font-semibold">{child.label}</p>
-                                  <p className="text-sm text-white/30 mt-0.5">{child.desc}</p>
-                                </Link>
+                                {child.href ? (
+                                  <NavAnchor href={child.href} onClick={onClose} className="flex-1 hover:text-white transition-colors">
+                                    <p className="font-semibold">{child.label}</p>
+                                    <p className="text-sm text-white/30 mt-0.5">{child.desc}</p>
+                                  </NavAnchor>
+                                ) : (
+                                  <div className="flex-1">
+                                    <p className="font-semibold">{child.label}</p>
+                                    <p className="text-sm text-white/30 mt-0.5">{child.desc}</p>
+                                  </div>
+                                )}
                                 <button onClick={() => setChildActive(childActive === child.label ? null : child.label)} className="pl-3 pr-1">
                                   <ChevronDown size={13} className={`transition-transform duration-300 ${childActive === child.label ? 'rotate-180 text-blue-400' : 'text-white/30'}`} />
                                 </button>
                               </div>
                               <div className={`overflow-hidden transition-all duration-300 ${childActive === child.label ? 'max-h-32' : 'max-h-0'}`}>
                                 {child.children.map(sub => (
-                                  <Link key={sub.label} to={sub.href} onClick={onClose}
-                                    className="flex items-center gap-2 py-2 pl-8 text-sm text-white/45 hover:text-white transition-colors group">
-                                    <span className="w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
-                                    {sub.label}
-                                  </Link>
+                                  isPlaceholderHref(sub.href) ? (
+                                    <div key={sub.label} className="flex items-center gap-2 py-2 pl-8 text-sm text-white/25 cursor-not-allowed">
+                                      <span className="w-1 h-1 rounded-full bg-white/20 flex-shrink-0" />
+                                      {sub.label}
+                                      <span className="ml-auto text-[10px] uppercase tracking-wide text-white/20">Soon</span>
+                                    </div>
+                                  ) : (
+                                    <NavAnchor key={sub.label} href={sub.href!} onClick={onClose}
+                                      className="flex items-center gap-2 py-2 pl-8 text-sm text-white/45 hover:text-white transition-colors group">
+                                      <span className="w-1 h-1 rounded-full bg-white/30 flex-shrink-0" />
+                                      {sub.label}
+                                    </NavAnchor>
+                                  )
                                 ))}
                               </div>
                             </>
                           ) : (
-                            <Link to={child.href} onClick={onClose}
-                              className="flex items-center justify-between py-2.5 pl-4 text-base text-white/60 hover:text-white transition-colors group">
-                              <div>
-                                <p className="font-semibold">{child.label}</p>
-                                <p className="text-sm text-white/30 mt-0.5">{child.desc}</p>
+                            <NavAnchor href={child.href!} onClick={onClose}
+                              className="flex items-center justify-between py-2.5 pl-4 text-white/60 hover:text-white transition-colors group">
+                              <div className="flex-1 min-w-0">
+                                <p className="font-semibold text-sm leading-snug">{child.label}</p>
+                                <p className="text-xs text-white/30 mt-0.5">{child.desc}</p>
                               </div>
                               <ArrowRight size={13} className="text-white/20 group-hover:text-blue-400 group-hover:translate-x-1 transition-all flex-shrink-0 ml-3" />
-                            </Link>
+                            </NavAnchor>
                           )}
                         </div>
                       ))}
@@ -164,7 +245,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
         </nav>
 
         {/* ── DESKTOP: three-panel layout ── */}
-        <div className="hidden md:flex flex-1 gap-12 lg:gap-20">
+        <div className="hidden md:flex flex-1 gap-8 lg:gap-16 min-w-0 overflow-hidden">
 
           {/* PANEL 1 — main items */}
           <nav className="flex flex-col w-56 flex-shrink-0">
@@ -176,7 +257,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
                 <div key={item.label}
                   onMouseEnter={() => { setActive(item.label); setChildActive(null); }}
                   className={`${baseCls} ${isActive ? 'text-blue-400' : 'text-white/70'}`}
-                  style={open ? { animation: `slideUpFade 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 45}ms both` } : { opacity: 0 }}>
+                  style={open ? { animation: `slideUpFade 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 45}ms both` } : {}}>
                   {'href' in item && item.href ? (
                     <Link to={item.href} onClick={onClose} className="flex-1 hover:text-white transition-colors">{item.label}</Link>
                   ) : (
@@ -187,7 +268,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
               ) : (
                 <Link key={item.label} to={item.href!} onClick={onClose} onMouseEnter={() => { setActive(null); setChildActive(null); }}
                   className={`${baseCls} text-white/70 hover:text-white`}
-                  style={open ? { animation: `slideUpFade 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 45}ms both` } : { opacity: 0 }}>
+                  style={open ? { animation: `slideUpFade 0.5s cubic-bezier(0.16,1,0.3,1) ${i * 45}ms both` } : {}}>
                   {item.label}
                 </Link>
               );
@@ -196,7 +277,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
 
           {/* PANEL 2 — children of active main item */}
           {subItems && (
-            <div key={active} className="flex flex-col w-56 flex-shrink-0 justify-start pt-1" style={{ animation: 'fadeIn 0.2s ease both' }}>
+            <div key={active} className="flex flex-col w-64 flex-shrink-0 justify-start pt-1" style={{ animation: 'fadeIn 0.2s ease both' }}>
               <p className="text-white/25 text-xs font-bold tracking-[4px] uppercase mb-6">{active}</p>
               <div className="flex flex-col gap-5">
                 {subItems.map((child, i) => (
@@ -204,10 +285,17 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
                     onMouseEnter={() => child.children ? setChildActive(child.label) : setChildActive(null)}
                     style={{ animation: `slideUpFade 0.35s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms both` }}>
                     <div className={`group flex items-start justify-between gap-3 cursor-pointer`}>
-                      <Link to={child.href} onClick={onClose} className="flex-1">
-                        <p className={`font-bold text-lg sm:text-xl leading-tight transition-colors duration-150 ${childActive === child.label ? 'text-blue-400' : 'text-white group-hover:text-blue-400'}`}>{child.label}</p>
-                        <p className="text-white/35 text-sm mt-1">{child.desc}</p>
-                      </Link>
+                      {child.href ? (
+                        <NavAnchor href={child.href} onClick={onClose} className="flex-1 min-w-0">
+                          <p className={`font-bold text-base leading-snug transition-colors duration-150 ${childActive === child.label ? 'text-blue-400' : 'text-white group-hover:text-blue-400'}`}>{child.label}</p>
+                          <p className="text-white/35 text-xs mt-1">{child.desc}</p>
+                        </NavAnchor>
+                      ) : (
+                        <div className="flex-1 min-w-0">
+                          <p className={`font-bold text-base leading-snug transition-colors duration-150 ${childActive === child.label ? 'text-blue-400' : 'text-white'}`}>{child.label}</p>
+                          <p className="text-white/35 text-xs mt-1">{child.desc}</p>
+                        </div>
+                      )}
                       {child.children ? (
                         <ChevronRight size={14} className={`mt-2 flex-shrink-0 transition-all duration-200 ${childActive === child.label ? 'translate-x-1 text-blue-400' : 'text-white/20'}`} />
                       ) : (
@@ -226,15 +314,25 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
               <p className="text-white/25 text-xs font-bold tracking-[4px] uppercase mb-6">{childActive}</p>
               <div className="flex flex-col gap-5">
                 {grandSubItems.map((sub, i) => (
-                  <Link key={sub.label} to={sub.href} onClick={onClose}
-                    className="group flex items-start gap-4"
-                    style={{ animation: `slideUpFade 0.35s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms both` }}>
-                    <div>
-                      <p className="text-white font-bold text-lg sm:text-xl leading-tight group-hover:text-blue-400 transition-colors duration-150">{sub.label}</p>
-                      <p className="text-white/35 text-sm mt-1">{sub.desc}</p>
+                  isPlaceholderHref(sub.href) ? (
+                    <div key={sub.label} className="flex items-start gap-4 opacity-40 cursor-not-allowed"
+                      style={{ animation: `slideUpFade 0.35s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms both` }}>
+                      <div>
+                        <p className="text-white font-bold text-base leading-tight">{sub.label}</p>
+                        <p className="text-white/35 text-sm mt-1">{sub.desc} · Coming soon</p>
+                      </div>
                     </div>
-                    <ArrowRight size={15} className="text-white/20 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 flex-shrink-0 mt-1.5" />
-                  </Link>
+                  ) : (
+                    <NavAnchor key={sub.label} href={sub.href!} onClick={onClose}
+                      className="group flex items-start gap-4"
+                      style={{ animation: `slideUpFade 0.35s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms both` }}>
+                      <div>
+                        <p className="text-white font-bold text-base leading-tight group-hover:text-blue-400 transition-colors duration-150">{sub.label}</p>
+                        <p className="text-white/35 text-sm mt-1">{sub.desc}</p>
+                      </div>
+                      <ArrowRight size={15} className="text-white/20 group-hover:text-blue-400 group-hover:translate-x-1 transition-all duration-150 flex-shrink-0 mt-1.5" />
+                    </NavAnchor>
+                  )
                 ))}
               </div>
             </div>
@@ -244,7 +342,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
 
         {/* Bottom CTA */}
         <div className="flex flex-wrap gap-3 pt-6 border-t border-white/[0.07] mt-6"
-          style={open ? { animation: `slideUpFade 0.5s cubic-bezier(0.16,1,0.3,1) ${NAV_ITEMS.length * 45 + 80}ms both` } : { opacity: 0 }}>
+          style={open ? { animation: `slideUpFade 0.5s cubic-bezier(0.16,1,0.3,1) ${NAV_ITEMS.length * 45 + 80}ms both` } : {}}>
           <a href="https://newhorizoncollegeofengineering.in/admissions/"
             target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 text-base font-bold px-6 py-3 rounded-full transition-colors">
@@ -256,6 +354,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
           </a>
         </div>
 
+      </div>
       </div>
     </div>
   );
@@ -286,7 +385,7 @@ export default function Navbar() {
     { label: 'Programs',   href: '/programs' },
     { label: 'Admissions', href: '/admissions' },
     { label: 'Campus',     href: '/campus' },
-    { label: 'everything@nhce', href: '/everything@nhce' },
+    { label: 'Life at NHCE', href: '/life-at-nhce' },
     { label: 'Contact',    href: '/contact' },
   ];
 
@@ -295,7 +394,7 @@ export default function Navbar() {
       return location.pathname === '/' && location.hash === '';
     }
     if (item.href === '/campus') {
-      return ['/campus', '/student-services', '/sports', '/social-outreach'].includes(location.pathname);
+      return ['/campus', '/student-services', '/sports'].includes(location.pathname);
     }
     if (item.href === '/admissions') {
       return ['/admissions', '/academic-enrichment'].includes(location.pathname);
