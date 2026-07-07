@@ -31,10 +31,20 @@ function imageBasePrefixPlugin(basePath: string) {
   };
 }
 
+// Vercel sets VERCEL=1 automatically during its build step — no manual env var needed.
+// On Vercel the app is served at the domain root; everywhere else (e.g. reverse-proxied
+// under the main NHCE site) it's served under the /react subpath.
+const isVercel = !!process.env.VERCEL;
+const BASE_PATH = isVercel ? '/' : '/react/';
+const BASENAME = isVercel ? '/' : '/react';
+
 export default defineConfig({
   plugins: [
     react(),
-    imageBasePrefixPlugin('/react/')
+    imageBasePrefixPlugin(BASE_PATH)
   ],
-  base: '/react/'
+  base: BASE_PATH,
+  define: {
+    __APP_BASENAME__: JSON.stringify(BASENAME),
+  }
 })
