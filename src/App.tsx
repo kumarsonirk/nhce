@@ -34,6 +34,9 @@ import NewslettersPage from './pages/NewslettersPage';
 import CelebrityDiariesPage from './pages/CelebrityDiariesPage';
 import CelebrityDiaryDetailPage from './pages/CelebrityDiaryDetailPage';
 import EventsPage from './pages/EventsPage';
+import IndustryCollaborationsPage from './pages/IndustryCollaborationsPage';
+import AICTEIdeaLabPage from './pages/AICTEIdeaLabPage';
+import StudentClubsPage from './pages/StudentClubsPage';
 import { ArrowUp } from 'lucide-react';
 import { useState } from 'react';
 
@@ -87,6 +90,9 @@ export default function App() {
         <Route path="/sports" element={<SportsPage />} />
         <Route path="/social-outreach" element={<SocialOutreachPage />} />
         <Route path="/academic-enrichment" element={<AcademicEnrichmentPage />} />
+        <Route path="/industry-collaborations" element={<IndustryCollaborationsPage />} />
+        <Route path="/aicte-idea-lab" element={<AICTEIdeaLabPage />} />
+        <Route path="/student-clubs" element={<StudentClubsPage />} />
         <Route path="/life-at-nhce" element={<LifeAtNHCEPage />} />
         <Route path="/life-at-nhce/:category/:slug" element={<DetailPage />} />
         <Route path="/news" element={<NewsListPage />} />

@@ -3,15 +3,15 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 const SLIDES = [
   {
     id: 0,
-    image: '/sargam1.png',
-    mobileImage: '/sargam_mobile.png',
-    alt: 'sargam',
+    image: '/main_banner1.jpg',
+    mobileImage: '/banner1.jpeg',
+    alt: 'Admission',
   },
   {
     id: 1,
-    image: '/main_banner1.jpg',
-    mobileImage: '/banner1.jpeg',
-    alt: '48-Hour Hackathon at NHCE',
+    image: '/sargam1.png',
+    mobileImage: '/sargam_mobile.png',
+    alt: 'Sargam 2026',
   },
 ];
 

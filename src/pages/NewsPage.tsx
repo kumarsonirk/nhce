@@ -264,8 +264,8 @@ export default function LifeAtNHCEPage() {
                       <Calendar size={13} className="text-amber-500" />
                       {new Date(post.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
                     </div>
-                    <h2 className="font-bold text-navy-900 text-lg leading-snug mb-3 group-hover:text-blue-700 transition-colors line-clamp-3" dangerouslySetInnerHTML={{ __html: post.title?.rendered || 'Untitled' }} />
-                    <div className="text-sm text-slate-500 leading-relaxed mb-5 line-clamp-3 flex-1" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered || 'Read the full article for more details.' }} />
+                    <h2 className="font-bold text-navy-900 text-base leading-snug mb-3 group-hover:text-blue-700 transition-colors line-clamp-3" dangerouslySetInnerHTML={{ __html: post.title?.rendered || 'Untitled' }} />
+                    {/* <div className="text-sm text-slate-500 leading-relaxed mb-5 line-clamp-3 flex-1" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered || 'Read the full article for more details.' }} /> */}
                     <div className="mt-auto border-t border-slate-100 pt-4">
                       <Link to={`/life-at-nhce/${categorySlug}/${post.slug}`} className="inline-flex items-center gap-1.5 text-base font-semibold text-blue-600 hover:text-blue-800 transition-colors group/link">
                         Read Article <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />

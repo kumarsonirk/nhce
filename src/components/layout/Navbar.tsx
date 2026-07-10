@@ -75,9 +75,12 @@ const NAV_ITEMS = [
   {
     label: 'Campus',
     children: [
-      { label: 'Campus Facilities', href: '/campus',           desc: 'Infrastructure, labs & hostel'    },
-      { label: 'Student Services',  href: '/student-services', desc: 'Library, counseling & more'       },
-      { label: 'Sports',            href: '/sports',           desc: 'Courts, grounds & achievements'   },
+      { label: 'Campus Facilities',       href: '/campus',                  desc: 'Infrastructure, labs & hostel'         },
+      { label: 'Student Services',        href: '/student-services',        desc: 'Library, counseling & more'            },
+      { label: 'Sports',                  href: '/sports',                  desc: 'Courts, grounds & achievements'        },
+      { label: 'Student Clubs',           href: '/student-clubs',           desc: '35+ co-curricular & extra-curricular clubs' },
+      { label: 'Industry Collaborations', href: '/industry-collaborations', desc: 'Sponsored labs, MoUs & partnerships'   },
+      { label: 'AICTE IDEA Lab',          href: '/aicte-idea-lab',          desc: 'Innovation, design & entrepreneurship' },
     ],
   },
   {
@@ -442,7 +445,7 @@ export default function Navbar() {
           <Link to="/" className="flex-shrink-0" onClick={() => setMenuOpen(false)}>
             <img src="/main_logo.png" alt="NHCE" className={`w-auto object-contain transition-all duration-300 h-14 ${
               scrolled ? 'sm:h-11' : 'sm:h-20'
-            }`} />
+            } ${showSolid ? '' : 'drop-shadow-[0_0_6px_rgba(255,255,255,0.9)]'}`} />
           </Link>
 
           {/* Center: Floating navigation dock (Veloura style) */}
