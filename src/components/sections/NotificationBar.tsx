@@ -43,7 +43,7 @@ export default function NotificationBar() {
 
       <style>{`
         .notif-marquee {
-          animation: notifScroll 40s linear infinite;
+          animation: notifScroll 70s linear infinite;
         }
         .notif-marquee:hover {
           animation-play-state: paused;

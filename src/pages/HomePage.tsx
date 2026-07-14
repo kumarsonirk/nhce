@@ -34,11 +34,11 @@ function LoadingScreen({ onDone }: { onDone: () => void }) {
 }
 
 const EXPLORE_ITEMS = [
-  { label: 'Admissions',   href: '/admissions',  icon: Plus,     isRoute: true  },
-  { label: 'Programs',     href: '#departments', icon: BookOpen, isRoute: false },
-  { label: 'Placements',   href: '#placements',  icon: Briefcase,isRoute: false },
-  { label: 'News & Events',href: '#events',      icon: Zap,      isRoute: false },
-  { label: 'Contact Us',   href: '#contact',     icon: Mail,     isRoute: false },
+  { label: 'Admissions',   href: '/react/admissions',  icon: Plus,     isRoute: true  },
+  { label: 'Programs',     href: '/react/programs', icon: BookOpen, isRoute: false },
+  { label: 'Life at NHCE',   href: '/react/life-at-nhce',  icon: Briefcase,isRoute: false },
+  { label: 'News & Events',href: '/react/news',      icon: Zap,      isRoute: false },
+  { label: 'Contact Us',   href: '/react/contact',     icon: Mail,     isRoute: false },
 ];
 
 function ExploreButton() {
@@ -55,7 +55,7 @@ function ExploreButton() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 md:hidden">
+    <div className="fixed bottom-16 right-6 z-50 flex flex-col items-end gap-2 md:hidden">
       {open && (
         <>
           <div className="fixed inset-0 z-[-1]" onClick={() => setOpen(false)} />

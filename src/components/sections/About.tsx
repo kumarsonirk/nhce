@@ -70,9 +70,14 @@ export default function About() {
 
             <div className="flex flex-col sm:flex-row gap-3">
               <button className="btn-primary justify-center whitespace-nowrap">Download Brochure</button>
-              <button className="border border-slate-200 bg-white text-slate-700 hover:border-navy-400 hover:text-navy-700 text-base font-medium px-6 py-3.5 rounded-full transition-all duration-300 whitespace-nowrap justify-center flex items-center">
+              <a
+                href="https://trayicreations.com/newhorizon/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-slate-200 bg-white text-slate-700 hover:border-navy-400 hover:text-navy-700 text-base font-medium px-6 py-3.5 rounded-full transition-all duration-300 whitespace-nowrap justify-center flex items-center"
+              >
                 Virtual Tour →
-              </button>
+              </a>
             </div>
           </div>
           </AnimateIn>

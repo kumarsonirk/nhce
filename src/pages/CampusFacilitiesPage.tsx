@@ -31,7 +31,7 @@ const INFRA_STATS = [
   { num: '700+', label: 'Seat Auditorium' },
   { num: '4',    label: 'Fitness Gyms'    },
   { num: '24/7', label: 'Wi-Fi Coverage'  },
-  { num: '1',    label: 'Medical Centre'  },
+  { num: '15+',    label: 'Industry Sponsored Labs'  },
 ];
 
 const CAFETERIAS = [
@@ -78,6 +78,66 @@ const GALLERY_IMAGES = [
   '/campus/sport2.jpg',
   '/campus/canteen1.jpg',
 ];
+
+/* ─── Honeycomb grid — pointy-top hexagon tiles (clip-path), arranged
+   in ROWS (the correct pairing for this orientation: same-row tiles
+   touch via their flat left/right edges; alternate rows are offset
+   by half a tile width and pulled up by exactly 0.25× a tile's own
+   height, so consecutive rows sit a true 0.75×height apart — the
+   standard pointy-top honeycomb spacing). ── */
+
+const HEX_CLIP = 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)';
+const HEX_ASPECT = 1.1547; // height ÷ width for a regular pointy-top hexagon
+
+function HexTile({ image, label }: { image: string; label: string }) {
+  return (
+    <div className="group relative w-full" style={{ aspectRatio: `1 / ${HEX_ASPECT}` }}>
+      <div className="absolute inset-0 overflow-hidden bg-navy-900" style={{ clipPath: HEX_CLIP }}>
+        <img
+          src={image}
+          alt={label}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-navy-950/40 group-hover:bg-navy-950/55 transition-colors" />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-[20%]">
+        <p className="text-white font-display font-bold text-[10px] sm:text-sm text-center leading-tight [text-shadow:0_2px_6px_rgba(0,0,0,0.6)]">
+          {label}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function HoneycombRows({ items, perRow }: { items: { image: string; label: string }[]; perRow: number }) {
+  const rows: { image: string; label: string }[][] = [];
+  for (let i = 0; i < items.length; i += perRow) rows.push(items.slice(i, i + perRow));
+  const cols = perRow * 2 + 1;
+
+  // Tile width/height as a % of the shared grid's own width (percentage margins in
+  // CSS are always relative to the containing block's width, so this stays consistent).
+  const tileWidthPct = 200 / cols;
+  const tileHeightPct = tileWidthPct * HEX_ASPECT;
+  const pullUpPct = tileHeightPct * 0.2338;
+
+  return (
+    <div>
+      {rows.map((row, r) => (
+        <div
+          key={r}
+          className="grid gap-[3px] sm:gap-1"
+          style={{ gridTemplateColumns: `repeat(${cols}, 1fr)`, marginTop: r > 0 ? `-${pullUpPct}%` : undefined }}
+        >
+          {row.map((item, i) => (
+            <div key={item.label} style={{ gridColumn: `${i * 2 + 1 + (r % 2)} / span 2` }}>
+              <HexTile {...item} />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 /* ─── Page ──────────────────────────────────────────────────── */
 
@@ -130,7 +190,7 @@ export default function CampusFacilitiesPage() {
         headingGhost="NHCE Campus"
         description="IBM-powered labs, a 700-seat auditorium, five dining spots, separate hostels and a bus fleet that covers all of Bengaluru — built for students who mean business."
         button={{ label: 'Explore Campus', onClick: () => scrollTo('infrastructure') }}
-        secondaryButton={{ label: 'Virtual Tour', href: 'https://newhorizoncollegeofengineering.in/infrastructure/' }}
+        secondaryButton={{ label: 'Virtual Tour', href: 'https://trayicreations.com/newhorizon/' }}
       />
 
       {/* ── Quick Navigation ── */}
@@ -147,8 +207,8 @@ export default function CampusFacilitiesPage() {
                   <Icon size={18} className="text-gold-400" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-bold text-white text-base leading-tight">{label}</p>
-                  <p className="text-white/40 text-sm mt-0.5 truncate">{sub}</p>
+                  <p className="font-bold text-white text-xs leading-tight">{label}</p>
+                  <p className="text-white/40 text-xs mt-0.5 truncate">{sub}</p>
                 </div>
                 <ChevronDown size={13} className="text-white/20 flex-shrink-0 group-hover:text-gold-400 transition-colors" />
               </button>
@@ -165,7 +225,7 @@ export default function CampusFacilitiesPage() {
           <span className="badge bg-blue-100 text-blue-700 mb-5">Infrastructure</span>
           <div className="grid lg:grid-cols-2 gap-10 items-center mb-14">
             <div>
-              <h2 className="font-display font-black text-4xl lg:text-5xl text-navy-950 leading-tight mb-4">
+              <h2 className="font-display font-black text-2xl lg:text-5xl text-navy-950 leading-tight mb-4">
                 Built Around<br />
                 <span className="text-blue-600">How You Learn</span>
               </h2>
@@ -185,23 +245,13 @@ export default function CampusFacilitiesPage() {
 
           </AnimateIn>
 
-          {/* Features grid — image + text combined */}
+          {/* Features grid — honeycomb, image + heading only */}
           <AnimateIn variant="fade-up" delay={100}>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {INFRA_FEATURES.map(f => (
-              <div key={f.label} className="bg-white border border-slate-100 rounded-2xl overflow-hidden hover:shadow-md transition-shadow group cursor-default">
-                <div className="h-40 overflow-hidden">
-                  <img src={f.image} alt={f.label} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="px-4 py-4">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <f.icon size={13} className="text-blue-500 flex-shrink-0" />
-                    <p className="font-bold text-base text-navy-900">{f.label}</p>
-                  </div>
-                  <p className="text-xs text-slate-400 leading-snug">{f.desc}</p>
-                </div>
-              </div>
-            ))}
+          <div className="sm:hidden">
+            <HoneycombRows items={INFRA_FEATURES.map(f => ({ image: f.image, label: f.label }))} perRow={2} />
+          </div>
+          <div className="hidden sm:block">
+            <HoneycombRows items={INFRA_FEATURES.map(f => ({ image: f.image, label: f.label }))} perRow={4} />
           </div>
           </AnimateIn>
         </div>
@@ -216,7 +266,7 @@ export default function CampusFacilitiesPage() {
           <div className="grid lg:grid-cols-2 gap-10 items-center mb-12">
             <AnimateIn variant="fade-right">
             <div>
-              <h2 className="font-display font-black text-4xl lg:text-5xl text-navy-950 leading-tight mb-4">
+              <h2 className="font-display font-black text-2xl lg:text-5xl text-navy-950 leading-tight mb-4">
                 Five Places<br />
                 <span className="text-amber-600">to Eat on Campus</span>
               </h2>
@@ -242,7 +292,7 @@ export default function CampusFacilitiesPage() {
           <AnimateIn variant="fade-up" delay={80}>
           <div className="grid grid-cols-3 gap-3 mb-10">
             {['/campus/canteen.jpeg', '/campus/canteen1.jpg', '/campus/canteen2.jpg'].map((img, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden h-64">
+              <div key={i} className="rounded-2xl overflow-hidden h-32 lg:h-64">
                 <img src={img} alt="" className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" />
               </div>
             ))}
@@ -285,7 +335,7 @@ export default function CampusFacilitiesPage() {
           <AnimateIn variant="fade-up">
           <span className="badge bg-indigo-100 text-indigo-700 mb-5">Hostel Facilities</span>
           <div className="grid lg:grid-cols-2 gap-8 items-end mb-10">
-            <h2 className="font-display font-black text-4xl lg:text-5xl text-navy-950 leading-tight">
+            <h2 className="font-display font-black text-2xl lg:text-5xl text-navy-950 leading-tight">
               Five Blocks,<br />
               <span className="text-indigo-600">One Community</span>
             </h2>
@@ -380,24 +430,24 @@ export default function CampusFacilitiesPage() {
             {/* Content */}
             <div>
               <span className="badge bg-slate-100 text-slate-600 mb-5">Transport</span>
-              <h2 className="font-display font-black text-4xl lg:text-5xl text-navy-950 leading-tight mb-4">
+              <h2 className="font-display font-black text-2xl lg:text-5xl text-navy-950 leading-tight mb-4">
                 NHCE Runs<br />
                 <span className="text-blue-600">Its Own Buses</span>
               </h2>
-              <p className="text-slate-500 text-lg leading-relaxed mb-8">
+              <p className="text-slate-500 text-base leading-relaxed mb-8">
                 The college runs its own fleet across Bengaluru — fixed routes, capped seats, scheduled timings. No depending on autos or cabs to make it to an 8 a.m. lecture.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {TRANSPORT_FEATURES.map(t => (
-                  <div key={t.label} className="flex items-center gap-3 p-4 border border-slate-200 rounded-2xl">
-                    <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
-                      <t.icon size={15} className="text-blue-600" />
+                  <div key={t.label} className="p-3 sm:p-4 border border-slate-200 rounded-2xl">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="font-bold text-navy-900 text-sm sm:text-base">{t.label}</p>
+                      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                        <t.icon size={14} className="text-blue-600 sm:w-[15px] sm:h-[15px]" />
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-bold text-navy-900 text-base">{t.label}</p>
-                      <p className="text-slate-400 text-sm mt-0.5 leading-snug">{t.sub}</p>
-                    </div>
+                    <p className="text-slate-400 text-xs sm:text-sm mt-1.5 leading-snug">{t.sub}</p>
                   </div>
                 ))}
               </div>
@@ -437,7 +487,7 @@ export default function CampusFacilitiesPage() {
       <div className="bg-white py-16">
         <div className="container-wide mb-10">
           <span className="badge bg-slate-100 text-slate-600 mb-4">Campus Gallery</span>
-          <h2 className="font-display font-black text-3xl sm:text-4xl text-navy-950">The Campus, in Pictures</h2>
+          <h2 className="font-display font-black text-2xl sm:text-4xl text-navy-950">The Campus, in Pictures</h2>
         </div>
 
         {/* Infinite scroll slider — pauses on hover */}
