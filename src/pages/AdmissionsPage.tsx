@@ -183,7 +183,7 @@ export default function AdmissionsPage() {
       </div>
 
       {/* ── Body ── */}
-      <div className="bg-gradient-to-br from-blue-50/50 via-white to-indigo-50/30 relative overflow-hidden">
+      <div className="bg-gradient-to-br from-blue-50/50 via-white to-indigo-50/30 relative overflow-hidden z-0">
         {/* Decorative background blobs */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-400/25 rounded-full blur-3xl -z-10" />
         <div className="absolute top-1/2 left-0 w-72 h-72 bg-blue-300/25 rounded-full blur-3xl -z-10" />

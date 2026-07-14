@@ -328,7 +328,7 @@ export default function CampusFacilitiesPage() {
       </div>
 
       {/* ── Hostels ── */}
-      <div id="hostels" className="bg-white border-t border-slate-100 relative overflow-hidden">
+      <div id="hostels" className="bg-white border-t border-slate-100 relative overflow-hidden z-0">
         {/* Decorative background blobs */}
         <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-400/25 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-0 left-0 w-60 h-60 bg-violet-300/25 rounded-full blur-3xl -z-10" />

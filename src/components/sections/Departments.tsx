@@ -32,10 +32,10 @@ export default function Departments() {
     : DEPARTMENTS;
 
   return (
-    <section id="departments" className="section-padding bg-slate-50 relative overflow-hidden">
+    <section id="departments" className="section-padding bg-slate-50 relative overflow-hidden z-0">
       {/* Decorative background blobs */}
-      <div className="absolute top-0 left-0 w-80 h-80 bg-violet-400/25 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-400/25 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-0 w-80 h-80 bg-violet-400/25 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-400/25 rounded-full blur-3xl -z-10" />
 
       <div className="container-wide">
 

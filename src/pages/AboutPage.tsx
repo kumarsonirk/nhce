@@ -224,7 +224,7 @@ export default function AboutPage() {
       />
 
       {/* ── About the College ── */}
-      <div className="bg-white relative overflow-hidden">
+      <div className="bg-white relative overflow-hidden z-0">
         {/* Decorative background blobs */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/25 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-navy-400/25 rounded-full blur-3xl -z-10" />
