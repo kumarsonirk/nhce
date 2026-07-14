@@ -548,7 +548,7 @@ export default function AchievementsPage() {
                   <a href="https://newhorizoncollegeofengineering.in/admissions/"
                     target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-sm px-7 py-3 rounded-full transition-colors">
-                    Apply Now 2025–26 <ChevronRight size={14} />
+                    Apply Now 2026–27 <ChevronRight size={14} />
                   </a>
                   <a href="/contact"
                     className="inline-flex items-center gap-2 border border-white/20 hover:bg-white/5 text-white font-semibold text-sm px-7 py-3 rounded-full transition-colors">

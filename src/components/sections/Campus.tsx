@@ -49,7 +49,11 @@ const KEY_STATS = [
 
 export default function Campus() {
   return (
-    <section id="campus" className="section-padding bg-white">
+    <section id="campus" className="section-padding bg-white relative overflow-hidden">
+      {/* Decorative background blobs */}
+      <div className="absolute top-0 left-1/4 w-80 h-80 bg-amber-400/25 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-60 h-60 bg-orange-300/25 rounded-full blur-3xl" />
+
       <div className="container-wide">
 
         {/* Header */}

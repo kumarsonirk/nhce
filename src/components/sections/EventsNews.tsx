@@ -93,7 +93,11 @@ export function News() {
   const skeletons = Array.from({ length: 3 });
 
   return (
-    <section id="news" className="section-padding bg-slate-50">
+    <section id="news" className="section-padding bg-slate-50 relative overflow-hidden">
+      {/* Decorative background blobs */}
+      <div className="absolute top-0 right-1/3 w-72 h-72 bg-navy-400/25 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-56 h-56 bg-gold-400/25 rounded-full blur-3xl -z-10" />
+
       <div className="container-wide">
 
         {/* Header */}

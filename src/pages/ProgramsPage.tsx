@@ -481,6 +481,15 @@ export default function ProgramsPage() {
       const tabId = hash.replace('#', '');
       if (tabId === 'ug' || tabId === 'pg' || tabId === 'phd') {
         setActiveTab(tabId);
+        // #programs-tabs is `position: sticky`. Arriving here via in-app navigation leaves
+        // the scroll position wherever the previous page was, which can already be past this
+        // element's natural offset — in that "stuck" state, both getBoundingClientRect() and
+        // offsetTop report its clamped sticky position instead of its true document offset.
+        // Jumping to the top first un-sticks it so the later measurement is accurate. This
+        // must use behavior: 'instant' (not 'auto') — 'auto' defers to the global
+        // `scroll-behavior: smooth` CSS, which would animate this "reset" instead of
+        // jumping instantly, so the later measurement would still land mid-animation.
+        window.scrollTo({ top: 0, behavior: 'instant' });
         setTimeout(() => {
           const el = document.getElementById('programs-tabs');
           if (el) {

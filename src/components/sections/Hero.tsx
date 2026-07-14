@@ -23,6 +23,8 @@ export default function Hero() {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
+  const dragStartX = useRef<number | null>(null);
+  const [dragging, setDragging] = useState(false);
   const total = SLIDES.length;
 
   const goTo = useCallback((idx: number) => {
@@ -44,12 +46,34 @@ export default function Hero() {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [goNext, paused]);
 
+  // Desktop mouse-drag swipe support (mirrors the touch swipe logic below)
+  useEffect(() => {
+    if (!dragging) return;
+    const handleMouseUp = (e: MouseEvent) => {
+      if (dragStartX.current !== null) {
+        const dx = e.clientX - dragStartX.current;
+        if (Math.abs(dx) > 40) {
+          if (dx < 0) goNext();
+          else goPrev();
+        }
+      }
+      dragStartX.current = null;
+      setPaused(false);
+      setDragging(false);
+    };
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => window.removeEventListener('mouseup', handleMouseUp);
+  }, [dragging, goNext, goPrev]);
+
   return (
     <section
       className="relative bg-gray-900 overflow-hidden h-[95svh] select-none"
-      style={{ touchAction: 'pan-y' }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      style={{ touchAction: 'pan-y', cursor: 'grab' }}
+      onMouseDown={(e) => {
+        dragStartX.current = e.clientX;
+        setPaused(true);
+        setDragging(true);
+      }}
       onTouchStart={(e) => {
         touchStartX.current = e.touches[0].clientX;
         touchStartY.current = e.touches[0].clientY;

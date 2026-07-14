@@ -27,7 +27,7 @@ export default function CallToAction() {
                   rel="noopener noreferrer"
                   className="btn-gold"
                 >
-                  Apply Now 2025–26 <ArrowRight size={14} />
+                  Apply Now 2026–27 <ArrowRight size={14} />
                 </a>
               </div>
             </div>

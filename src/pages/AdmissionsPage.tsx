@@ -149,7 +149,7 @@ export default function AdmissionsPage() {
         headingMain="NHCE"
         headingGhost=""
         description="NAAC A accredited, AICTE & UGC approved, permanently affiliated to VTU. Join 15,000+ students building world-class careers at NHCE Bengaluru."
-        button={{ label: 'Apply Now 2025–26', href: 'https://newhorizoncollegeofengineering.in/admissions/' }}
+        button={{ label: 'Apply Now 2026–27', href: 'https://newhorizoncollegeofengineering.in/admissions/' }}
         secondaryButton={{ label: 'Talk to Counselor', href: 'tel:+919880534935' }}
         bottomSlot={
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -183,7 +183,11 @@ export default function AdmissionsPage() {
       </div>
 
       {/* ── Body ── */}
-      <div className="bg-gradient-to-br from-blue-50/50 via-white to-indigo-50/30">
+      <div className="bg-gradient-to-br from-blue-50/50 via-white to-indigo-50/30 relative overflow-hidden">
+        {/* Decorative background blobs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-400/25 rounded-full blur-3xl -z-10" />
+        <div className="absolute top-1/2 left-0 w-72 h-72 bg-blue-300/25 rounded-full blur-3xl -z-10" />
+
         <div className="container-wide py-12">
           <div className="grid lg:grid-cols-3 gap-8 items-start">
 

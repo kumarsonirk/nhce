@@ -349,7 +349,7 @@ function FullPageMenu({ open, onClose, scrolled }: { open: boolean; onClose: () 
           <a href="https://newhorizoncollegeofengineering.in/admissions/"
             target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 text-base font-bold px-6 py-3 rounded-full transition-colors">
-            Apply Now 2025–26 <ArrowRight size={14} />
+            Apply Now 2026–27 <ArrowRight size={14} />
           </a>
           <a href="tel:+919880534935"
             className="inline-flex items-center gap-2 border border-white/20 hover:bg-white/5 text-white text-sm font-medium px-6 py-3 rounded-full transition-colors">

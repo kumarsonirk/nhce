@@ -699,7 +699,7 @@ export default function AcademicEnrichmentPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href="https://newhorizoncollegeofengineering.in/admissions/" target="_blank" rel="noopener noreferrer"
               className="btn-gold inline-flex items-center justify-center gap-2">
-              Apply Now 2025–26 <ChevronRight size={14} />
+              Apply Now 2026–27 <ChevronRight size={14} />
             </a>
             <Link to="/admissions"
               className="inline-flex items-center justify-center gap-2 border border-white/20 text-white/80 hover:text-white hover:border-white/50 text-base font-semibold px-6 py-2.5 rounded-full transition-all">

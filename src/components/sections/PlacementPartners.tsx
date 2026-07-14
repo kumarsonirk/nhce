@@ -54,7 +54,11 @@ export default function PlacementPartners() {
   const loopRows = [...rows, ...rows];
 
   return (
-    <section id="placements" className="section-padding bg-white overflow-hidden">
+    <section id="placements" className="section-padding bg-white overflow-hidden relative">
+      {/* Decorative background blobs */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-emerald-400/25 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-56 h-56 bg-teal-300/25 rounded-full blur-3xl" />
+
       <div className="container-wide">
         <AnimateIn variant="fade-up">
         <div className="text-center mb-10">

@@ -220,11 +220,15 @@ export default function AboutPage() {
         headingMain="New Horizon"
         headingGhost="College of Engineering"
         description="One of Bangalore's top engineering institutions — permanently affiliated to VTU, with world-class infrastructure and 100% placement opportunities."
-        button={{ label: 'Apply Now 2025–26', to: '/admissions' }}
+        button={{ label: 'Apply Now 2026–27', to: '/admissions' }}
       />
 
       {/* ── About the College ── */}
-      <div className="bg-white">
+      <div className="bg-white relative overflow-hidden">
+        {/* Decorative background blobs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/25 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-navy-400/25 rounded-full blur-3xl -z-10" />
+
         <div className="container-wide py-14">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left */}

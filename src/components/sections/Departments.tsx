@@ -32,7 +32,11 @@ export default function Departments() {
     : DEPARTMENTS;
 
   return (
-    <section id="departments" className="section-padding bg-slate-50">
+    <section id="departments" className="section-padding bg-slate-50 relative overflow-hidden">
+      {/* Decorative background blobs */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-violet-400/25 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-400/25 rounded-full blur-3xl" />
+
       <div className="container-wide">
 
         {/* Header */}
@@ -139,10 +143,13 @@ className="bg-white rounded-2xl overflow-hidden cursor-pointer group shadow-sm h
                 </div>
 
                 {/* CTA */}
-                <button className="w-full flex items-center justify-between text-xs font-semibold text-navy-700 hover:text-navy-900 transition-colors group/btn border-t border-slate-100 pt-3">
+                <Link
+                  to={`/programs#${ugDepts.includes(dept.code) ? 'ug' : 'pg'}`}
+                  className="w-full flex items-center justify-between text-xs font-semibold text-navy-700 hover:text-navy-900 transition-colors group/btn border-t border-slate-100 pt-3"
+                >
                   <span>Explore Program</span>
                   <ChevronRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                </Link>
               </div>
             </div>
           ))}

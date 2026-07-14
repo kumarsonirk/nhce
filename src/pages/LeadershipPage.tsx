@@ -374,7 +374,11 @@ export default function LeadershipPage() {
       </div>
 
       {/* ── CTA ── */}
-      <div className="bg-white py-16">
+      <div className="bg-white py-16 relative overflow-hidden">
+        {/* Decorative background blobs */}
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-400/25 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-gold-400/25 rounded-full blur-3xl -z-10" />
+
         <div className="container-wide">
           <AnimateIn variant="scale">
           <div className="bg-navy-950 rounded-3xl p-10 sm:p-16 text-center">
@@ -383,7 +387,7 @@ export default function LeadershipPage() {
               Reach out to our leadership team for academic, administrative and institutional enquiries.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Link to="/admissions" className="btn-gold">Apply Now 2025–26 <ChevronRight size={14} /></Link>
+              <Link to="/admissions" className="btn-gold">Apply Now 2026–27 <ChevronRight size={14} /></Link>
               <a href="tel:+918028453197" className="btn-outline">Call +91-80-2845 3197</a>
             </div>
           </div>
