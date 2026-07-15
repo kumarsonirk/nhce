@@ -458,7 +458,7 @@ export default function CampusFacilitiesPage() {
 
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="https://newhorizoncollegeofengineering.in/transport/"
+                  href="/transport2.jpg"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-gold inline-flex items-center gap-2"
@@ -477,7 +477,7 @@ export default function CampusFacilitiesPage() {
             {/* Image */}
             <div className="rounded-3xl overflow-hidden h-[400px]">
               <img
-                src="/campus/transport.jpg"
+                src="/campus/transport2.jpg"
                 alt="NHCE Bus Fleet"
                 className="w-full h-full object-cover object-center"
               />

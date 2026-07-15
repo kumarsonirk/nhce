@@ -23,8 +23,8 @@ const LEADERS = [
   {
     name: 'Dr. Anandhi R J',
     qualifications: 'Ph.D',
-    roles: ['Dean – Academics, NHCE'],
-    role: 'Dean – Academics',
+    roles: ['Vice Principal – Academics, NHCE'],
+    role: 'Vice Principal – Academics',
     image: '/anandhi_dean.jpg',
     color: 'from-blue-700 to-blue-900',
     desc: [
@@ -187,14 +187,16 @@ function LeaderSpotlight() {
       </div>
 
       {/* Thumbnail strip — all 4, active gets ChevronUp pointing into the card above */}
-        <div className="flex justify-center gap-2 sm:gap-6 py-5 px-4">
+        <div
+          className="flex overflow-x-auto sm:overflow-visible sm:justify-center gap-2 sm:gap-6 py-5 px-4 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full"
+        >
           {LEADERS.map((l, idx) => {
             const isActive = selected === idx;
             return (
               <button
                 key={l.name}
                 onClick={() => handleSelect(idx)}
-                className={`relative flex flex-col items-center gap-2 px-2 sm:px-3 py-3 rounded-2xl transition-all duration-200 cursor-pointer group ${
+                className={`relative flex-shrink-0 flex flex-col items-center gap-2 px-2 sm:px-3 py-3 rounded-2xl transition-all duration-200 cursor-pointer group w-24 sm:w-auto ${
                   isActive ? 'bg-white/60' : 'hover:bg-sky-200/60'
                 }`}
               >
@@ -203,16 +205,16 @@ function LeaderSpotlight() {
                   <ChevronUp size={20} className="text-navy-900" strokeWidth={2.5} />
                 </div>
 
-                <div className={`w-14 h-18 sm:w-44 sm:h-56 rounded-xl overflow-hidden shadow-sm transition-all duration-200 ${isActive ? 'ring-2 ring-gold-400 scale-105' : 'ring-1 ring-transparent group-hover:ring-sky-300'}`}
+                <div className={`w-20 h-24 sm:w-44 sm:h-56 rounded-xl overflow-hidden shadow-sm transition-all duration-200 ${isActive ? 'ring-2 ring-gold-400 scale-105' : 'ring-1 ring-transparent group-hover:ring-sky-300'}`}
                 >
                   <img src={l.image} alt={l.name} className="w-full h-full object-cover object-top" />
                 </div>
 
-                <div className="text-center w-14 sm:w-44">
-                  <p className={`text-sm font-bold leading-snug transition-colors ${isActive ? 'text-navy-900' : 'text-slate-500 group-hover:text-navy-700'}`}>
+                <div className="text-center w-20 sm:w-44 min-h-[56px] sm:min-h-0">
+                  <p className={`text-[11px] sm:text-sm font-bold leading-snug line-clamp-2 transition-colors ${isActive ? 'text-navy-900' : 'text-slate-500 group-hover:text-navy-700'}`}>
                     {l.name}
                   </p>
-                  <p className={`text-sm mt-0.5 leading-snug transition-colors ${isActive ? 'text-gold-600' : 'text-slate-400 group-hover:text-slate-600'}`}>
+                  <p className={`text-[10px] sm:text-sm mt-0.5 leading-snug line-clamp-2 transition-colors ${isActive ? 'text-gold-600' : 'text-slate-400 group-hover:text-slate-600'}`}>
                     {l.role}
                   </p>
                 </div>
